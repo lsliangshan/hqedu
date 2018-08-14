@@ -1,6 +1,8 @@
 <template>
   <div class="main_container">
     <headers></headers>
+    <top-menu></top-menu>
+    <footers></footers>
   </div>
 </template>
 
@@ -8,7 +10,9 @@
   export default {
     name: 'PcIndex',
     components: {
-      Headers: () => import('./parts/Headers.vue')
+      Headers: () => import('./parts/Headers.vue'),
+      TopMenu: () => import('./parts/TopMenu.vue'),
+      Footers: () => import('./parts/Footers.vue')
     }
   }
 </script>

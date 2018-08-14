@@ -23,7 +23,7 @@ export const routerLogin = {
     title: '登录'
   },
   components: {
-    HomeRouter: () => import('../components/Login.vue')
+    HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/Login.vue`)
   }
 }
 
@@ -34,7 +34,7 @@ export const routerRegister = {
     title: '注册'
   },
   components: {
-    HomeRouter: () => import('../components/Register.vue')
+    HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/Register.vue`)
   }
 }
 

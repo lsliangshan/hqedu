@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="appStyles">
     <router-view name="HomeRouter"/>
   </div>
 </template>
@@ -29,6 +29,11 @@
     computed: {
       loginInfo () {
         return StorageUtil.getItem(this.$store.state.localStorageKeys.userInfo)
+      },
+      appStyles () {
+        return {
+          minWidth: (this.bIsPc ? '1000px' : '100%')
+        }
       }
     },
     methods: {
@@ -38,6 +43,7 @@
           this.$router.go(0)
           this.bIsPc = _isPc
         }
+        this.cacheBodyStyles()
       },
       cacheBodyStyles () {
         this.$store.commit(types.SET_BODY_STYLES, {
@@ -107,5 +113,25 @@
 
   .ivu-menu-dark.ivu-menu-horizontal .ivu-menu-item-active, .ivu-menu-dark.ivu-menu-horizontal .ivu-menu-item:hover, .ivu-menu-dark.ivu-menu-horizontal .ivu-menu-submenu-active, .ivu-menu-dark.ivu-menu-horizontal .ivu-menu-submenu:hover {
     background-color: #25a5ff;
+  }
+
+  .register_login_form .ivu-form .ivu-form-item-label {
+    text-align: right;
+    vertical-align: middle;
+    float: left;
+    font-size: 15px;
+    color: #666666;
+    line-height: 1;
+    padding: 10px 12px 10px 0;
+    box-sizing: border-box;
+  }
+
+  .register_login_form .ivu-input {
+    font-size: 14px;
+    padding: 0 10px;
+    border: 1px solid #e8e8e8;
+    width: 100%;
+    height: 40px;
+    float: left;
   }
 </style>
