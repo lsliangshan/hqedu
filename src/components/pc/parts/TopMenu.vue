@@ -1,6 +1,6 @@
 <template>
-  <div class="headers_container">
-    <Menu mode="horizontal" :theme="theme" :active-name="menus[0].name">
+  <div class="top_menu_container" :style="topMenuBgColor">
+    <Menu mode="horizontal" :theme="theme" :active-name="menus[0].name" :style="topMenuStyles" @on-select="onSelect">
       <MenuItem v-for="(item, index) in menus" :key="item.name" :name="item.name">
         {{item.text}}
       </MenuItem>
@@ -9,8 +9,7 @@
 </template>
 
 <style scoped>
-  .headers_container {
-
+  .top_menu_container {
   }
 </style>
 
@@ -100,6 +99,46 @@
     computed: {
       theme () {
         return this.$store.state.theme
+      },
+      topMenuBgColor () {
+        let color = ''
+        let _theme = this.$store.state.theme
+        switch (_theme) {
+          case 'dark':
+            color = '#495060'
+            break
+          case 'light':
+            color = '#FFFFFF'
+            break
+          case 'primary':
+            color = '#2d8cf0'
+            break
+          default:
+            color = '#FFFFFF'
+            break
+        }
+        return {
+          backgroundColor: color
+        }
+      },
+      topMenuStyles () {
+        return {
+          maxWidth: '1000px',
+          margin: '0 auto'
+        }
+      }
+    },
+    methods: {
+      onSelect (name) {
+        if (name.slice(-1) % 2 === 0) {
+          this.$router.push({
+            name: 'Register'
+          })
+        } else {
+          this.$router.push({
+            name: 'Login'
+          })
+        }
       }
     }
   }

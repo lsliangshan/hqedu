@@ -1,7 +1,7 @@
 <template>
   <div class="classes_container">
     <div class="classes_title">精品课程</div>
-    <a class="class_item" v-for="(item, index) in classes" :key="index" :href="item.href">
+    <a class="class_item" v-for="(item, index) in classes" :key="index" href="javascript:" @click="goRegister">
       <div class="class_item_title">
         <span>{{item.title}}</span>
       </div>
@@ -181,6 +181,13 @@
         tempArr = tempArr.concat(this.classes)
       }
       this.classes = tempArr
+    },
+    methods: {
+      goRegister () {
+        this.$router.push({
+          name: 'Register'
+        })
+      }
     }
   }
 </script>
