@@ -16,8 +16,8 @@
                 <div class="form_item with_right_btn">
                     <input type="text" placeholder="图片验证码" v-model="formData.code">
                 </div>
-                <div class="right_btn">
-                    <img src="data:image/png;base64,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" alt="点击刷新">
+                <div class="right_btn" @click="getCode">
+                  <img class="code_img" :src="code.verifyCodeStr">
                 </div>
             </div>
             <div class="form_row">
@@ -27,8 +27,8 @@
                 <!--<div class="right_btn">-->
                     <!--<span>发送验证码</span>-->
                 <!--</div>-->
-                <Button class="right_btn" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum)">
-                    发送验证码
+                <Button class="right_btn" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum) || !!countdown.interval" @click="getSmsCode">
+                  {{(countdown.defaultTime === countdown.time) ? countdown.defaultText : countdown.time + '秒'}}
                 </Button>
             </div>
             <div class="form_row agreement">
@@ -48,6 +48,9 @@
     </div>
 </template>
 <style scoped>
+    .pen {
+      pointer-events: none;
+    }
     .container {
         background-color: #FFFFFF;
     }
@@ -83,20 +86,21 @@
         border: none;
     }
     .form_item.with_right_btn {
-        width: calc(100% - 100px);
+        width: calc(100% - 114px);
         display: inline-block;
     }
     .right_btn {
         display: inline-block;
-        width: 90px;
+        width: 104px;
         height: 40px;
         border-radius: 5px;
         overflow: hidden;
         float: right;
+      text-align: center;
     }
     .right_btn img {
-        width: 100%;
-        height: 100%;
+      max-width: 104px;
+      max-height: 40px;
     }
     .right_btn span {
         display: block;
@@ -145,7 +149,7 @@
 </style>
 <script>
   // import { StorageUtil, KitUtil } from '../utils/index'
-  import * as types from '../../store/mutation-types'
+  // import * as types from '../../store/mutation-types'
   export default {
     name: 'Register',
     data () {
@@ -157,6 +161,17 @@
           code: '',
           smsCode: '',
           accept: false
+        },
+        code: {
+          verifyCodeStr: '',
+          codeString: ''
+        },
+        codeBtnTs: 0,
+        countdown: {
+          interval: 0,
+          defaultText: '发送验证码',
+          defaultTime: 60,
+          time: 60
         }
       }
     },
@@ -176,7 +191,60 @@
         }
       }
     },
+    created () {
+      this.$nextTick(async () => {
+        await this.getCode()
+      })
+    },
     methods: {
+      async getCode () {
+        /***
+         * 5s内禁止重复请求
+         * @type {number}
+         */
+        let nowTs = (new Date()).getTime()
+        if (nowTs - this.codeBtnTs < 5 * 1000) {
+          this.$Message.error('请求图形验证码太频繁，请稍后再试')
+        } else {
+          this.codeBtnTs = nowTs
+          await this.$getCode().then(codeData => {
+            this.code = codeData
+          }).catch(err => {
+            this.$Message.error(err.message)
+            this.code = {
+              verifyCodeStr: '',
+              codeString: ''
+            }
+          })
+        }
+      },
+      async getSmsCode () {
+        if (this.countdown.interval) {
+          return
+        }
+        this.countdown.time -= 1
+        this.countdown.interval = setInterval(() => {
+          if (this.countdown.time <= 1) {
+            this.countdown.time = this.countdown.defaultTime
+            clearInterval(this.countdown.interval)
+            this.countdown.interval = 0
+          } else {
+            this.countdown.time -= 1
+          }
+        }, 1000)
+        await this.$getSmsCode({
+          phone: this.formData.phonenum,
+          verifyCode: this.formData.code,
+          codeString: this.code.codeString
+        }).then(responseData => {
+          this.$Message.success(responseData.message || '短信验证码已经发送')
+        }).catch(err => {
+          this.$Message.error(err.message)
+          this.countdown.time = this.countdown.defaultTime
+          clearInterval(this.countdown.interval)
+          this.countdown.interval = 0
+        })
+      },
       verifyPicCode () {
         return (this.formData.code % 2 === 0)
       },
@@ -207,17 +275,20 @@
         this.isSubmitting = true
         let beforeRegisterFlag = this.beforeSubmit()
         if (beforeRegisterFlag) {
-          let responseData = await this.$store.dispatch(types.REGISTER, this.formData).catch(err => {
+          await this.$register({
+            phone: this.formData.phonenum,
+            smsCode: this.formData.smsCode,
+            pwd: this.formData.password
+          }).then(responseData => {
             this.isSubmitting = false
-            this.$Message.error('注册失败：' + err.message)
-            return false
+            this.$Message.success('注册成功')
+          }).catch(err => {
+            this.isSubmitting = false
+            this.$Message.error(err.message)
           })
-          this.isSubmitting = false
-          this.$Message.success('注册成功')
           // setTimeout(() => {
           //   this.$router.replace('/login')
           // }, 800)
-          alert(JSON.stringify(responseData, null, 2))
         } else {
           this.isSubmitting = false
         }

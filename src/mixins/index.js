@@ -19,7 +19,7 @@ export default {
        */
       return new Promise(async (resolve, reject) => {
         await this.$store.dispatch(types.AJAX, {
-          url: this.requestInfo.code,
+          url: this.$store.state.requestInfo.code,
           method: 'GET'
         }).then(responseData => {
           if (String(responseData.statusCode) === '200') {
@@ -45,20 +45,20 @@ export default {
        */
       return new Promise(async (resolve, reject) => {
         await this.$store.dispatch(types.AJAX, {
-          url: this.requestInfo.smsCode,
+          url: this.$store.state.requestInfo.smsCode,
           method: 'GET',
           data: args
         }).then(responseData => {
           if (String(responseData.statusCode) !== '200') {
             reject(new Error('获取短信验证码失败，请稍后重试'))
           } else {
-            if (String(responseData.data.status) !== '200') {
+            if (['200', '1'].indexOf(String(responseData.data.status)) < 0) {
               reject(new Error(responseData.data.message || '获取短信验证码失败，请稍后重试'))
             } else {
               /**
                * 获取短信验证码成功
                */
-              resolve(true)
+              resolve(responseData.data)
             }
           }
         }).catch(err => {
@@ -76,7 +76,7 @@ export default {
        */
       return new Promise(async (resolve, reject) => {
         await this.$store.dispatch(types.AJAX, {
-          url: this.requestInfo.smsCode,
+          url: this.$store.state.requestInfo.register,
           method: 'GET',
           data: args
         }).then(responseData => {

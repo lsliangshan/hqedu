@@ -24,6 +24,11 @@
       window.onresize = this.windowResize
       this.$nextTick(() => {
         this.cacheBodyStyles()
+
+        this.$Message.config({
+          top: 50,
+          duration: 5
+        })
       })
     },
     computed: {

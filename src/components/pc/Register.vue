@@ -37,7 +37,7 @@
                             </FormItem>
                             <FormItem label="短信验证码" prop="smsCode">
                                 <Input v-model="formData.smsCode" placeholder="短信验证码" style="width: calc(100% - 145px);"/>
-                                <Button class="smscode_wrapper" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum)" @click="getSmsCode">获取短信验证码</Button>
+                                <Button class="smscode_wrapper" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum) || !!countdown.interval" @click="getSmsCode">{{(countdown.defaultTime === countdown.time) ? countdown.defaultText : countdown.time + '秒后重新获取'}}</Button>
                             </FormItem>
                             <FormItem>
                                 <Checkbox v-model="formData.accept"></Checkbox><span class="accept-text">我已阅读并同意《网站注册协议》</span>
@@ -166,7 +166,7 @@
 </style>
 <script>
   // import { StorageUtil, KitUtil } from '../utils/index'
-  import * as types from '../../store/mutation-types'
+  // import * as types from '../../store/mutation-types'
   export default {
     name: 'Register',
     data () {
@@ -202,6 +202,12 @@
           codeString: ''
         },
         codeBtnTs: 0,
+        countdown: {
+          interval: 0,
+          defaultText: '获取短信验证码',
+          defaultTime: 60,
+          time: 60
+        },
         formRules: {
           phonenum: [
             {
@@ -321,14 +327,30 @@
         }
       },
       async getSmsCode () {
+        if (this.countdown.interval) {
+          return
+        }
+        this.countdown.time -= 1
+        this.countdown.interval = setInterval(() => {
+          if (this.countdown.time <= 1) {
+            this.countdown.time = this.countdown.defaultTime
+            clearInterval(this.countdown.interval)
+            this.countdown.interval = 0
+          } else {
+            this.countdown.time -= 1
+          }
+        }, 1000)
         await this.$getSmsCode({
           phone: this.formData.phonenum,
           verifyCode: this.formData.code,
           codeString: this.code.codeString
-        }).then(() => {
-          this.$Message.success('短信验证码已经发送')
+        }).then(responseData => {
+          this.$Message.success(responseData.message || '短信验证码已经发送')
         }).catch(err => {
           this.$Message.error(err.message)
+          this.countdown.time = this.countdown.defaultTime
+          clearInterval(this.countdown.interval)
+          this.countdown.interval = 0
         })
       },
       beforeSubmit () {
@@ -349,17 +371,20 @@
         this.isSubmitting = true
         this.$refs.formRef.validate(async (valid) => {
           if (valid) {
-            let responseData = await this.$store.dispatch(types.REGISTER, this.formData).catch(err => {
+            await this.$register({
+              phone: this.formData.phonenum,
+              smsCode: this.formData.smsCode,
+              pwd: this.formData.password
+            }).then(responseData => {
               this.isSubmitting = false
-              this.$Message.error('注册失败：' + err.message)
-              return false
+              this.$Message.success('注册成功')
+            }).catch(err => {
+              this.isSubmitting = false
+              this.$Message.error(err.message)
             })
-            this.isSubmitting = false
-            this.$Message.success('注册成功')
             // setTimeout(() => {
             //   this.$router.replace('/login')
             // }, 800)
-            alert(JSON.stringify(responseData, null, 2))
           } else {
             this.isSubmitting = false
           }
