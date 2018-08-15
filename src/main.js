@@ -12,7 +12,7 @@ import jwt from 'jsonwebtoken'
 import { RouterUtil, StorageUtil, KitUtil } from './utils/index'
 import ZpmCapture from './assets/js/ZpmCapture'
 import 'iview/dist/styles/iview.css'
-import './assets/css/animate.css/animate.min.css'
+import './assets/css/animate.css/animate.css'
 
 // import SharedWorker from './ajax.worker'
 

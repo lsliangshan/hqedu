@@ -40,6 +40,10 @@
     background-color: #FFFFFF;
     opacity: 1;
   }
+  .swiper-slide img {
+    min-width: 100%;
+    min-height: 100%;
+  }
 </style>
 
 <script>
@@ -69,6 +73,11 @@
         let options = Object.assign({}, {
           direction: 'horizontal',
           loop: true,
+          initialSlide: 0,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false
+          },
           pagination: {
             el: '.swiper-pagination',
             bulletClass: 'my-bullet',
@@ -80,6 +89,9 @@
           }
         }, this.options)
         this.swiper = new Swiper('.swiper-container', options)
+        this.$emit('init', {
+          swiper: this.swiper
+        })
       }
     }
   }

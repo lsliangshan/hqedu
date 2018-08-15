@@ -2,7 +2,9 @@
   <div class="main_container">
     <headers></headers>
     <top-menu></top-menu>
-    <footers></footers>
+    <top-banner></top-banner>
+    <main-content></main-content>
+    <footers bg-color="#FFFFFF"></footers>
   </div>
 </template>
 
@@ -12,6 +14,8 @@
     components: {
       Headers: () => import('./parts/Headers.vue'),
       TopMenu: () => import('./parts/TopMenu.vue'),
+      TopBanner: () => import('./parts/TopBanner.vue'),
+      MainContent: () => import('./parts/MainContent.vue'),
       Footers: () => import('./parts/Footers.vue')
     }
   }
@@ -21,5 +25,6 @@
   .main_container {
     width: 100%;
     height: 100%;
+    background-color: #FFFFFF;
   }
 </style>

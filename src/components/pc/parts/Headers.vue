@@ -55,7 +55,7 @@
             break
           case 'register':
           case 'default':
-            img = 'http://www.hqwx100.cn/images/logob1x.png'
+            // img = 'http://www.hqwx100.cn/images/logob1x.png'
             break
           default:
             img = 'http://www.hqwx100.cn/images/logob1x.png'

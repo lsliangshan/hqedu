@@ -1,7 +1,7 @@
 <template>
   <div class="top_menu_container" :style="topMenuBgColor">
     <Menu mode="horizontal" :theme="theme" :active-name="menus[0].name" :style="topMenuStyles" @on-select="onSelect">
-      <MenuItem v-for="(item, index) in menus" :key="item.name" :name="item.name">
+      <MenuItem v-for="(item, index) in menus" :key="item.name" :name="item.name" :class="'menu_item_' + index">
         {{item.text}}
       </MenuItem>
     </Menu>
@@ -10,6 +10,10 @@
 
 <style scoped>
   .top_menu_container {
+  }
+  .menu_item_0 {
+    width: 150px;
+    text-align: center;
   }
 </style>
 
