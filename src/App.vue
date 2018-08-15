@@ -134,4 +134,10 @@
     height: 40px;
     float: left;
   }
+
+  .code_tooltip .ivu-tooltip-rel {
+    width: 135px;
+    height: 40px;
+    cursor: pointer;
+  }
 </style>

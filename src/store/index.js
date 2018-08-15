@@ -41,7 +41,7 @@ import * as getters from './getters'
 
 Vue.use(Vuex)
 
-const PROTOCOL = location.protocol
+// const PROTOCOL = location.protocol
 let allPath = ['/register', '/login']
 const store = new Vuex.Store({
   actions: actions.actions,
@@ -449,41 +449,12 @@ const store = new Vuex.Store({
     },
     requestInfo: {
       // baseUrl: PROTOCOL + '//10.2.4.229:3000',
-      baseUrl: PROTOCOL + '//talkapi.dei2.com',
-      login: '/Zpm/user/login',
-      register: '/Zpm/user/register',
-      modifyPassword: '/Zpm/user/modifyPassword',
-      listUsers: '/Zpm/user/list',
-      listAllPlugins: '/Zpm/plugin/listAll', // 插件列表，用于root、admin插件管理
-      updateUserSettings: '/Zpm/user/updateUserSettings',
-      updatePluginSettings: '/Zpm/plugin/updatePluginSettings', // 审核插件
-      deletePlugin: '/Zpm/plugin/deletePlugin',
-      deleteUser: '/Zpm/user/deleteUser',
-      listPlugins: '/Zpm/plugin/list',
-      viewFile: '/Zpm/plugin/content',
-      updatePluginFileContent: '/Zpm/plugin/update',
-      getUserInfo: '/Zpm/user/getUserInfo',
-      updateUserInfo: '/Zpm/user/updateUserInfo',
-      queryUsers: '/Zpm/user/queryUsers', // 查询用户列表，模糊查询。不需要管理员权限
-      saveMessage: '/Zpm/message/save', // 保存消息
-      updateMessage: '/Zpm/message/update', // 修改将消息状态 status:  0 删除, 1 未读, 2 已读
-      queryMessage: '/Zpm/message/list', // 查询消息列表
-      countMessage: '/Zpm/message/count', // 查询消息的总条数
-      listActivity: '/Zpm/activity/list', // 查询所有活动
-      createActivity: '/Zpm/activity/create', // 新建活动
-      editActivity: '/Zpm/activity/edit', // 编辑活动
-      deleteActivity: '/Zpm/activity/delete', // 删除活动
-      getActivity: '/Zpm/activity/getTemplateData', // 获取活动模板数据
-      getPreviewActivity: '/Zpm/activity/getPreviewTemplateData', // 获取活动预览数据
-      listArticle: '/Zpm/article/list', // 查询文章列表
-      saveArticle: '/Zpm/article/save', // 保存文章内容
-      createArticle: '/Zpm/article/create', // 新建文章
-      getAllArticle: '/Zpm/article/getAll', // 获取文章列表，不需要登录状态
-      viewArticle: '/Zpm/article/content', // 根据文章id查询文章内容
-      getAllTags: '/Zpm/tag/getAll', // 获取所有文章的标签
-      modifyTag: '/Zpm/article/modifyTag', // 修改文章标签
-      getAllComments: '/Zpm/comment/list', // 分页获取评论
-      sendComment: '/Zpm/comment/comment' // 发表评论
+      // baseUrl: 'http://10.2.2.112:8097',
+      baseUrl: 'http://10.2.4.229:8097',
+      login: '/login',
+      register: '/register',
+      code: '/code', // 图片验证码
+      smsCode: '/smscode' // 短信验证码
     },
     loginInfo: {
     },

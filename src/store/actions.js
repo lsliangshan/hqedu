@@ -79,29 +79,26 @@ export const actions = {
       if (params.url === '') {
         reject(new Error('url不能为空'))
       }
-      // 自动添加token,phonenum
-      if (!params.data.token) {
-        params.data.token = state.loginInfo.token
-      }
-      if (!params.data.phonenum) {
-        params.data.phonenum = state.loginInfo.phonenum
-      }
-      instance({
+      let requestData = {
         method: params.method || 'post',
         baseURL: params.baseUrl || state.requestInfo.baseUrl,
-        url: params.url,
-        data: querystring.stringify(params.data)
-      }).then((res) => {
-        if (res.config) {
-          delete res.config
-        }
-        if (res.status === 200) {
-          resolve(res.data)
-        } else {
-          reject(res)
-        }
+        url: params.url
+        // ,
+        // data: querystring.stringify(params.data)
+      }
+      if (params.method && params.method.toLowerCase() === 'get') {
+        requestData.params = params.data
+      } else {
+        requestData.data = params.data
+      }
+      instance(requestData).then(({data}) => {
+        resolve(data)
       }).catch(err => {
-        reject(err)
+        if (err.message.indexOf('timeout') > -1) {
+          reject(new Error('接口超时，请稍后重试'))
+        } else {
+          reject(new Error(err.message))
+        }
       })
     })
   },

@@ -29,13 +29,15 @@
                             </FormItem>
                             <FormItem label="图形验证码" prop="code">
                                 <Input v-model="formData.code" placeholder="图形验证码" style="width: calc(100% - 145px);"/>
-                                <div class="code_img_wrapper">
-                                    <img class="code_img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAAAyCAIAAAAfq5TfAAAHo0lEQVR4nOyce1BTVx7HL0nQJBJEwRiwNBpAC4qiFqvWanVLrS2d1m13aodt1906i7YwDNvBnaXdhX10dqc6wiJ1EdhdOzw72EJZV1RkeQtpRbosr/AMb0LCKw8IIY/9IzvZm9xLcnLPvTdY+PxFfrnn9/3d880995xz78BKTExEEOSj5N9+kpyErOIiWAiCnIk6b3bCHOrtHnN1VSuLwrwMBjYaEOQbEOTrinpWLv+zAXsFmM1Y9YMeWJa/LE7YdL3l4+pgRR04g1Jv9xhuj69eHNTBWuqL1YuDGOb+cbZzlrTBwqofIECOE45tsGDubqzeSvaDrFHaCRvMLHVxrCg/7PQ+sXN32gasnh0/vk+W2P/hQ54mcRuwFeAW+lhb4nDMIeuMSLDBgn0/HhdLQIZ70osn0wYL6CpBLHGtK4C3WUorpMQGNCCW4H5F0Wk7Nbeh7cdBuQ1oAC0BPACdlsTlPbGur7w/mvd5F+5X2TnPO2xOqw1obM4Wph8hPYD/yXd2zBTkdMNkcJkNNuBu8dIjBMmkQptxtc1oNMEkccKGlLu/KW8twcZvf9gCU8FSgPdXQJBvMD8FUu5W/RkCrXQLxvSUVrVqEVIdZ4cVl+FpaUVbKaQYRbhwlpWd0TE0qIbPA3o1pJf/3mgywutpVNqq8ramxp7+btmkQqWdX2Qw3dhsdx/++m2B/LBw0dEXQnieHHghGij9SvrooZyUVEA25DdktAx9Cy/2VX7j369VaOd16KBBb9KoFzTqiYG+iap7rRlX7vzk/PE3f3wYXo5Smh8qSoulZGVzbENF+z9yH1yDlDGZTJeSSsr/+Z3DI7Xzuuspd8dHZ2IuvgwpSh0jw5rsjA50xNNzjVKpI5zQwb2huCnnyp2PCWe3kP/XGhAPLHz9hbixRgKvC4gHbw34wRq1/uqV/ywsGCwRFovxQfwumAKWtEGhlv3u67isqksmE9RUDEGQifHZ3KxqZ1sVF4ohdQFhMhkf/fEI4MFGo+kvaW0KuRYdfPdn2wMCPWFqwBmUVFplaXPel9/e0C7Ow6S2UFIo1usNNkFPL25C0uth4aLZmbnM1Ls199tsDuhqHwWXAJxuStomL16oMBis5hrvJzwdupcPKFSQ09PZMY2ORLzkf/g5AXipuFjZ0C1rK2u5Wd1ZNq+bg8yLpr6qAxs8Fxtx8OgOBEHYnPVxv4rE2kA6aqXuT7+ut/Hg1GuBJ18VAWaorRqrvD+CjuwM3fijtwPga7OyIS73bfiMWP52M3Z0eGpQqhgeUAwPTA5JFUNShdkDM+OjM9hW24NJXkWnfCKWy6x+Xj587nuxYYDNe7uVuZ9b7VhsFnCjY0IYoEsve9CxmcFkMfy3+vhv9bGJG/RGrXaxpUl67XIZttVbZ58jsYbyW33iuhGb4Pn4/WwOUA9MTy18ltpq0P//SuJwWLG/COVyyelAoCz+G7cNTfWToocm6cMCcR3+rmR0/Ml9z4COFQ6ZlM9npTXbBMOf9Tt4dAtIc53OeDWlFT0fZTDcomNCBL6kLTMdX1Gn97+T/m4RWXpo1CotNijw2/CHP0eRu3y7ntI0p7Hd9ol6LxSw+Y1syaBUhY688ZZo1+6N5BVo92oI9guLPv7L7YKdJOqhwbXBg8ce6JPvChOu81hLikpL08SD6mGb4O59mwN3bADM8E2DzCZSVNBbVNAL2PzcO1XmP+w8eMC3Yd/WQ6/tjQoXHQVUIgauDT2SsR7JWEmhOPnyme0hfvAqWWmPsME3op6Cz0wiVjY86R1w7KmXjge/Ilj/BA3aGtWS6xK5bPbjuLzrhRc2eHvASDTWjPT32E7DhKL1+w8ur5dxrWzIOFtMp/blrJ8Kt/H1eoO4ruuzT2+rlFauTE+pv8xvOBcbASNRlNOODR6LEMLkpAIyJr1E2RGyhc1x9+Cxf3Bq9wcJOBt59ZWdMPm72qck7ZPY+OFj/jBpqcCVNqAJfzYIG5TLZmFylt/qwwa3POn5hJAHk5YK6Fi+ieu6ZGOzCtmsfEIplykVMuWkXJl9M2azr5flmEWdHtuQwXAjLKrXG2v/NYiNHwJbK6ABebUCPSMi0JwOG4pyHvz7oe3qr6zk0dkLJywf6ytx9p38hbYLb3Bav5OrVTgPAMIPkzD7Ih06bHjx1TCsDYU3atd5rH3h5T0MBqO2oj0rrRzb8ADeSAVIUyPOA2r3NcwdO70J56QOOmw4fjI0P7tmZMjqbmnQGzNT72Wm3luyMhYz8s1wwqLN34xjg6IgLxZrudwO0dBRk7s7My4x0s3NuYH+5/EnvTcRvJfOafQDfTi3960BXsQSUg1Nr4vtPSBKSD59KbkY8Fneqdf3nz7zDGG5ns4pXCF/IdQzMvsA3slxoe+tvYjIPT58Xvqntwf77b1Uwl23NubiKxGRe2C0uiVTuHGBH9SanDpofXly7wFR5hfvN1RLxHVdvV3j8vHZubkFg8HI4az13sQTijY9fSjw+Rd3cbhOPKDHZRBvREIQhC/gQmamCLrfYWUyGUdOBB85EUypyvCAEjfutZFNqS5hluO0AZ6RIRVunOdJzuY56SyXN7rJpfDOD11dgnN8P6+Gxw4387+1WsW1/DcAAP//CUvjI5PNAiIAAAAASUVORK5CYII=">
+                                <div class="code_img_wrapper" @click="getCode">
+                                  <Tooltip content="点击获取图形验证码" placement="right" class="code_tooltip">
+                                    <img class="code_img" :src="code.verifyCodeStr">
+                                  </Tooltip>
                                 </div>
                             </FormItem>
                             <FormItem label="短信验证码" prop="smsCode">
                                 <Input v-model="formData.smsCode" placeholder="短信验证码" style="width: calc(100% - 145px);"/>
-                                <Button class="smscode_wrapper" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum)">获取短信验证码</Button>
+                                <Button class="smscode_wrapper" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum)" @click="getSmsCode">获取短信验证码</Button>
                             </FormItem>
                             <FormItem>
                                 <Checkbox v-model="formData.accept"></Checkbox><span class="accept-text">我已阅读并同意《网站注册协议》</span>
@@ -185,6 +187,7 @@
         callback()
       }
       return {
+        requestInfo: this.$store.state.requestInfo,
         isSubmitting: false,
         errorTips: '',
         formData: {
@@ -194,6 +197,11 @@
           smsCode: '',
           accept: true
         },
+        code: {
+          verifyCodeStr: '',
+          codeString: ''
+        },
+        codeBtnTs: 0,
         formRules: {
           phonenum: [
             {
@@ -285,7 +293,44 @@
         }
       }
     },
+    created () {
+      this.$nextTick(async () => {
+        await this.getCode()
+      })
+    },
     methods: {
+      async getCode () {
+        /***
+         * 5s内禁止重复请求
+         * @type {number}
+         */
+        let nowTs = (new Date()).getTime()
+        if (nowTs - this.codeBtnTs < 5 * 1000) {
+          this.$Message.error('请求图形验证码太频繁，请稍后再试')
+        } else {
+          this.codeBtnTs = nowTs
+          await this.$getCode().then(codeData => {
+            this.code = codeData
+          }).catch(err => {
+            this.$Message.error(err.message)
+            this.code = {
+              verifyCodeStr: '',
+              codeString: ''
+            }
+          })
+        }
+      },
+      async getSmsCode () {
+        await this.$getSmsCode({
+          phone: this.formData.phonenum,
+          verifyCode: this.formData.code,
+          codeString: this.code.codeString
+        }).then(() => {
+          this.$Message.success('短信验证码已经发送')
+        }).catch(err => {
+          this.$Message.error(err.message)
+        })
+      },
       beforeSubmit () {
         if (!this.formData.phonenum) {
           this.errorTips = '用户名不能为空'
