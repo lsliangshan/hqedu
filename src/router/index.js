@@ -42,7 +42,7 @@ export const contentRouter = {
   path: '/',
   name: 'Home',
   meta: {
-    title: '后台管理系统'
+    title: 'HQEDU'
   },
   components: {
     HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/index.vue`)

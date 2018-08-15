@@ -4,7 +4,7 @@
         <div class="form_container">
             <div class="form_row">
                 <div class="form_item">
-                    <input type="text" placeholder="手机号" v-model="formData.phonenum">
+                    <input type="tel" placeholder="手机号" v-model="formData.phonenum">
                 </div>
             </div>
             <div class="form_row">
@@ -24,9 +24,12 @@
                 <div class="form_item with_right_btn">
                     <input type="text" placeholder="短信验证码" v-model="formData.smsCode">
                 </div>
-                <div class="right_btn">
-                    <span>发送验证码</span>
-                </div>
+                <!--<div class="right_btn">-->
+                    <!--<span>发送验证码</span>-->
+                <!--</div>-->
+                <Button class="right_btn" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum)">
+                    发送验证码
+                </Button>
             </div>
             <div class="form_row agreement">
                 <Checkbox v-model="formData.accept"></Checkbox><span @click="toggleCheck">我已阅读并同意<</span><a href="javascript:">用户注册协议</a><span>></span>

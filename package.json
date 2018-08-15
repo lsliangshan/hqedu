@@ -1,7 +1,7 @@
 {
-  "name": "ZPM_PLUGINS",
+  "name": "HQEDU",
   "version": "1.0.0",
-  "description": "plugins.dei2后台管理",
+  "description": "HQEDU",
   "author": "梁山 <loveliangshan@126.com>",
   "private": true,
   "scripts": {
