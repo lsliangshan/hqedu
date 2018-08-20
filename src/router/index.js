@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { BrowserUtil } from '../utils/index'
 let _isPc = BrowserUtil.isPc()
-let _path = '/hqwx'
+let _path = ''
 
 Vue.use(Router)
 

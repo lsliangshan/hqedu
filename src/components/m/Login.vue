@@ -1,6 +1,6 @@
 <template>
     <div class="container" :style="containerStyles">
-        <img src="http://app.hqwx100.cn/register/images/top_bg.png" :style="topImgStyles">
+        <img src="/static/images/top_bg.png" :style="topImgStyles">
         <div class="form_container">
             <div class="form_row">
                 <div class="form_item">

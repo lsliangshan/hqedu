@@ -51,14 +51,14 @@
         let img = ''
         switch (this.page) {
           case 'login':
-            img = 'http://www.hqwx100.cn/login/images/login_logo.jpg'
+            img = '/static/images/login_logo.jpg'
             break
           case 'register':
           case 'default':
-            img = 'http://www.hqwx100.cn/images/logob1x.png'
+            img = '/static/images/logob1x.png'
             break
           default:
-            img = 'http://www.hqwx100.cn/images/logob1x.png'
+            img = '/static/images/logob1x.png'
             break
         }
         return img

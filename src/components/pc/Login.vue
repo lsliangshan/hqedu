@@ -48,7 +48,7 @@
         background-color: #eff1f0;
     }
     .form_bg {
-        background-image: url('http://www.hqwx100.cn/login/images/login-banner.jpg');
+        background-image: url('/static/images/login-banner.jpg');
         background-repeat: no-repeat;
         margin-left: auto;
         margin-right: auto;
