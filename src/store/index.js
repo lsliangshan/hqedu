@@ -42,7 +42,8 @@ import * as getters from './getters'
 Vue.use(Vuex)
 
 // const PROTOCOL = location.protocol
-let allPath = ['/register', '/login']
+// let allPath = ['/register', '/login']
+let allPath = ['Register', 'Login']
 const store = new Vuex.Store({
   actions: actions.actions,
   mutations: mutations.mutations,
@@ -449,7 +450,8 @@ const store = new Vuex.Store({
     },
     requestInfo: {
       // baseUrl: PROTOCOL + '//10.2.4.229:3000',
-      baseUrl: 'http://192.168.0.108:8097',
+      // baseUrl: 'http://192.168.0.108:8097',
+      baseUrl: 'http://39.104.115.219',
       // baseUrl: 'http://10.2.4.229:8097',
       login: '/login',
       register: '/register',

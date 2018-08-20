@@ -223,7 +223,9 @@
         this.agreed = !this.agreed
       },
       goLogin () {
-        this.$router.replace('/login')
+        this.$router.replace({
+          name: 'Login'
+        })
       }
     },
     components: {}

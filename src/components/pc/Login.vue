@@ -229,7 +229,9 @@
         }
       },
       goRegister () {
-        this.$router.replace('/register')
+        this.$router.replace({
+          name: 'Register'
+        })
       }
     },
     components: {

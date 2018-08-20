@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { BrowserUtil } from '../utils/index'
 let _isPc = BrowserUtil.isPc()
+let _path = '/hqwx'
 
 Vue.use(Router)
 
@@ -17,7 +18,7 @@ Vue.use(Router)
 // }
 
 export const routerLogin = {
-  path: '/login',
+  path: _path + '/login',
   name: 'Login',
   meta: {
     title: '登录'
@@ -28,7 +29,7 @@ export const routerLogin = {
 }
 
 export const routerRegister = {
-  path: '/register',
+  path: _path + '/register',
   name: 'Register',
   meta: {
     title: '注册'
@@ -38,33 +39,41 @@ export const routerRegister = {
   }
 }
 
+export const routerAgreements = {
+  path: _path + '/agreements',
+  name: 'Agreements',
+  meta: {
+    title: '注册协议'
+  },
+  components: {
+    HomeRouter: () => import(`../components/Agreements.vue`)
+  }
+}
+
 export const contentRouter = {
   path: '/',
-  name: 'Home',
-  meta: {
-    title: 'HQEDU'
-  },
+  redirect: _path + '/register',
   components: {
     HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/index.vue`)
   },
   children: [
     {
-      path: '/plugin',
-      redirect: '/'
-    },
-    {
-      path: '/article',
-      redirect: '/'
+      path: _path,
+      redirect: _path + '/register',
+      meta: {
+        title: 'HQEDU'
+      }
     }
   ]
 }
 
 export const page404 = {
   path: '/*',
-  name: 'NotFound',
-  meta: {
-    title: '页面丢了'
-  },
+  redirect: _path + '/register',
+  // name: 'NotFound',
+  // meta: {
+  //   title: '页面丢了'
+  // },
   components: {
     HomeRouter: () => import('../components/404.vue')
   }
@@ -75,6 +84,7 @@ export default new Router({
   routes: [
     routerLogin,
     routerRegister,
+    routerAgreements,
     contentRouter,
     page404
   ]

@@ -106,7 +106,7 @@
     methods: {
       itemClickHandler (evt) {
         this.$router.push({
-          path: evt.target.dataset.path
+          name: evt.target.dataset.path
         })
       }
     },

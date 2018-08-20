@@ -156,7 +156,7 @@
             time: '共185小时',
             price: '6800-9800',
             buys: '294人已购买',
-            href: 'https://m.zhaopin.com',
+            href: 'https://baidu.com',
             teachers: [
               {
                 name: '张三',

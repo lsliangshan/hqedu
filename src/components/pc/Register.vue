@@ -1,56 +1,58 @@
 <template>
     <div class="container" :style="containerStyles">
-        <headers page="register"></headers>
-        <div class="form_container">
-            <div class="form_bg">
-                <div class="service_container">
-                    <div class="service_item" v-for="(service, index) in services" :key="index">
-                        <div class="service_img_wrapper">
-                            <div class="service_img" :style="service.styles"></div>
-                        </div>
-                        <div class="service_right">
-                            <div class="service_main_title">
-                                <span>{{service.title}}</span>
-                            </div>
-                            <div class="service_sub_title">
-                                <span>{{service.subTitle}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form_inner">
-                    <div class="form_wrapper register_login_form">
-                        <Form :model="formData" :rules="formRules" :label-width="120" ref="formRef">
-                            <FormItem label="手机号手机号" prop="phonenum">
-                                <Input v-model="formData.phonenum" placeholder="请输入您的手机号" class="custom_input" style="height: 40px;"/>
-                            </FormItem>
-                            <FormItem label="密码" prop="password">
-                                <Input type="password" v-model="formData.password" placeholder="请输入4-8位(数字,字母,下划线)"/>
-                            </FormItem>
-                            <FormItem label="图形验证码" prop="code">
-                                <Input v-model="formData.code" placeholder="图形验证码" style="width: calc(100% - 145px);"/>
-                                <div class="code_img_wrapper" @click="getCode">
-                                  <Tooltip content="点击获取图形验证码" placement="right" class="code_tooltip">
-                                    <img class="code_img" :src="code.verifyCodeStr">
-                                  </Tooltip>
-                                </div>
-                            </FormItem>
-                            <FormItem label="短信验证码" prop="smsCode">
-                                <Input v-model="formData.smsCode" placeholder="短信验证码" style="width: calc(100% - 145px);"/>
-                                <Button class="smscode_wrapper" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum) || !!countdown.interval" @click="getSmsCode">{{(countdown.defaultTime === countdown.time) ? countdown.defaultText : countdown.time + '秒后重新获取'}}</Button>
-                            </FormItem>
-                            <FormItem>
-                                <Checkbox v-model="formData.accept"></Checkbox><span class="accept-text">我已阅读并同意《网站注册协议》</span>
-                            </FormItem>
-                            <FormItem>
-                                <Button type="primary" class="register_btn" :loading="isSubmitting" long :disabled="!formData.accept" @click="submit">立即注册</Button>
-                            </FormItem>
-                        </Form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footers></footers>
+        <!--<headers page="register"></headers>-->
+        <!--<div class="form_container">-->
+            <!--<div class="form_bg">-->
+                <!--<div class="service_container">-->
+                    <!--<div class="service_item" v-for="(service, index) in services" :key="index">-->
+                        <!--<div class="service_img_wrapper">-->
+                            <!--<div class="service_img" :style="service.styles"></div>-->
+                        <!--</div>-->
+                        <!--<div class="service_right">-->
+                            <!--<div class="service_main_title">-->
+                                <!--<span>{{service.title}}</span>-->
+                            <!--</div>-->
+                            <!--<div class="service_sub_title">-->
+                                <!--<span>{{service.subTitle}}</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form_inner">-->
+                    <!--<div class="form_wrapper register_login_form">-->
+                        <!--<Form :model="formData" :rules="formRules" :label-width="120" ref="formRef">-->
+                            <!--<FormItem label="手机号手机号" prop="phonenum">-->
+                                <!--<Input v-model="formData.phonenum" placeholder="请输入您的手机号" class="custom_input" style="height: 40px;"/>-->
+                            <!--</FormItem>-->
+                            <!--<FormItem label="密码" prop="password">-->
+                                <!--<Input type="password" v-model="formData.password" placeholder="请输入4-8位(数字,字母,下划线)"/>-->
+                            <!--</FormItem>-->
+                            <!--<FormItem label="图形验证码" prop="code">-->
+                                <!--<Input v-model="formData.code" placeholder="图形验证码" style="width: calc(100% - 145px);"/>-->
+                                <!--<div class="code_img_wrapper" @click="getCode">-->
+                                  <!--<Tooltip content="点击获取图形验证码" placement="right" class="code_tooltip">-->
+                                    <!--<img class="code_img" :src="code.verifyCodeStr">-->
+                                  <!--</Tooltip>-->
+                                <!--</div>-->
+                            <!--</FormItem>-->
+                            <!--<FormItem label="短信验证码" prop="smsCode">-->
+                                <!--<Input v-model="formData.smsCode" placeholder="短信验证码" style="width: calc(100% - 145px);"/>-->
+                                <!--<Button class="smscode_wrapper" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum) || !!countdown.interval" @click="getSmsCode">{{(countdown.defaultTime === countdown.time) ? countdown.defaultText : countdown.time + '秒后重新获取'}}</Button>-->
+                            <!--</FormItem>-->
+                            <!--<FormItem>-->
+                                <!--<Checkbox v-model="formData.accept"></Checkbox><span class="accept-text">我已阅读并同意《网站注册协议》</span>-->
+                            <!--</FormItem>-->
+                            <!--<FormItem>-->
+                                <!--<Button type="primary" class="register_btn" :loading="isSubmitting" long :disabled="!formData.accept" @click="submit">立即注册</Button>-->
+                            <!--</FormItem>-->
+                        <!--</Form>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<footers></footers>-->
+
+        <agreements-box :shown="agreementsModal.shown" width="90%"></agreements-box>
     </div>
 </template>
 <style scoped>
@@ -188,6 +190,10 @@
       }
       return {
         requestInfo: this.$store.state.requestInfo,
+        agreementsModal: {
+          shown: false,
+          contentShown: false
+        },
         isSubmitting: false,
         errorTips: '',
         formData: {
@@ -284,6 +290,13 @@
       }
     },
     computed: {
+      agreementsStyles () {
+        let bodyStyles = this.$store.state.bodyStyles
+        return {
+          width: bodyStyles.width + 'px',
+          height: bodyStyles.height + 'px'
+        }
+      },
       containerStyles () {
         let bodyStyles = this.$store.state.bodyStyles
         return {
@@ -302,6 +315,10 @@
     created () {
       this.$nextTick(async () => {
         await this.getCode()
+
+        setTimeout(() => {
+          this.agreementsModal.shown = true
+        }, 1000)
       })
     },
     methods: {
@@ -339,7 +356,7 @@
           } else {
             this.countdown.time -= 1
           }
-        }, 1000)
+        }, 100)
         await this.$getSmsCode({
           phone: this.formData.phonenum,
           verifyCode: this.formData.code,
@@ -391,12 +408,37 @@
         })
       },
       goLogin () {
-        this.$router.replace('/login')
+        this.$router.replace({
+          name: 'Login'
+        })
+      },
+      acceptAgreements () {
+        this.formData.accept = true
+      },
+      closeAgreements () {
+        this.agreementsModal.contentShown = false
+      }
+    },
+    watch: {
+      'agreementsModal.shown' (val) {
+        if (val) {
+          setTimeout(() => {
+            this.agreementsModal.contentShown = true
+          }, 300)
+        }
+      },
+      'agreementsModal.contentShown' (val) {
+        if (!val) {
+          setTimeout(() => {
+            this.agreementsModal.shown = false
+          }, 300)
+        }
       }
     },
     components: {
       Headers: () => import('./parts/Headers.vue'),
-      Footers: () => import('./parts/Footers.vue')
+      Footers: () => import('./parts/Footers.vue'),
+      AgreementsBox: () => import('../AgreementsBox.vue')
     }
   }
 </script>

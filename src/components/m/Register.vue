@@ -297,7 +297,9 @@
         this.formData.accept = !this.formData.accept
       },
       goLogin () {
-        this.$router.replace('/login')
+        this.$router.replace({
+          name: 'Login'
+        })
       }
     },
     components: {}
