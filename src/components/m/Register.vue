@@ -32,7 +32,7 @@
                 </Button>
             </div>
             <div class="form_row agreement">
-                <Checkbox v-model="formData.accept"></Checkbox><span @click="toggleCheck">我已阅读并同意<</span><a href="javascript:">用户注册协议</a><span>></span>
+                <Checkbox v-model="formData.accept"></Checkbox><span @click="toggleCheck">我已阅读并同意<</span><a href="javascript:" @click="openAgreements">用户注册协议</a><span>></span>
             </div>
             <div class="form_row">
                 <Button class="btn" :disabled="!formData.accept" :loading="isSubmitting" @click="submit">
@@ -45,6 +45,8 @@
                 </div>
             </div>
         </div>
+
+        <agreements-box :shown="agreementsModal.shown" width="100%" height="100%" @close="agreementsClosed" device="mobile"></agreements-box>
     </div>
 </template>
 <style scoped>
@@ -155,12 +157,16 @@
     data () {
       return {
         isSubmitting: false,
+        agreementsModal: {
+          shown: false,
+          contentShown: false
+        },
         formData: {
           phonenum: '',
           password: '',
           code: '',
           smsCode: '',
-          accept: false
+          accept: true
         },
         code: {
           verifyCodeStr: '',
@@ -176,6 +182,13 @@
       }
     },
     computed: {
+      agreementsStyles () {
+        let bodyStyles = this.$store.state.bodyStyles
+        return {
+          width: bodyStyles.width + 'px',
+          height: bodyStyles.height + 'px'
+        }
+      },
       containerStyles () {
         let bodyStyles = this.$store.state.bodyStyles
         return {
@@ -300,8 +313,35 @@
         this.$router.replace({
           name: 'Login'
         })
+      },
+      closeAgreements () {
+        this.agreementsModal.contentShown = false
+      },
+      agreementsClosed () {
+        this.agreementsModal.shown = false
+      },
+      openAgreements () {
+        this.agreementsModal.shown = true
       }
     },
-    components: {}
+    watch: {
+      'agreementsModal.shown' (val) {
+        if (val) {
+          setTimeout(() => {
+            this.agreementsModal.contentShown = true
+          }, 300)
+        }
+      },
+      'agreementsModal.contentShown' (val) {
+        if (!val) {
+          setTimeout(() => {
+            this.agreementsModal.shown = false
+          }, 300)
+        }
+      }
+    },
+    components: {
+      AgreementsBox: () => import('../AgreementsBox.vue')
+    }
   }
 </script>

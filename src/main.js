@@ -53,9 +53,10 @@ Vue.mixin(mixins)
 //   console.log('>====1111111====', res)
 // }
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   iview.LoadingBar.start()
   const _state = router.app.$options.store.state
+  // console.log('>>>>>可以调用mixin中的方法>>>>>>', await router.app.$options.methods.$$getUserInfo())
   _state.appHeaderOperationArea = {}
   if (to.meta && to.meta.title) {
     RouterUtil.title(to.meta.title)

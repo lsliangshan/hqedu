@@ -2,6 +2,11 @@
   <div class="header" :style="headerStyles">
     <div class="header_inner">
       <img :src="headerImage">
+      <p v-if="page === 'register'" class="more_tips">注册立享四大服务</p>
+      <div v-if="page === 'register'" class="login_tips">
+        <div class="login_icon"></div>
+        <p>已有账号！<span @click="goLogin">马上登录</span></p>
+      </div>
     </div>
   </div>
 </template>
@@ -21,7 +26,40 @@
     margin: 0 auto;
   }
   .header_inner img {
-    height: 89px;
+    float: left;
+    margin-top: 5px;
+    max-height: 70px;
+  }
+  .more_tips {
+    height: 90px;
+    line-height: 90px;
+    float: left;
+    font-size: 22px;
+    padding: 0;
+    margin: 0 15px;
+  }
+  .login_tips {
+    float: right;
+    font-size: 16px;
+    height: 90px;
+    line-height: 90px;
+  }
+  .login_tips span {
+    color: #0095db;
+    cursor: pointer;
+  }
+  .login_tips p {
+    display: inline-block;
+  }
+  .login_icon {
+    display: inline-block;
+    background-image: url(/static/images/sprite.png);
+    background-position: -133px -137px;
+    position: relative;
+    margin-right: 5px;
+    width: 17px;
+    height: 20px;
+    top: 4px;
   }
 </style>
 <script>
@@ -62,6 +100,13 @@
             break
         }
         return img
+      }
+    },
+    methods: {
+      goLogin () {
+        this.$router.replace({
+          name: 'Login'
+        })
       }
     },
     components: {}

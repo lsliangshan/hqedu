@@ -21,6 +21,7 @@
     "install": "^0.10.2",
     "iscroll": "^5.2.0",
     "iview": "^2.11.0",
+    "jsonp": "^0.2.1",
     "jsonwebtoken": "^8.1.0",
     "marked": "^0.3.12",
     "node-sass": "^4.7.2",

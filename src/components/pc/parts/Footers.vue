@@ -1,14 +1,20 @@
 <template>
   <div class="footer_container" :style="footerStyles">
     <div class="blank_div" style="width: calc(100% - 70px); margin-left: 35px; height: 50px; border-bottom: 1px solid #e4e4e4;"></div>
+    <!--<div class="footer_item">-->
+      <!--<span>出版物经营许可证  |  新出发京批字第直080136号  |  京ICP备18039765号  |  北京公安局海淀分局备案号1101081748</span>-->
+    <!--</div>-->
+    <!--<div class="footer_item">-->
+      <!--<span>知春路校区：北京市海淀区知春路7号致真大厦D座4层北区（地铁10号线西土城出A口）  |  邮编：100191</span>-->
+    <!--</div>-->
+    <!--<div class="footer_item">-->
+      <!--<span>版权所有 1997-2016 北京环球兴学科技发展有限公司</span>-->
+    <!--</div>-->
     <div class="footer_item">
-      <span>出版物经营许可证  |  新出发京批字第直080136号  |  京ICP证040735  |  北京公安局海淀分局备案号1101081748</span>
+      <span>版权所有 @copyright 1997-2018 北京德育拓远教育咨询有限公司 | 京ICP备18039765号</span>
     </div>
     <div class="footer_item">
-      <span>知春路校区：北京市海淀区知春路7号致真大厦D座4层北区（地铁10号线西土城出A口）  |  邮编：100191</span>
-    </div>
-    <div class="footer_item">
-      <span>版权所有 1997-2016 北京环球兴学科技发展有限公司</span>
+      <span>北京市海淀区马连洼北路8号C座五层506-C181</span>
     </div>
   </div>
 </template>

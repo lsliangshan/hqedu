@@ -50,6 +50,17 @@ export const routerAgreements = {
   }
 }
 
+export const routerUser = {
+  path: _path + '/user',
+  name: 'User',
+  meta: {
+    title: '我的课程主页'
+  },
+  components: {
+    HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/pages/User.vue`)
+  }
+}
+
 export const contentRouter = {
   path: '/',
   redirect: _path + '/register',
@@ -85,6 +96,7 @@ export default new Router({
     routerLogin,
     routerRegister,
     routerAgreements,
+    routerUser,
     contentRouter,
     page404
   ]

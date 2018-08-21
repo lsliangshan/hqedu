@@ -1,13 +1,13 @@
 <template>
   <transition name="agreements-transition"
-              enter-active-class="animated fadeIn"
-              leave-active-class="animated fadeOut"
+              enter-active-class="animated faster fadeIn"
+              leave-active-class="animated faster fadeOut"
   >
     <div class="agreements" :style="agreementsContainerStyles" v-if="realShown">
       <div class="agreements_mask" :style="agreementsContainerStyles" @click="closeAgreements"></div>
       <transition name="agreements-inner-transition"
-                  enter-active-class="animated faster fadeInDownBig"
-                  leave-active-class="animated faster fadeOutUpBig"
+                  enter-active-class="animated faster fadeInUpBig"
+                  leave-active-class="animated faster fadeOutDownBig"
       >
         <div class="agreements_inner" v-if="realContentShown" :style="agreementsStyles">
           <div class="agreements_header">
@@ -117,6 +117,10 @@
       height: {
         type: [Number, String],
         default: 0
+      },
+      device: {
+        type: String,
+        default: 'pc'
       }
     },
     data () {
@@ -165,7 +169,8 @@
         }
         return {
           width: _width,
-          height: _height
+          height: _height,
+          borderRadius: this.device === 'mobile' ? '0' : '4px'
         }
       }
     },
@@ -178,6 +183,8 @@
           setTimeout(() => {
             this.realContentShown = true
           }, 300)
+        } else {
+          this.$emit('close')
         }
       },
       realContentShown (val) {

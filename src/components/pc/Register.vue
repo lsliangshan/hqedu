@@ -22,13 +22,13 @@
                     <div class="form_wrapper register_login_form">
                         <Form :model="formData" :rules="formRules" :label-width="120" ref="formRef">
                             <FormItem label="手机号手机号" prop="phonenum">
-                                <Input v-model="formData.phonenum" placeholder="请输入您的手机号" class="custom_input" style="height: 40px;"/>
+                                <Input v-model="formData.phonenum" placeholder="请输入您的手机号" class="custom_input" style="height: 40px;" @keyup.13="submit"/>
                             </FormItem>
                             <FormItem label="密码" prop="password">
-                                <Input type="password" v-model="formData.password" placeholder="请输入4-8位(数字,字母,下划线)"/>
+                                <Input type="password" v-model="formData.password" placeholder="请输入4-8位(数字,字母,下划线)" @keyup.13="submit"/>
                             </FormItem>
                             <FormItem label="图形验证码" prop="code">
-                                <Input v-model="formData.code" placeholder="图形验证码" style="width: calc(100% - 145px);"/>
+                                <Input v-model="formData.code" placeholder="图形验证码" style="width: calc(100% - 145px);" @keyup.13="submit"/>
                                 <div class="code_img_wrapper" @click="getCode">
                                   <Tooltip content="点击获取图形验证码" placement="right" class="code_tooltip">
                                     <img class="code_img" :src="code.verifyCodeStr">
@@ -36,11 +36,11 @@
                                 </div>
                             </FormItem>
                             <FormItem label="短信验证码" prop="smsCode">
-                                <Input v-model="formData.smsCode" placeholder="短信验证码" style="width: calc(100% - 145px);"/>
+                                <Input v-model="formData.smsCode" placeholder="短信验证码" style="width: calc(100% - 145px);" @keyup.13="submit"/>
                                 <Button class="smscode_wrapper" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum) || !!countdown.interval" @click="getSmsCode">{{(countdown.defaultTime === countdown.time) ? countdown.defaultText : countdown.time + '秒后重新获取'}}</Button>
                             </FormItem>
                             <FormItem>
-                                <Checkbox v-model="formData.accept"></Checkbox><span class="accept-text">我已阅读并同意《网站注册协议》</span>
+                                <Checkbox v-model="formData.accept"></Checkbox><span class="accept-text">我已阅读并同意《<span class="open_agreements" @click="openAgreements">网站注册协议</span>》</span>
                             </FormItem>
                             <FormItem>
                                 <Button type="primary" class="register_btn" :loading="isSubmitting" long :disabled="!formData.accept" @click="submit">立即注册</Button>
@@ -52,7 +52,7 @@
         </div>
         <footers></footers>
 
-        <!--<agreements-box :shown="agreementsModal.shown" width="90%"></agreements-box>-->
+        <agreements-box :shown="agreementsModal.shown" width="90%" height="90%" @close="agreementsClosed"></agreements-box>
     </div>
 </template>
 <style scoped>
@@ -164,6 +164,11 @@
     .register_btn {
         height: 50px;
         font-size: 16px;
+    }
+    
+    .open_agreements {
+        cursor: pointer;
+        color: #2d8cf0;
     }
 </style>
 <script>
@@ -315,13 +320,15 @@
     created () {
       this.$nextTick(async () => {
         await this.getCode()
-
-        setTimeout(() => {
-          this.agreementsModal.shown = true
-        }, 1000)
       })
     },
     methods: {
+      agreementsClosed () {
+        this.agreementsModal.shown = false
+      },
+      openAgreements () {
+        this.agreementsModal.shown = true
+      },
       async getCode () {
         /***
          * 5s内禁止重复请求
@@ -437,9 +444,8 @@
     },
     components: {
       Headers: () => import('./parts/Headers.vue'),
-      Footers: () => import('./parts/Footers.vue')
-      // ,
-      // AgreementsBox: () => import('../AgreementsBox.vue')
+      Footers: () => import('./parts/Footers.vue'),
+      AgreementsBox: () => import('../AgreementsBox.vue')
     }
   }
 </script>

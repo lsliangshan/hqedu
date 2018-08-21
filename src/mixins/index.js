@@ -1,4 +1,6 @@
 import * as types from '../store/mutation-types'
+import { RouterUtil } from '../utils/index'
+import jsonp from 'jsonp'
 export default {
   methods: {
     isPc () {
@@ -12,6 +14,34 @@ export default {
       let bIsCE = sUserAgent.match(/windows ce/i)
       let bIsWM = sUserAgent.match(/windows mobile/i)
       return !(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)
+    },
+    $$getUserInfo () {
+      /**
+       * 从 hqwx.com 获取用户登录状态
+       */
+      return new Promise((resolve, reject) => {
+        jsonp('http://www.hqwx.com/addcart_v2/jsapi/header_public?callback=ss', null, (err, data) => {
+          if (err) {
+            reject(new Error(err.message))
+          } else {
+            resolve(data)
+          }
+        })
+      })
+    },
+    $$setCookies (args) {
+      /**
+       * 向 hqwx.com 写入登录cookie
+       */
+      return new Promise((resolve, reject) => {
+        jsonp('http://www.hqwx.com/landing.asp?' + RouterUtil.formatUrlParams(args), null, (err, data) => {
+          if (err) {
+            reject(new Error(err.message))
+          } else {
+            resolve(data)
+          }
+        })
+      })
     },
     $getCode () {
       /**
@@ -119,11 +149,19 @@ export default {
             platform: 'web',
             appId: 'wwwedu24ol'
           }, args)
-        }).then(responseData => {
+        }).then(async (responseData) => {
           if (String(responseData.statusCode) !== '200') {
             reject(new Error('登录失败，请稍后重试'))
           } else {
-            responseData.data.status = '231'
+            if (['200', '1'].indexOf(String(responseData.data.status)) > -1) {
+              /**
+               * 登录成功，向 hqwx.com 写入登录cookie
+               */
+              await this.$$setCookies({
+                passport: responseData.data.data.passport,
+                token: responseData.data.data.token
+              })
+            }
             resolve(responseData.data)
           }
         }).catch(err => {
