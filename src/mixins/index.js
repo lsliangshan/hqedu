@@ -96,6 +96,40 @@ export default {
           reject(new Error(err.message || '注册失败，请稍后重试'))
         })
       })
+    },
+    $login (args) {
+      /**
+       * 登录
+       * args:
+       *  phone: PHONE,
+       *  pwd: PWD,
+       *  orgId: 2,
+       *  platform: 'web',
+       *  appId: 'wwwedu24ol'
+       * 非必然条件
+       *  verifyCode: '',
+       *  codeString: ''
+       */
+      return new Promise(async (resolve, reject) => {
+        await this.$store.dispatch(types.AJAX, {
+          url: this.$store.state.requestInfo.login,
+          method: 'GET',
+          data: Object.assign({
+            orgId: 2,
+            platform: 'web',
+            appId: 'wwwedu24ol'
+          }, args)
+        }).then(responseData => {
+          if (String(responseData.statusCode) !== '200') {
+            reject(new Error('登录失败，请稍后重试'))
+          } else {
+            responseData.data.status = '231'
+            resolve(responseData.data)
+          }
+        }).catch(err => {
+          reject(new Error(err.message || '登录失败，请稍后重试'))
+        })
+      })
     }
   }
 }

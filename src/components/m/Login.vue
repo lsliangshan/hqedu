@@ -1,6 +1,6 @@
 <template>
     <div class="container" :style="containerStyles">
-        <img src="/static/images/top_bg.png" :style="topImgStyles">
+        <!--<img src="/static/images/top_bg.png" :style="topImgStyles">-->
         <div class="form_container">
             <div class="form_row">
                 <div class="form_item">
@@ -10,6 +10,14 @@
             <div class="form_row">
                 <div class="form_item">
                     <input type="password" placeholder="输入密码" v-model="formData.password">
+                </div>
+            </div>
+            <div class="form_row" v-if="showCode">
+                <div class="form_item">
+                    <input type="text" class="code_input" placeholder="请输入图形验证码" v-model="formData.code">
+                    <div class="code_img_wrapper" @click="getCode">
+                        <img class="code_img" :src="code.verifyCodeStr">
+                    </div>
                 </div>
             </div>
             <div class="form_row">
@@ -44,10 +52,12 @@
     }
     .form_item {
         width: 100%;
-        height: 40px;
+        height: 42px;
         border: 1px solid #d6d6d6;
         border-radius: 5px;
         background-color: #f8f8f8;
+        box-sizing: border-box;
+        overflow: hidden;
     }
     .form_item input {
         font-size: 16px;
@@ -59,6 +69,20 @@
         box-sizing: border-box;
         background-color: transparent;
         border: none;
+    }
+    .code_input {
+        float: left!important;
+        width: calc(100% - 104px)!important;
+        margin-left: 0!important;
+    }
+    .code_img_wrapper {
+        float: right;
+        width: 104px;
+        height: 40px;
+    }
+    .code_img_wrapper img {
+        width: 100%;
+        height: 100%;
     }
     .form_item.with_right_btn {
         width: calc(100% - 100px);
@@ -122,8 +146,6 @@
     }
 </style>
 <script>
-  // import { StorageUtil, KitUtil } from '../utils/index'
-  import * as types from '../../store/mutation-types'
   export default {
     name: 'Login',
     data () {
@@ -131,8 +153,15 @@
         isSubmitting: false,
         formData: {
           phonenum: '',
-          password: ''
-        }
+          password: '',
+          code: ''
+        },
+        showCode: false, // 是否需要图形验证码
+        code: {
+          verifyCodeStr: '',
+          codeString: ''
+        },
+        codeBtnTs: 0
       }
     },
     computed: {
@@ -152,6 +181,27 @@
       }
     },
     methods: {
+      async getCode () {
+        /***
+         * 5s内禁止重复请求
+         * @type {number}
+         */
+        let nowTs = (new Date()).getTime()
+        if (nowTs - this.codeBtnTs < 5 * 1000) {
+          this.$Message.error('请求图形验证码太频繁，请稍后再试')
+        } else {
+          this.codeBtnTs = nowTs
+          await this.$getCode().then(codeData => {
+            this.code = codeData
+          }).catch(err => {
+            this.$Message.error(err.message)
+            this.code = {
+              verifyCodeStr: '',
+              codeString: ''
+            }
+          })
+        }
+      },
       beforeSubmit () {
         if (!this.formData.phonenum) {
           this.$Message.error('手机号不能为空')
@@ -170,17 +220,39 @@
         this.isSubmitting = true
         let beforeRegisterFlag = this.beforeSubmit()
         if (beforeRegisterFlag) {
-          let responseData = await this.$store.dispatch(types.LOGIN, this.formData).catch(err => {
+          let requestData = {
+            phone: this.formData.phonenum,
+            pwd: this.formData.password
+          }
+          if (this.showCode) {
+            requestData = Object.assign({}, requestData, {
+              verifyCode: this.formData.code,
+              codeString: this.code.codeString
+            })
+          }
+          await this.$login(requestData).then(responseData => {
             this.isSubmitting = false
-            this.$Message.error('登录失败：' + err.message)
-            return false
+            if (String(responseData.status) === '231') {
+              /**
+               * 登录失败 需要图形验证码
+               */
+              this.showCode = true
+              this.$Message.info(responseData.message || '请输入图形验证码')
+            } else if (['200', '1'].indexOf(String(responseData.status)) < 0) {
+              /**
+               * 登录失败 其它原因
+               */
+              this.$Message.error(responseData.message || '登录失败，请稍后再试')
+            } else {
+              /**
+               * 登录成功
+               */
+              this.$Message.success('登录成功')
+            }
+          }).catch(err => {
+            this.isSubmitting = false
+            this.$Message.error(err.message)
           })
-          this.isSubmitting = false
-          this.$Message.success('登录成功')
-          // setTimeout(() => {
-          //   this.$router.replace('/login')
-          // }, 800)
-          alert(JSON.stringify(responseData, null, 2))
         } else {
           this.isSubmitting = false
         }
@@ -192,6 +264,13 @@
         this.$router.replace({
           name: 'Register'
         })
+      }
+    },
+    watch: {
+      async showCode (val) {
+        if (val) {
+          await this.getCode()
+        }
       }
     },
     components: {}

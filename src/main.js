@@ -11,10 +11,10 @@ import mixins from './mixins'
 import jwt from 'jsonwebtoken'
 import { RouterUtil, StorageUtil, KitUtil } from './utils/index'
 import ZpmCapture from './assets/js/ZpmCapture'
-// import 'iview/dist/styles/iview.css'
+import 'iview/dist/styles/iview.css'
 import './assets/css/animate.css/animate.css'
 
-const iView = iview
+// const iView = iview
 
 // import SharedWorker from './ajax.worker'
 
@@ -54,7 +54,7 @@ Vue.mixin(mixins)
 // }
 
 router.beforeEach((to, from, next) => {
-  iView.LoadingBar.start()
+  iview.LoadingBar.start()
   const _state = router.app.$options.store.state
   _state.appHeaderOperationArea = {}
   if (to.meta && to.meta.title) {
@@ -97,7 +97,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(to => {
-  iView.LoadingBar.finish()
+  iview.LoadingBar.finish()
 })
 
 /* eslint-disable no-new */
