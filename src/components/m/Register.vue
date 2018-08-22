@@ -27,7 +27,7 @@
                 <!--<div class="right_btn">-->
                     <!--<span>发送验证码</span>-->
                 <!--</div>-->
-                <Button class="right_btn" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum) || !!countdown.interval" @click="getSmsCode">
+                <Button class="right_btn" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum) || !!countdown.interval || !formData.code" @click="getSmsCode">
                   {{(countdown.defaultTime === countdown.time) ? countdown.defaultText : countdown.time + '秒'}}
                 </Button>
             </div>
@@ -304,6 +304,7 @@
           // }, 800)
         } else {
           this.isSubmitting = false
+          this.$Message.error('表单填写有误')
         }
       },
       toggleCheck () {

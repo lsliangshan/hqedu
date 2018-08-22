@@ -80,6 +80,7 @@
     padding: 0;
     outline: none;
     -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
     /*-webkit-user-select: none;*/
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
@@ -144,5 +145,18 @@
     width: 135px;
     height: 40px;
     cursor: pointer;
+  }
+
+  .query_custom_select .ivu-select-selection {
+    height: 40px!important;
+    line-height: 40px!important;
+  }
+  .query_custom_select .ivu-select-selected-value {
+    height: 38px!important;
+    line-height: 38px!important;
+  }
+  .query_custom_select .ivu-select-placeholder {
+    height: 38px!important;
+    line-height: 38px!important;
   }
 </style>

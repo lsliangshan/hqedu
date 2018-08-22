@@ -61,6 +61,26 @@ export const routerUser = {
   }
 }
 
+export const routerCms = [
+  {
+    path: _path + '/cms',
+    name: 'CmsIndex',
+    meta: {
+    },
+    components: {
+      HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/pages/cms/Index.vue`)
+    }
+  },
+  {
+    path: _path + '/cms/t/:queryType',
+    name: 'CmsQuery',
+    meta: {},
+    components: {
+      HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/pages/cms/Query.vue`)
+    }
+  }
+]
+
 export const contentRouter = {
   path: '/',
   redirect: _path + '/register',
@@ -97,6 +117,7 @@ export default new Router({
     routerRegister,
     routerAgreements,
     routerUser,
+    ...routerCms,
     contentRouter,
     page404
   ]

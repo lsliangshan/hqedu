@@ -51,6 +51,7 @@
     right: 0;
     bottom: 0;
     margin: auto;
+    overflow-y: auto;
   }
 
   .agreements_header {

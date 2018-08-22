@@ -37,7 +37,7 @@
                             </FormItem>
                             <FormItem label="短信验证码" prop="smsCode">
                                 <Input v-model="formData.smsCode" placeholder="短信验证码" style="width: calc(100% - 145px);" @keyup.13="submit"/>
-                                <Button class="smscode_wrapper" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum) || !!countdown.interval" @click="getSmsCode">{{(countdown.defaultTime === countdown.time) ? countdown.defaultText : countdown.time + '秒后重新获取'}}</Button>
+                                <Button class="smscode_wrapper" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum) || !!countdown.interval || !formData.code" @click="getSmsCode">{{(countdown.defaultTime === countdown.time) ? countdown.defaultText : countdown.time + '秒后重新获取'}}</Button>
                             </FormItem>
                             <FormItem>
                                 <Checkbox v-model="formData.accept"></Checkbox><span class="accept-text">我已阅读并同意《<span class="open_agreements" @click="openAgreements">网站注册协议</span>》</span>
@@ -363,7 +363,7 @@
           } else {
             this.countdown.time -= 1
           }
-        }, 100)
+        }, 1000)
         await this.$getSmsCode({
           phone: this.formData.phonenum,
           verifyCode: this.formData.code,
