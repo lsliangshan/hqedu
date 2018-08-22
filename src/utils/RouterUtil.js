@@ -35,7 +35,7 @@
  */
 const RouterUtil = (function () {
   const _title = function (title) {
-    window.document.title = (title || '智愚')
+    document.title = (title || '智愚')
   }
   const _formatUrlParams = function (args) {
     let s = []

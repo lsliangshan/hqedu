@@ -240,12 +240,12 @@
       }
     },
     created () {
-      this.$nextTick(async () => {
-        let userInfo = await this.$$getUserInfo().catch(err => {
-          console.log('user info error: ', err.message)
-        })
-        console.log('user info: ', userInfo)
-      })
+      // this.$nextTick(async () => {
+        // let userInfo = await this.$$getUserInfo().catch(err => {
+        //   console.log('user info error: ', err.message)
+        // })
+        // console.log('user info: ', userInfo)
+      // })
     },
     methods: {
       async getCode () {

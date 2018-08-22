@@ -130,6 +130,10 @@
     width: 100%;
     min-height: 400px;
     margin: 0 auto;
+    padding-bottom: 30px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
   .code_img_wrapper {
     width: 135px;
@@ -314,6 +318,12 @@
       },
       allCmsRoute () {
         return this.$store.state.allCmsRoute
+      },
+      cmsContainerStyles () {
+        let bodyStyles = this.$store.state.bodyStyles
+        return {
+          minHeight: bodyStyles.height + 'px'
+        }
       }
     },
     created () {

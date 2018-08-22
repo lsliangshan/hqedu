@@ -1,5 +1,5 @@
 <template>
-  <div class="cms_container">
+  <div class="cms_container" :style="cmsContainerStyles">
     <div class="cms_wrapper">
       <div class="cms_header_container">
         <p class="cms_header_text">{{pageData.title}}</p>
@@ -58,6 +58,9 @@
   </div>
 </template>
 <style scoped>
+  body {
+    height: 100%;
+  }
   .cms_container {
     width: 100%;
     height: 100%;
@@ -117,6 +120,10 @@
     width: 100%;
     min-height: 400px;
     margin: 0 auto;
+    padding-bottom: 30px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
   .code_img_wrapper {
     width: 135px;
@@ -263,13 +270,25 @@
       },
       allCmsRoute () {
         return this.$store.state.allCmsRoute
+      },
+      cmsContainerStyles () {
+        let bodyStyles = this.$store.state.bodyStyles
+        return {
+          minHeight: bodyStyles.height + 'px'
+        }
       }
     },
     created () {
       this.$nextTick(async () => {
-        await this.getCode()
-
-        RouterUtil.title(this.pageData.title)
+        let queryType = this.$route.params.queryType
+        if (!this.allCmsRoute.hasOwnProperty(queryType)) {
+          this.$router.replace({
+            name: 'Register'
+          })
+        } else {
+          await this.getCode()
+          RouterUtil.title(this.pageData.title)
+        }
       })
     },
     methods: {
@@ -351,7 +370,7 @@
               pwd: this.formData.password
             }).then(responseData => {
               this.isSubmitting = false
-              this.$Message.success('注册成功')
+              // this.$Message.success('注册成功')
             }).catch(err => {
               this.isSubmitting = false
               this.$Message.error(err.message)
@@ -361,6 +380,7 @@
             // }, 800)
           } else {
             this.isSubmitting = false
+            this.$Message.error('表单填写有误')
           }
         })
       },

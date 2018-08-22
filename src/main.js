@@ -1,20 +1,20 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-// import Vue from 'vue'
+import Vue from 'vue'
 import App from './App.vue'
 import { sync } from 'vuex-router-sync'
 import router from './router/index'
 import store from './store'
 import * as filters from './filters'
 import mixins from './mixins'
-// import iView from 'iview'
+import iView from 'iview'
 import jwt from 'jsonwebtoken'
 import { RouterUtil, StorageUtil, KitUtil } from './utils/index'
 import ZpmCapture from './assets/js/ZpmCapture'
 import 'iview/dist/styles/iview.css'
 import './assets/css/animate.css/animate.css'
 
-// const iView = iview
+const iview = iView
 
 // import SharedWorker from './ajax.worker'
 
@@ -37,7 +37,7 @@ Object.keys(filters).forEach(key => {
 // register global mixins.
 Vue.mixin(mixins)
 
-// Vue.use(iView)
+Vue.use(iView)
 
 // let sharedWorker = new SharedWorker()
 // store.state.ajaxSharedWorker = sharedWorker.port
@@ -100,6 +100,10 @@ router.beforeEach(async (to, from, next) => {
 router.afterEach(to => {
   iview.LoadingBar.finish()
 })
+
+// Vue.config.errorHandler = (err, vm) => {
+//   console.log(err.message)
+// }
 
 /* eslint-disable no-new */
 new Vue({
