@@ -21,7 +21,7 @@
                 <div class="form_inner">
                     <div class="form_wrapper register_login_form">
                         <Form :model="formData" :rules="formRules" :label-width="120" ref="formRef">
-                            <FormItem label="手机号手机号" prop="phonenum">
+                            <FormItem label="手机号" prop="phonenum">
                                 <Input v-model="formData.phonenum" placeholder="请输入您的手机号" class="custom_input" style="height: 40px;" @keyup.13="submit"/>
                             </FormItem>
                             <FormItem label="密码" prop="password">
