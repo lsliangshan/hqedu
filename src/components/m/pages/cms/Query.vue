@@ -460,7 +460,8 @@
             await this.$register({
               phone: this.formData.phonenum,
               smsCode: this.formData.smsCode,
-              pwd: this.formData.password
+              pwd: this.formData.password,
+              sortId: this.pageData.sortId
             }).then(responseData => {
               this.isSubmitting = false
               // this.$Message.success('注册成功')

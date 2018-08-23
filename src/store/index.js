@@ -420,6 +420,7 @@ const store = new Vuex.Store({
     ],
     allCmsRoute: {
       yijixiaofanggongchengshibaokaotiaojian: {
+        sortId: '5785',
         title: '2018年全国消防工程师报名条件审核系统',
         enTitle: 'CHARTERED PUBLIC ACCOUNTANT NATIONAL UNIFIED EXAMINATION NETWORK CONDITION AUDITING SYSTEM',
         queryTitle: '一级消防工程师报考条件自助查询',
@@ -497,6 +498,7 @@ const store = new Vuex.Store({
         redirectUrl: 'http://www.hqwx.com/web_news/html/2018-8/15337113781417.html' // 表单提交后 重定向的地址
       },
       yijixiaofanghuoqubaokaoshijian: {
+        sortId: '5785',
         title: '消防工程师全国统一考试报名时间查询系统',
         enTitle: 'FIRE ENGINEER NATIONAL UNIFIED EXAMINATION REGISTRATION TIME INQUIRY SYSTEM',
         queryTitle: '一级消防工程师报名时间自助查询',
