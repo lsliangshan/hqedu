@@ -493,7 +493,8 @@ const store = new Vuex.Store({
               text: '预约或者咨询请致电 : 4006783456'
             }
           ]
-        }
+        },
+        redirectUrl: 'http://www.hqwx.com/web_news/html/2018-8/15337113781417.html' // 表单提交后 重定向的地址
       },
       yijixiaofanghuoqubaokaoshijian: {
         title: '消防工程师全国统一考试报名时间查询系统',
@@ -656,7 +657,8 @@ const store = new Vuex.Store({
               text: '报考时间及报名须知通过短信发送或电话审核形式，请注意查看手机'
             }
           ]
-        }
+        },
+        redirectUrl: 'http://www.hqwx.com/web_news/html/2018-1/15160687163579.html' // 表单提交后 重定向的地址
       }
     },
     eventHub: new Vue(),
@@ -692,7 +694,7 @@ const store = new Vuex.Store({
     requestInfo: {
       // baseUrl: PROTOCOL + '//10.2.4.229:3000',
       // baseUrl: 'http://192.168.0.108:8097',
-      baseUrl: 'http://hqwxedu.cn/spreead',
+      baseUrl: 'http://api.hqwxedu.cn/spreead',
       // baseUrl: 'http://39.104.115.219',
       // baseUrl: 'http://10.2.4.229:8097',
       login: '/login',

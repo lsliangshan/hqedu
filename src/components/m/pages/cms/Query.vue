@@ -328,9 +328,15 @@
     },
     created () {
       this.$nextTick(async () => {
-        await this.getCode()
-
-        RouterUtil.title(this.pageData.title)
+        let queryType = this.$route.params.queryType
+        if (!this.allCmsRoute.hasOwnProperty(queryType)) {
+          this.$router.replace({
+            name: 'Register'
+          })
+        } else {
+          await this.getCode()
+          RouterUtil.title(this.pageData.title)
+        }
       })
     },
     methods: {
@@ -401,6 +407,51 @@
         this.errorTips = ''
         return true
       },
+      silenceLogin () {
+        return new Promise(async (resolve, reject) => {
+          await this.$login({
+            phone: this.formData.phonenum,
+            pwd: this.formData.password
+          }).then(responseData => {
+            resolve(true)
+            if (String(responseData.status) === '231') {
+              /**
+               * 登录失败 需要图形验证码
+               */
+              this.$router.replace({
+                name: 'Login',
+                query: {
+                  code: 1,
+                  redirect: this.pageData.redirectUrl
+                }
+              })
+            } else if (['200', '1'].indexOf(String(responseData.status)) < 0) {
+              /**
+               * 登录失败 其它原因
+               */
+              this.$router.replace({
+                name: 'Login',
+                query: {
+                  redirect: this.pageData.redirectUrl
+                }
+              })
+            } else {
+              /**
+               * 登录成功
+               */
+              location.replace(this.pageData.redirectUrl)
+            }
+          }).catch((err) => {
+            reject(new Error(err.message))
+            this.$router.replace({
+              name: 'Login',
+              query: {
+                redirect: this.pageData.redirectUrl
+              }
+            })
+          })
+        })
+      },
       async submit () {
         if (this.isSubmitting) return
         this.isSubmitting = true
@@ -413,6 +464,10 @@
             }).then(responseData => {
               this.isSubmitting = false
               // this.$Message.success('注册成功')
+              /**
+               * 注册成功后，模拟登录
+               */
+              this.silenceLogin()
             }).catch(err => {
               this.isSubmitting = false
               this.$Message.error(err.message)

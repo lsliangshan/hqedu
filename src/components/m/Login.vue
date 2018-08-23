@@ -180,6 +180,20 @@
         }
       }
     },
+    created () {
+      // this.$nextTick(async () => {
+      // let userInfo = await this.$$getUserInfo().catch(err => {
+      //   console.log('user info error: ', err.message)
+      // })
+      // console.log('user info: ', userInfo)
+      // })
+      if (String(this.$route.query.code) === '1') {
+        this.showCode = true
+      }
+      if (String(this.$route.query.tel).trim() !== '') {
+        this.formData.phonenum = this.$route.query.tel
+      }
+    },
     methods: {
       async getCode () {
         /***
@@ -248,9 +262,14 @@
                * 登录成功
                */
               this.$Message.success('登录成功')
-              this.$router.replace({
-                name: 'User'
-              })
+              let redirectUrl = this.$route.query.redirect
+              if (redirectUrl && String(redirectUrl).trim() !== '') {
+                location.replace(redirectUrl)
+              } else {
+                this.$router.replace({
+                  name: 'User'
+                })
+              }
             }
           }).catch(err => {
             this.isSubmitting = false

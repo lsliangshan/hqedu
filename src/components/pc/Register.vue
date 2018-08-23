@@ -401,14 +401,23 @@
               pwd: this.formData.password
             }).then(responseData => {
               this.isSubmitting = false
-              this.$Message.success('注册成功')
+              if (['213', '219'].indexOf(String(responseData.status)) > -1) {
+                this.$Message.info(responseData.message)
+                setTimeout(() => {
+                  this.$router.replace({
+                    name: 'Login',
+                    query: {
+                      tel: this.formData.phonenum
+                    }
+                  })
+                }, 2000)
+              } else {
+                this.$Message.success('注册成功')
+              }
             }).catch(err => {
               this.isSubmitting = false
               this.$Message.error(err.message)
             })
-            // setTimeout(() => {
-            //   this.$router.replace('/login')
-            // }, 800)
           } else {
             this.isSubmitting = false
           }
