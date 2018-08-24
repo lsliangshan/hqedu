@@ -23,7 +23,7 @@ const createLintingRule = () => ({
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: ['./node_modules/babel-polyfill/dist/polyfill.js', './src/main.js']
   },
   externals: {
     vue: 'Vue',
