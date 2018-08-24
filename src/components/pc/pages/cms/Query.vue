@@ -281,6 +281,9 @@
     created () {
       this.$nextTick(async () => {
         let queryType = this.$route.params.queryType
+        // if (!this.isIe() && queryType === 'yijixiaofanghuoqubaokaoshijian') {
+        //   location.replace('/static/html/cms/t/' + queryType + '.html')
+        // }
         if (!this.allCmsRoute.hasOwnProperty(queryType)) {
           this.$router.replace({
             name: 'Register'
@@ -292,6 +295,9 @@
       })
     },
     methods: {
+      isIe (){
+        return (!!window.ActiveXObject||'ActiveXObject' in window)
+      },
       agreementsClosed () {
         this.agreementsModal.shown = false
       },
@@ -303,21 +309,30 @@
          * 5s内禁止重复请求
          * @type {number}
          */
-        let nowTs = (new Date()).getTime()
-        if (nowTs - this.codeBtnTs < 5 * 1000) {
-          this.$Message.error('请求图形验证码太频繁，请稍后再试')
-        } else {
-          this.codeBtnTs = nowTs
-          await this.$getCode().then(codeData => {
-            this.code = codeData
-          }).catch(err => {
-            this.$Message.error(err.message)
-            this.code = {
-              verifyCodeStr: '',
-              codeString: ''
-            }
-          })
-        }
+        // let nowTs = (new Date()).getTime()
+        // if (nowTs - this.codeBtnTs < 5 * 1000) {
+        //   this.$Message.error('请求图形验证码太频繁，请稍后再试')
+        // } else {
+        //   this.codeBtnTs = nowTs
+        //   await this.$getCode().then(codeData => {
+        //     this.code = codeData
+        //   }).catch(err => {
+        //     this.$Message.error(err.message)
+        //     this.code = {
+        //       verifyCodeStr: '',
+        //       codeString: ''
+        //     }
+        //   })
+        // }
+        await this.$getCode().then(codeData => {
+          this.code = codeData
+        }).catch(err => {
+          this.$Message.error(err.message)
+          this.code = {
+            verifyCodeStr: '',
+            codeString: ''
+          }
+        })
       },
       async getSmsCode () {
         if (this.countdown.interval) {

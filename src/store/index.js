@@ -470,15 +470,16 @@ const store = new Vuex.Store({
                 value: '非消防相关专业'
               }
             ]
-          },
-          {
-            label: '姓名',
-            placeholder: '请输入您的姓名',
-            type: 'input',
-            name: 'txtusername',
-            defaultValue: '',
-            data: []
           }
+          // ,
+          // {
+          //   label: '姓名',
+          //   placeholder: '请输入您的姓名',
+          //   type: 'input',
+          //   name: 'txtusername',
+          //   defaultValue: '',
+          //   data: []
+          // }
         ],
         btnText: '立即获取查询结果',
         tips: {
@@ -635,15 +636,16 @@ const store = new Vuex.Store({
                 value: '浙江'
               }
             ]
-          },
-          {
-            label: '姓名',
-            placeholder: '请输入您的姓名',
-            type: 'input',
-            name: 'txtusername',
-            defaultValue: '',
-            data: []
           }
+          // ,
+          // {
+          //   label: '姓名',
+          //   placeholder: '请输入您的姓名',
+          //   type: 'input',
+          //   name: 'txtusername',
+          //   defaultValue: '',
+          //   data: []
+          // }
         ],
         btnText: '获取报考时间',
         tips: {
