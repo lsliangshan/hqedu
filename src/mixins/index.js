@@ -96,14 +96,15 @@ export default {
           if (String(responseData.statusCode) !== '200') {
             reject(new Error('获取短信验证码失败，请稍后重试'))
           } else {
-            if (['200', '1'].indexOf(String(responseData.data.status)) < 0) {
-              reject(new Error(responseData.data.message || '获取短信验证码失败，请稍后重试'))
-            } else {
-              /**
-               * 获取短信验证码成功
-               */
-              resolve(responseData.data)
-            }
+            resolve(responseData.data)
+            // if (['200', '1'].indexOf(String(responseData.data.status)) < 0) {
+            //   reject(new Error(responseData.data.message || '获取短信验证码失败，请稍后重试'))
+            // } else {
+            //   /**
+            //    * 获取短信验证码成功
+            //    */
+            //   resolve(responseData.data)
+            // }
           }
         }).catch(err => {
           reject(new Error(err.message || '获取短信验证码失败，请稍后重试'))

@@ -353,9 +353,18 @@
           verifyCode: this.formData.code,
           codeString: this.code.codeString
         }).then(responseData => {
-          this.$Message.success(responseData.message || '短信验证码已经发送')
+          if (['200', '1'].indexOf(String(responseData.status)) < 0) {
+            // 获取短信验证码失败
+            // 刷新图形验证码
+            this.getCode()
+            this.$Message.error(responseData.message || '获取短信验证码失败，请重试')
+          } else {
+            this.$Message.success(responseData.message || '短信验证码已经发送')
+          }
         }).catch(err => {
           this.$Message.error(err.message)
+          // 刷新图形验证码
+          this.getCode()
           this.countdown.time = this.countdown.defaultTime
           clearInterval(this.countdown.interval)
           this.countdown.interval = 0
