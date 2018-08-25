@@ -13,19 +13,23 @@
           <div class="form_wrapper register_login_form">
             <Form :model="formData" :rules="formRules" ref="formRef">
               <FormItem v-for="(fi, index) in pageData.formItems" :key="index" :label="fi.label" :label-width="120">
-                <Select v-if="fi.type.toLowerCase() === 'select'" size="large" v-model="fi.defaultValue" :placeholder="fi.placeholder">
+                <Select v-if="fi.type.toLowerCase() === 'select'" size="large" v-model="fi.defaultValue"
+                        :placeholder="fi.placeholder">
                   <Option v-for="(o, idx) in fi.data" :key="idx" :value="o.value">{{o.text}}</Option>
                 </Select>
-                <Input v-if="fi.type.toLowerCase() === 'input'" v-model="fi.defaultValue" :placeholder="fi.placeholder"/>
+                <Input v-if="fi.type.toLowerCase() === 'input'" v-model="fi.defaultValue"
+                       :placeholder="fi.placeholder"/>
               </FormItem>
               <FormItem label="手机号" prop="phonenum" :label-width="120">
-                <Input v-model="formData.phonenum" placeholder="请输入您的手机号" class="custom_input" style="height: 40px;" @keyup.13="submit"/>
+                <Input v-model="formData.phonenum" placeholder="请输入您的手机号" class="custom_input" style="height: 40px;"
+                       @keyup.13="submit"/>
               </FormItem>
               <FormItem label="密码" prop="password" :label-width="120">
                 <Input type="password" v-model="formData.password" placeholder="请输入4-8位(数字,字母,下划线)" @keyup.13="submit"/>
               </FormItem>
               <FormItem label="图形验证码" prop="code" :label-width="120">
-                <Input v-model="formData.code" placeholder="图形验证码" style="width: calc(100% - 145px);" @keyup.13="submit"/>
+                <Input v-model="formData.code" placeholder="图形验证码" style="width: calc(100% - 145px);"
+                       @keyup.13="submit"/>
                 <div class="code_img_wrapper" @click="getCode">
                   <Tooltip content="点击获取图形验证码" placement="right" class="code_tooltip" :transfer="true">
                     <img class="code_img" :src="code.verifyCodeStr">
@@ -33,14 +37,23 @@
                 </div>
               </FormItem>
               <FormItem label="短信验证码" prop="smsCode" :label-width="120">
-                <Input v-model="formData.smsCode" placeholder="短信验证码" style="width: calc(100% - 145px);" @keyup.13="submit"/>
-                <Button class="smscode_wrapper" type="primary" :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum) || !!countdown.interval || !formData.code" @click="getSmsCode">{{(countdown.defaultTime === countdown.time) ? countdown.defaultText : countdown.time + '秒后重新获取'}}</Button>
+                <Input v-model="formData.smsCode" placeholder="短信验证码" style="width: calc(100% - 145px);"
+                       @keyup.13="submit"/>
+                <Button class="smscode_wrapper" type="primary"
+                        :disabled="!/^1[345789]\d{9}$/.test(formData.phonenum) || !!countdown.interval || !formData.code"
+                        @click="getSmsCode">{{(countdown.defaultTime === countdown.time) ? countdown.defaultText :
+                  countdown.time + '秒后重新获取'}}
+                </Button>
               </FormItem>
               <FormItem>
-                <Checkbox v-model="formData.accept" size="small"></Checkbox><span class="accept-text">我已阅读并同意《<span class="open_agreements" @click="openAgreements">网站注册协议</span>》</span>
+                <Checkbox v-model="formData.accept" size="small"></Checkbox>
+                <span class="accept-text">我已阅读并同意《<span class="open_agreements"
+                                                        @click="openAgreements">网站注册协议</span>》</span>
               </FormItem>
               <FormItem>
-                <Button type="primary" class="register_btn" :loading="isSubmitting" long :disabled="!formData.accept" @click="submit">{{pageData.btnText}}</Button>
+                <Button type="primary" class="register_btn" :loading="isSubmitting" long :disabled="!formData.accept"
+                        @click="submit">{{pageData.btnText}}
+                </Button>
               </FormItem>
               <FormItem>
                 <p class="bottom_tip" v-if="pageData.tips.title">{{pageData.tips.title}}</p>
@@ -61,16 +74,19 @@
   body {
     height: 100%;
   }
+
   .cms_container {
     width: 100%;
     height: 100%;
     background: linear-gradient(#0899fa, #e2f1fa);
   }
+
   .cms_wrapper {
     max-width: 1000px;
     min-height: 640px;
     margin: 0 auto;
   }
+
   .cms_header_container {
     width: 100%;
     padding-top: 15px;
@@ -80,21 +96,25 @@
     text-align: center;
     color: #FFFFFF;
   }
+
   .cms_header_text {
     font-size: 28px;
     margin-bottom: 5px;
   }
+
   .cms_header_en_text {
     font-size: 14px;
     max-width: 600px;
     margin: 0 auto;
   }
+
   .cms_query_content {
     max-width: 500px;
     margin: 15px auto;
     background: linear-gradient(#8ed0fc, #dbeffc);
     border-radius: 4px;
   }
+
   .cms_query_header {
     width: 100%;
     padding: 30px 0;
@@ -103,6 +123,7 @@
     box-sizing: border-box;
     text-align: center;
   }
+
   .cms_query_header_text {
     font-size: 18px;
     color: #d70c25;
@@ -116,6 +137,7 @@
     box-sizing: border-box;
     /*height: 356px;*/
   }
+
   .form_wrapper {
     width: 100%;
     min-height: 400px;
@@ -125,28 +147,34 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
+
   .code_img_wrapper {
     width: 135px;
     height: 40px;
     float: right;
     text-align: right;
   }
+
   .code_tooltip {
   }
+
   .code_img {
     max-width: 135px;
     max-height: 40px;
   }
+
   .smscode_wrapper {
     float: right;
     height: 40px;
     width: 133px;
     font-size: 14px;
   }
+
   .accept-text {
     color: #666666;
     font-size: 10px;
   }
+
   .register_btn {
     height: 50px;
     font-size: 16px;
@@ -164,14 +192,17 @@
     line-height: 1.8;
     clear: both;
   }
+
   .bottom_tip:before {
     content: attr(data-before-data);
     color: #d70c25;
   }
+
   .tip_number {
     width: 25px;
     display: inline-block;
   }
+
   .tip_content {
     width: calc(100% - 25px);
     display: inline-block;
@@ -180,6 +211,7 @@
 </style>
 <script>
   import { RouterUtil } from '../../../../utils/index'
+
   export default {
     name: 'CmsQuery',
     data () {
@@ -281,9 +313,9 @@
     created () {
       this.$nextTick(async () => {
         let queryType = this.$route.params.queryType
-        // if (!this.isIe() && queryType === 'yijixiaofanghuoqubaokaoshijian') {
-        //   location.replace('/static/html/cms/t/' + queryType + '.html')
-        // }
+        if (!this.isIe()) {
+          location.replace('/static/html/cms/t/' + queryType + '.html')
+        }
         if (!this.allCmsRoute.hasOwnProperty(queryType)) {
           this.$router.replace({
             name: 'Register'
@@ -295,8 +327,8 @@
       })
     },
     methods: {
-      isIe (){
-        return (!!window.ActiveXObject||'ActiveXObject' in window)
+      isIe () {
+        return (!!window.ActiveXObject || 'ActiveXObject' in window)
       },
       agreementsClosed () {
         this.agreementsModal.shown = false
