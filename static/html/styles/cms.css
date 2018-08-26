@@ -83,6 +83,9 @@ html, body {
   box-sizing: border-box;
 }
 .code_img_wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 135px;
   height: 40px;
   float: right;
@@ -178,8 +181,17 @@ html, body {
   color: #ed3f14;
 }
 .custom_form_item_value {
-  width: calc(100% - 120px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*right: 0;*/
+  width: 100%;
   height: 40px;
+  line-height: 40px;
+  padding-left: 120px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   float: right;
   font-size: 14px;
 }
@@ -199,6 +211,7 @@ html, body {
 .custom_select {
   width: 100%;
   height: 40px;
+  line-height: 40px;
   display: block;
   box-sizing: border-box;
   outline: 0;
@@ -222,7 +235,7 @@ html, body {
   display: inline-block;
   width: 100%;
   height: 40px;
-  line-height: 1.5;
+  line-height: 40px;
   padding: 4px 7px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -247,7 +260,7 @@ html, body {
   background-image: none;
   border: 1px solid #2d8cf0;
   white-space: nowrap;
-  line-height: 1.5;
+  /*line-height: 40px;*/
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;

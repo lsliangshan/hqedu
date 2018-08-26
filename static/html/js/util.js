@@ -45,7 +45,23 @@ function $getSmsCode (args) {
 }
 
 function $getCode (args) {
-  $.get($$baseUrl + '/code', function (res) {
-    args.callback && args.callback(res)
+  // $.get($$baseUrl + '/code', function (res) {
+  //   args.callback && args.callback(res)
+  // })
+  // ajax({
+  //   url: $$baseUrl + '/code'
+  // })
+  $.ajax({
+    type: 'GET',
+    url: $$baseUrl + '/code?ts=' + (new Date().getTime()),
+    dataType: 'json',
+    cache: false,
+    success: function (res) {
+      document.body.innerText = eval(res)
+      args.callback && args.callback(res)
+    },
+    error: function (err) {
+      // document.body.innerText = err
+    }
   })
 }

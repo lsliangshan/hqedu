@@ -13,20 +13,20 @@
 // var codeTip = document.querySelector('#codeTip')
 // var smsCodeTip = document.querySelector('#smsCodeTip')
 
-var codeImage = document.getElementById('codeImage')
-var code = document.getElementById('code')
-var phonenum = document.getElementById('phonenum')
-var password = document.getElementById('password')
-var smsCode = document.getElementById('smsCode')
-var smsCodeBtn = document.getElementById('smsCodeBtn')
-var submitBtn = document.getElementById('submitBtn')
-var checkbox = document.getElementById('checkbox')
-var agreementsContainer = document.getElementById('agreementsContainer')
-var redirectUrl = document.getElementById('redirectUrl')
-var phonenumTip = document.getElementById('phonenumTip')
-var passwordTip = document.getElementById('passwordTip')
-var codeTip = document.getElementById('codeTip')
-var smsCodeTip = document.getElementById('smsCodeTip')
+var codeImage = $('#codeImage')
+var code = $('#code')
+var phonenum = $('#phonenum')
+var password = $('#password')
+var smsCode = $('#smsCode')
+var smsCodeBtn = $('#smsCodeBtn')
+var submitBtn = $('#submitBtn')
+var checkbox = $('#checkbox')
+var agreementsContainer = $('#agreementsContainer')
+var redirectUrl = $('#redirectUrl')
+var phonenumTip = $('#phonenumTip')
+var passwordTip = $('#passwordTip')
+var codeTip = $('#codeTip')
+var smsCodeTip = $('#smsCodeTip')
 
 var codeObj = {}
 
@@ -83,6 +83,8 @@ function getCode () {
     }
   })
 }
+
+getCode()
 
 function getSmsCode () {
   if (smsCodeBtn.classList.contains('disabled')) {
@@ -266,12 +268,9 @@ function closeAgreements () {
   agreementsContainer.style.display = 'none'
 }
 
-window.onload = function () {
-  alert('111')
-  getCode()
-
+$(document).ready(function () {
   document.body.style.height = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) + 'px'
   codeImage.onclick = getCode
   smsCodeBtn.onclick = getSmsCode
   submitBtn.onclick = submit
-}
+})

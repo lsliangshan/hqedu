@@ -313,7 +313,7 @@
     created () {
       this.$nextTick(async () => {
         let queryType = this.$route.params.queryType
-        if (!this.isIe()) {
+        if (this.isIe()) {
           location.replace('/static/html/cms/t/' + queryType + '.html')
         }
         if (!this.allCmsRoute.hasOwnProperty(queryType)) {
