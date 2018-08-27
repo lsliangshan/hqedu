@@ -1,5 +1,26 @@
 var $$baseUrl = 'http://api.hqwxedu.cn/spreead'
 
+function Ajax (args) {
+  var xmlHttpReq = null;
+  if (window.ActiveXObject) {
+    xmlHttpReq = new ActiveXObject('Microsoft.XMLHTTP');
+  } else if (window.XMLHttpRequest) {
+    xmlHttpReq = new XMLHttpRequest();
+  }
+  if (xmlHttpReq != null) {
+    xmlHttpReq.open('GET', args.url, true);
+    xmlHttpReq.onreadystatechange = RequestCallback;
+    xmlHttpReq.send(null);
+  }
+  function RequestCallback () {
+    if (xmlHttpReq.readyState == 4) {
+      if (xmlHttpReq.status == 200) {
+        args.callback && args.callback(xmlHttpReq.responseText);
+      }
+    }
+  }
+}
+
 function $setThirdLoginCookie (args) {
   var thirdWebSite = ['http://www.hqwx.com/landing.asp', 'http://www.edu24ol.com/landing.asp']
   for (var i = 0; i < thirdWebSite.length; i++) {
@@ -55,27 +76,20 @@ function $getCode (args) {
   //   type: 'GET',
   //   url: $$baseUrl + '/code?ts=' + (new Date().getTime()),
   //   dataType: 'json',
+  //   crossDomain: true,
+  //   // dataType: 'jsonp',
   //   cache: false,
   //   success: function (res) {
-  //     document.body.innerText = eval(res)
-  //     args.callback && args.callback(res)
+  //     args.callback && args.callback(eval(res))
   //   },
   //   error: function (err) {
-  //     // document.body.innerText = err
+  //
   //   }
   // })
-  $.ajax({
-    type: 'GET',
+  Ajax({
     url: $$baseUrl + '/code?ts=' + (new Date().getTime()),
-    dataType: 'json',
-    crossDomain: true,
-    // dataType: 'jsonp',
-    cache: false,
-    success: function (res) {
-      args.callback && args.callback(eval(res))
-    },
-    error: function (err) {
-
+    callback: function (res) {
+      args.callback && args.callback(res);
     }
   })
 }

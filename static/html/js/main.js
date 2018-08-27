@@ -73,12 +73,13 @@ function setThirdLoginCookie (args) {
 function getCode () {
   $getCode({
     callback: function (res) {
+      document.getElementById('cmsWrapper').innerHTML = res
       if (['200', '1'].indexOf(res.statusCode) > -1) {
         codeObj = {
           codeString: res.data.codeString,
           verifyCodeStr: res.data.verifyCodeStr
         }
-        codeImage.setAttribute('src', res.data.verifyCodeStr)
+        codeImage.setAttribute('src', JSON.parse(res).data.verifyCodeStr)
       }
     }
   })
@@ -266,8 +267,8 @@ function closeAgreements () {
   agreementsContainer.style.display = 'none'
 }
 
+getCode()
 window.onload = function () {
-  getCode()
 
   document.body.style.height = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) + 'px'
   codeImage.onclick = getCode
