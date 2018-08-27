@@ -267,7 +267,6 @@ function closeAgreements () {
 }
 
 window.onload = function () {
-  alert('111')
   getCode()
 
   document.body.style.height = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) + 'px'
