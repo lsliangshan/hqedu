@@ -36,6 +36,10 @@ var smsCodeTimer = {
   defaultCountDown: 60
 }
 
+function console (message) {
+  document.getElementById('cmsWrapper').innerHTML = message;
+}
+
 function clearAllTips () {
   phonenumTip.innerText = ''
   passwordTip.innerText = ''
@@ -73,20 +77,34 @@ function setThirdLoginCookie (args) {
 function getCode () {
   $getCode({
     callback: function (res) {
-      document.getElementById('cmsWrapper').innerHTML = res
-      if (['200', '1'].indexOf(res.statusCode) > -1) {
+      if (String(res.statusCode) === '200' || String(res.statusCode) === '1') {
         codeObj = {
           codeString: res.data.codeString,
           verifyCodeStr: res.data.verifyCodeStr
         }
-        codeImage.setAttribute('src', JSON.parse(res).data.verifyCodeStr)
+        codeImage.setAttribute('src', res.data.verifyCodeStr)
       }
     }
   })
 }
-
+function _resetSmsCodeBtn () {
+  smsCodeTimer.countdown = smsCodeTimer.defaultCountDown
+  clearInterval(smsCodeTimer.interval)
+  smsCodeTimer.interval = 0
+  smsCodeBtn.innerHTML = '获取短信验证码'
+  $(smsCodeBtn).hasClass('disabled') && $(smsCodeBtn).removeClass('disabled')
+}
+function _timerFunc () {
+  if (smsCodeTimer.countdown <= 1) {
+    _resetSmsCodeBtn()
+  } else {
+    smsCodeTimer.countdown -= 1
+    smsCodeBtn.innerHTML = smsCodeTimer.countdown + '秒后重新获取'
+    !$(smsCodeBtn).hasClass('disabled') && $(smsCodeBtn).addClass('disabled')
+  }
+}
 function getSmsCode () {
-  if (smsCodeBtn.classList.contains('disabled')) {
+  if ($(smsCodeBtn).hasClass('disabled')) {
     return
   }
   if (!/^1[3456789]\d{9}$/.test(phonenum.value)) {
@@ -97,8 +115,8 @@ function getSmsCode () {
     alert('图形验证码不能为空')
   } else if (!smsCodeTimer.interval) {
     smsCodeTimer.countdown -= 1
-    smsCodeBtn.innerText = smsCodeTimer.countdown + '秒后重新获取'
-    !smsCodeBtn.classList.contains('disabled') && smsCodeBtn.classList.add('disabled')
+    smsCodeBtn.innerHTML = smsCodeTimer.countdown + '秒后重新获取'
+    !$(smsCodeBtn).hasClass('disabled') && $(smsCodeBtn).addClass('disabled')
     $getSmsCode({
       phone: phonenum.value,
       verifyCode: code.value,
@@ -107,10 +125,12 @@ function getSmsCode () {
         if (String(responseData.statusCode) !== '200') {
           alert('获取短信验证码失败，请稍后重试')
         } else {
-          if (['200', '1'].indexOf(String(responseData.data.status)) < 0) {
+          if (String(responseData.data.status) !== '200' && String(responseData.data.status) !== '1') {
             // 获取短信验证码失败
             // 刷新图形验证码
             getCode()
+            // 重置 获取短信验证码 按钮
+            _resetSmsCodeBtn()
             alert(responseData.data.message || '获取短信验证码失败，请重试')
           } else {
             alert(responseData.data.message || '短信验证码已经发送')
@@ -118,19 +138,7 @@ function getSmsCode () {
         }
       }
     })
-    smsCodeTimer.interval = setInterval(function () {
-      if (smsCodeTimer.countdown <= 1) {
-        smsCodeTimer.countdown = smsCodeTimer.defaultCountDown
-        clearInterval(smsCodeTimer.interval)
-        smsCodeTimer.interval = 0
-        smsCodeBtn.innerText = '获取短信验证码'
-        smsCodeBtn.classList.contains('disabled') && smsCodeBtn.classList.remove('disabled')
-      } else {
-        smsCodeTimer.countdown -= 1
-        smsCodeBtn.innerText = smsCodeTimer.countdown + '秒后重新获取'
-        !smsCodeBtn.classList.contains('disabled') && smsCodeBtn.classList.add('disabled')
-      }
-    }, 1000)
+    smsCodeTimer.interval = setInterval(_timerFunc, 1000)
   }
 }
 
@@ -147,7 +155,7 @@ function login (args) {
       pwd: password.value
     }
     requestParams.callback = function (responseData) {
-      if (String(responseData.statusCode) === '200' && ['200', '1'].indexOf(String(responseData.data.status)) > -1) {
+      if (String(responseData.statusCode) === '200' && (String(responseData.data.status) === '200' || String(responseData.data.status) === '1')) {
         setThirdLoginCookie({
           passport: responseData.data.data.passport,
           token: responseData.data.data.token,
@@ -180,7 +188,7 @@ function register (args) {
     alert('请先同意网站注册协议')
   } else {
     // 注册
-    !submitBtn.classList.contains('disabled') && submitBtn.classList.add('disabled')
+    !$(submitBtn).hasClass('disabled') && $(submitBtn).addClass('disabled')
     var requestParams = {
       phone: phonenum.value,
       pwd: password.value,
@@ -222,27 +230,27 @@ function beforeSubmit () {
 }
 
 function submit () {
-  if (submitBtn.classList.contains('disabled')) {
+  if ($(submitBtn).hasClass('disabled')) {
     return
   }
   if (beforeSubmit()) {
     register({
       callback: function (responseData) {
         clearAllTips()
-        if (submitBtn.classList.contains('disabled')) {
-          submitBtn.classList.remove('disabled')
+        if ($(submitBtn).hasClass('disabled')) {
+          $(submitBtn).removeClass('disabled')
         }
         if (String(responseData.statusCode) !== '200') {
           alert('注册失败，请稍后重试')
         } else {
-          if (['200', '1'].indexOf(String(responseData.data.status)) > -1) {
+          if (String(responseData.data.status) === '200' || String(responseData.data.status) === '1') {
             // 注册成功，静默登录
             login({
               callback: function (res) {
                 if (String(res.statusCode) !== '200') {
                   location.replace('http://www.hqwx.com/login/?gotohere=' + encodeURIComponent(redirectUrl.value))
                 } else {
-                  if (['200', '1'].indexOf(String(responseData.status)) < 0) {
+                  if (String(responseData.status) !== '200' && String(responseData.status) !== '1') {
                     location.replace('http://www.hqwx.com/login/?gotohere=' + encodeURIComponent(redirectUrl.value))
                   } else {
                     location.replace(redirectUrl.value)
@@ -251,6 +259,7 @@ function submit () {
               }
             })
           } else {
+            location.replace('http://www.hqwx.com/login/?gotohere=' + encodeURIComponent(redirectUrl.value))
             alert(responseData.data.message)
           }
         }
@@ -269,8 +278,9 @@ function closeAgreements () {
 
 getCode()
 window.onload = function () {
-
-  document.body.style.height = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) + 'px'
+  var bodyHeight = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)
+  document.body.style.height = bodyHeight + 'px';
+  document.getElementById('agreementsBody').style.height = (bodyHeight * 0.9 - 51) + 'px';
   codeImage.onclick = getCode
   smsCodeBtn.onclick = getSmsCode
   submitBtn.onclick = submit

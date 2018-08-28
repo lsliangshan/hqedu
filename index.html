@@ -9,6 +9,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
     <title>HQEDU</title>
+    <script type="text/javascript">
+      if (!!window.ActiveXObject || 'ActiveXObject' in window) {
+        location.replace(location.href.replace(/^.*(cms\/t\/)([0-9a-z_]*)$/, function (i1, i2, i3) {
+          return location.protocol + '//' + location.host + '/static/html/' + i2 + i3 + '.html'
+        }))
+      }
+    </script>
     <script>
       // function isIe(){
       //   if(!!window.ActiveXObject||'ActiveXObject' in window){
@@ -29,7 +36,7 @@
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    <script>
+    <script type="text/javascript">
       (function(b,a,e,h,f,c,g,s){b[h]=b[h]||function(){(b[h].c=b[h].c||[]).push(arguments)};
         b[h].s=!!c;g=a.getElementsByTagName(e)[0];s=a.createElement(e);
         s.src="//s.union.360.cn/"+f+".js";s.defer=!0;s.async=!0;g.parentNode.insertBefore(s,g)

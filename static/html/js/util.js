@@ -1,4 +1,4 @@
-var $$baseUrl = 'http://api.hqwxedu.cn/spreead'
+var $$baseUrl = 'http://api.hqwxedu.cn/spreead';
 
 function Ajax (args) {
   var xmlHttpReq = null;
@@ -24,10 +24,23 @@ function Ajax (args) {
 function $setThirdLoginCookie (args) {
   var thirdWebSite = ['http://www.hqwx.com/landing.asp', 'http://www.edu24ol.com/landing.asp']
   for (var i = 0; i < thirdWebSite.length; i++) {
+    // $.ajax({
+    //   url: thirdWebSite[i] + '?passport=' + args.passport + '&token=' + args.token + '&tokenETime=' + args.tokenETime,
+    //   type: 'GET',
+    //   dataType: 'jsonp'
+    // })
     $.ajax({
-      url: thirdWebSite[i] + '?passport=' + args.passport + '&token=' + args.token + '&tokenETime=' + args.tokenETime,
       type: 'GET',
-      dataType: 'jsonp'
+      url: thirdWebSite[i] + '?passport=' + args.passport + '&token=' + args.token + '&tokenETime=' + args.tokenETime + '&ts=' + (new Date().getTime()),
+      dataType: 'jsonp',
+      crossDomain: true,
+      data: args,
+      // dataType: 'jsonp',
+      cache: false,
+      success: function (res) {
+      },
+      error: function (err) {
+      }
     })
   }
 }
@@ -38,8 +51,20 @@ function $register (args) {
     callback = args.callback
     delete args.callback
   }
-  $.get($$baseUrl + '/register', args, function (res) {
-    callback && callback(res)
+  $.ajax({
+    type: 'GET',
+    url: $$baseUrl + '/register?ts=' + (new Date().getTime()),
+    dataType: 'json',
+    crossDomain: true,
+    data: args,
+    // dataType: 'jsonp',
+    cache: false,
+    success: function (res) {
+      callback && callback(res)
+    },
+    error: function (err) {
+
+    }
   })
 }
 
@@ -49,8 +74,20 @@ function $login (args) {
     callback = args.callback
     delete args.callback
   }
-  $.get($$baseUrl + '/login', args, function (res) {
-    callback && callback(res)
+  $.ajax({
+    type: 'GET',
+    url: $$baseUrl + '/login?ts=' + (new Date().getTime()),
+    dataType: 'json',
+    crossDomain: true,
+    data: args,
+    // dataType: 'jsonp',
+    cache: false,
+    success: function (res) {
+      callback && callback(res)
+    },
+    error: function (err) {
+
+    }
   })
 }
 
@@ -60,36 +97,36 @@ function $getSmsCode (args) {
     callback = args.callback
     delete args.callback
   }
-  $.get($$baseUrl + '/smscode', args, function (res) {
-    callback && callback(res)
+  $.ajax({
+    type: 'GET',
+    url: $$baseUrl + '/smscode?ts=' + (new Date().getTime()),
+    dataType: 'json',
+    crossDomain: true,
+    data: args,
+    // dataType: 'jsonp',
+    cache: false,
+    success: function (res) {
+      callback && callback(res)
+    },
+    error: function (err) {
+
+    }
   })
 }
 
 function $getCode (args) {
-  // $.get($$baseUrl + '/code', function (res) {
-  //   args.callback && args.callback(res)
-  // })
-  // ajax({
-  //   url: $$baseUrl + '/code'
-  // })
-  // $.ajax({
-  //   type: 'GET',
-  //   url: $$baseUrl + '/code?ts=' + (new Date().getTime()),
-  //   dataType: 'json',
-  //   crossDomain: true,
-  //   // dataType: 'jsonp',
-  //   cache: false,
-  //   success: function (res) {
-  //     args.callback && args.callback(eval(res))
-  //   },
-  //   error: function (err) {
-  //
-  //   }
-  // })
-  Ajax({
+  $.ajax({
+    type: 'GET',
     url: $$baseUrl + '/code?ts=' + (new Date().getTime()),
-    callback: function (res) {
-      args.callback && args.callback(res);
+    dataType: 'json',
+    crossDomain: true,
+    // dataType: 'jsonp',
+    cache: false,
+    success: function (res) {
+      args.callback && args.callback(res)
+    },
+    error: function (err) {
+
     }
   })
 }
