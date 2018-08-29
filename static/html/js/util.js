@@ -55,6 +55,7 @@ function $register (args) {
     type: 'GET',
     url: $$baseUrl + '/register?ts=' + (new Date().getTime()),
     dataType: 'json',
+    timeout : 5000,
     crossDomain: true,
     data: args,
     // dataType: 'jsonp',

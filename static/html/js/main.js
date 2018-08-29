@@ -27,6 +27,7 @@ var phonenumTip = document.getElementById('phonenumTip')
 var passwordTip = document.getElementById('passwordTip')
 var codeTip = document.getElementById('codeTip')
 var smsCodeTip = document.getElementById('smsCodeTip')
+var sortId = document.getElementById('sortId')
 
 var codeObj = {}
 
@@ -203,7 +204,7 @@ function register (args) {
       phone: phonenum.value,
       pwd: password.value,
       smsCode: smsCode.value,
-      sortId: '5785'
+      sortId: sortId.value
     }
     if (args.callback) {
       requestParams.callback = args.callback

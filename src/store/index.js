@@ -663,6 +663,332 @@ const store = new Vuex.Store({
           ]
         },
         redirectUrl: 'http://www.hqwx.com/web_news/html/2018-1/15160687163579.html' // 表单提交后 重定向的地址
+      },
+      zjgcs: {
+        sortId: '567',
+        title: '造价工程师全国统一考试报名时间查询系统',
+        enTitle: 'COST ENGINEER NATIONAL UNIFIED EXAMINATION REGISTRATION TIME INQUIRY SYSTEM',
+        queryTitle: '造价工程师报名时间自助查询',
+        formItems: [
+          {
+            label: '省份',
+            placeholder: '请选择您所在的省份',
+            name: 'txtsheng',
+            type: 'select',
+            defaultValue: '',
+            data: [
+              {
+                text: '安徽',
+                value: '安徽'
+              },
+              {
+                text: '北京',
+                value: '北京'
+              },
+              {
+                text: '重庆',
+                value: '重庆'
+              },
+              {
+                text: '福建',
+                value: '福建'
+              },
+              {
+                text: '甘肃',
+                value: '甘肃'
+              },
+              {
+                text: '广东',
+                value: '广东'
+              },
+              {
+                text: '广西',
+                value: '广西'
+              },
+              {
+                text: '贵州',
+                value: '贵州'
+              },
+              {
+                text: '海南',
+                value: '海南'
+              },
+              {
+                text: '河北',
+                value: '河北'
+              },
+              {
+                text: '黑龙江',
+                value: '黑龙江'
+              },
+              {
+                text: '河南',
+                value: '河南'
+              },
+              {
+                text: '湖北',
+                value: '湖北'
+              },
+              {
+                text: '湖南',
+                value: '湖南'
+              },
+              {
+                text: '江苏',
+                value: '江苏'
+              },
+              {
+                text: '江西',
+                value: '江西'
+              },
+              {
+                text: '吉林',
+                value: '吉林'
+              },
+              {
+                text: '辽宁',
+                value: '辽宁'
+              },
+              {
+                text: '内蒙古',
+                value: '内蒙古'
+              },
+              {
+                text: '宁夏',
+                value: '宁夏'
+              },
+              {
+                text: '青海',
+                value: '青海'
+              },
+              {
+                text: '山东',
+                value: '山东'
+              },
+              {
+                text: '上海',
+                value: '上海'
+              },
+              {
+                text: '山西',
+                value: '山西'
+              },
+              {
+                text: '陕西',
+                value: '陕西'
+              },
+              {
+                text: '四川',
+                value: '四川'
+              },
+              {
+                text: '天津',
+                value: '天津'
+              },
+              {
+                text: '新疆',
+                value: '新疆'
+              },
+              {
+                text: '西藏',
+                value: '西藏'
+              },
+              {
+                text: '云南',
+                value: '云南'
+              },
+              {
+                text: '浙江',
+                value: '浙江'
+              }
+            ]
+          }
+          // ,
+          // {
+          //   label: '姓名',
+          //   placeholder: '请输入您的姓名',
+          //   type: 'input',
+          //   name: 'txtusername',
+          //   defaultValue: '',
+          //   data: []
+          // }
+        ],
+        btnText: '获取报考时间',
+        tips: {
+          title: '友情提示',
+          content: [
+            {
+              text: '注册时请务必输入正确的姓名和手机号码，以免影响考后成绩查询'
+            },
+            {
+              text: '报考时间及报名须知通过短信发送或电话审核形式，请注意查看手机'
+            }
+          ]
+        },
+        redirectUrl: 'http://user.hqwx.com' // 表单提交后 重定向的地址
+      },
+      jjs: {
+        sortId: '12555',
+        title: '经济师全国统一考试报名时间查询系统',
+        enTitle: 'ECOMNOMIST NATIONAL UNIFIED EXAMINATION REGISTRATION TIME INQUIRY SYSTEM',
+        queryTitle: '经济师报名时间自助查询',
+        formItems: [
+          {
+            label: '省份',
+            placeholder: '请选择您所在的省份',
+            name: 'txtsheng',
+            type: 'select',
+            defaultValue: '',
+            data: [
+              {
+                text: '安徽',
+                value: '安徽'
+              },
+              {
+                text: '北京',
+                value: '北京'
+              },
+              {
+                text: '重庆',
+                value: '重庆'
+              },
+              {
+                text: '福建',
+                value: '福建'
+              },
+              {
+                text: '甘肃',
+                value: '甘肃'
+              },
+              {
+                text: '广东',
+                value: '广东'
+              },
+              {
+                text: '广西',
+                value: '广西'
+              },
+              {
+                text: '贵州',
+                value: '贵州'
+              },
+              {
+                text: '海南',
+                value: '海南'
+              },
+              {
+                text: '河北',
+                value: '河北'
+              },
+              {
+                text: '黑龙江',
+                value: '黑龙江'
+              },
+              {
+                text: '河南',
+                value: '河南'
+              },
+              {
+                text: '湖北',
+                value: '湖北'
+              },
+              {
+                text: '湖南',
+                value: '湖南'
+              },
+              {
+                text: '江苏',
+                value: '江苏'
+              },
+              {
+                text: '江西',
+                value: '江西'
+              },
+              {
+                text: '吉林',
+                value: '吉林'
+              },
+              {
+                text: '辽宁',
+                value: '辽宁'
+              },
+              {
+                text: '内蒙古',
+                value: '内蒙古'
+              },
+              {
+                text: '宁夏',
+                value: '宁夏'
+              },
+              {
+                text: '青海',
+                value: '青海'
+              },
+              {
+                text: '山东',
+                value: '山东'
+              },
+              {
+                text: '上海',
+                value: '上海'
+              },
+              {
+                text: '山西',
+                value: '山西'
+              },
+              {
+                text: '陕西',
+                value: '陕西'
+              },
+              {
+                text: '四川',
+                value: '四川'
+              },
+              {
+                text: '天津',
+                value: '天津'
+              },
+              {
+                text: '新疆',
+                value: '新疆'
+              },
+              {
+                text: '西藏',
+                value: '西藏'
+              },
+              {
+                text: '云南',
+                value: '云南'
+              },
+              {
+                text: '浙江',
+                value: '浙江'
+              }
+            ]
+          }
+          // ,
+          // {
+          //   label: '姓名',
+          //   placeholder: '请输入您的姓名',
+          //   type: 'input',
+          //   name: 'txtusername',
+          //   defaultValue: '',
+          //   data: []
+          // }
+        ],
+        btnText: '获取报考时间',
+        tips: {
+          title: '友情提示',
+          content: [
+            {
+              text: '注册时请务必输入正确的姓名和手机号码，以免影响考后成绩查询'
+            },
+            {
+              text: '报考时间及报名须知通过短信发送或电话审核形式，请注意查看手机'
+            }
+          ]
+        },
+        redirectUrl: 'http://user.hqwx.com' // 表单提交后 重定向的地址
       }
     },
     eventHub: new Vue(),
