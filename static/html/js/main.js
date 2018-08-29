@@ -36,6 +36,8 @@ var smsCodeTimer = {
   defaultCountDown: 60
 }
 
+var codeBtnTs = 0;
+
 function console (message) {
   document.getElementById('cmsWrapper').innerHTML = message;
 }
@@ -75,17 +77,25 @@ function setThirdLoginCookie (args) {
 }
 
 function getCode () {
-  $getCode({
-    callback: function (res) {
-      if (String(res.statusCode) === '200' || String(res.statusCode) === '1') {
-        codeObj = {
-          codeString: res.data.codeString,
-          verifyCodeStr: res.data.verifyCodeStr
+  /***
+   * 5s内禁止重复请求
+   * @type {number}
+   */
+  var nowTs = (new Date()).getTime();
+  if (nowTs - codeBtnTs > 5 * 1000) {
+    codeBtnTs = nowTs;
+    $getCode({
+      callback: function (res) {
+        if (String(res.statusCode) === '200' || String(res.statusCode) === '1') {
+          codeObj = {
+            codeString: res.data.codeString,
+            verifyCodeStr: res.data.verifyCodeStr
+          }
+          codeImage.setAttribute('src', res.data.verifyCodeStr)
         }
-        codeImage.setAttribute('src', res.data.verifyCodeStr)
       }
-    }
-  })
+    })
+  }
 }
 function _resetSmsCodeBtn () {
   smsCodeTimer.countdown = smsCodeTimer.defaultCountDown
@@ -277,6 +287,7 @@ function closeAgreements () {
 }
 
 getCode()
+codeBtnTs = 0;
 window.onload = function () {
   var bodyHeight = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)
   document.body.style.height = bodyHeight + 'px';

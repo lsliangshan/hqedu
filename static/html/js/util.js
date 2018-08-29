@@ -78,6 +78,7 @@ function $login (args) {
     type: 'GET',
     url: $$baseUrl + '/login?ts=' + (new Date().getTime()),
     dataType: 'json',
+    timeout : 5000,
     crossDomain: true,
     data: args,
     // dataType: 'jsonp',
@@ -86,7 +87,6 @@ function $login (args) {
       callback && callback(res)
     },
     error: function (err) {
-
     }
   })
 }
@@ -101,6 +101,7 @@ function $getSmsCode (args) {
     type: 'GET',
     url: $$baseUrl + '/smscode?ts=' + (new Date().getTime()),
     dataType: 'json',
+    timeout : 5000,
     crossDomain: true,
     data: args,
     // dataType: 'jsonp',
@@ -109,7 +110,9 @@ function $getSmsCode (args) {
       callback && callback(res)
     },
     error: function (err) {
-
+      if (err.statusText.indexOf('timeout') > -1) {
+        alert('获取短信验证码超时，请稍后再试');
+      }
     }
   })
 }
@@ -119,6 +122,7 @@ function $getCode (args) {
     type: 'GET',
     url: $$baseUrl + '/code?ts=' + (new Date().getTime()),
     dataType: 'json',
+    timeout : 5000,
     crossDomain: true,
     // dataType: 'jsonp',
     cache: false,
@@ -126,7 +130,9 @@ function $getCode (args) {
       args.callback && args.callback(res)
     },
     error: function (err) {
-
+      if (err.statusText.indexOf('timeout') > -1) {
+        alert('获取图形验证码超时，请稍后再试');
+      }
     }
   })
 }
