@@ -825,7 +825,7 @@ const store = new Vuex.Store({
             }
           ]
         },
-        redirectUrl: 'http://user.hqwx.com' // 表单提交后 重定向的地址
+        redirectUrl: 'http://www.hqwx.com/leraning/class_zaojia' // 表单提交后 重定向的地址
       },
       jjs: {
         sortId: '12555',
@@ -988,7 +988,141 @@ const store = new Vuex.Store({
             }
           ]
         },
-        redirectUrl: 'http://user.hqwx.com' // 表单提交后 重定向的地址
+        redirectUrl: 'http://www.hqwx.com/leraning/class_cjjjs' // 表单提交后 重定向的地址
+      },
+      zjgcstj: {
+        sortId: '567',
+        title: '造价工程师报名条件审核系统',
+        enTitle: 'COST ENGINEER REGISTRATION CONDITION AUDIT SYSTEM',
+        queryTitle: '造价工程师报考条件自助查询',
+        formItems: [
+          {
+            label: '学历',
+            placeholder: '请选择您的学历',
+            name: 'txtxueli',
+            type: 'select',
+            defaultValue: '',
+            data: [
+              {
+                text: '大专',
+                value: '大专'
+              },
+              {
+                text: '本科',
+                value: '本科'
+              },
+              {
+                text: '研究生',
+                value: '研究生'
+              },
+              {
+                text: '博士',
+                value: '博士'
+              },
+              {
+                text: '其他',
+                value: '其他'
+              }
+            ]
+          },
+          {
+            label: '专业',
+            placeholder: '请选择您的专业',
+            type: 'select',
+            name: 'txtzhuanye',
+            defaultValue: '',
+            data: [
+              {
+                text: '造价相关专业',
+                value: '造价相关专业'
+              },
+              {
+                text: '非造价相关专业',
+                value: '非造价相关专业'
+              }
+            ]
+          }
+        ],
+        btnText: '立即获取查询结果',
+        tips: {
+          title: '友情提示',
+          content: [
+            {
+              text: '注册时请务必输入正确的姓名和手机号码，以免影响考后成绩查询'
+            },
+            {
+              text: '预约或者咨询请致电 : 4006783456'
+            }
+          ]
+        },
+        redirectUrl: 'http://www.hqwx.com/leraning/class_zaojia' // 表单提交后 重定向的地址
+      },
+      jjstj: {
+        sortId: '12555',
+        title: '经济师报名条件审核系统',
+        enTitle: 'ECONOMIST REGISTRATION CONDITION REVIEW SYSTEM',
+        queryTitle: '经济师报名时间自助查询',
+        formItems: [
+          {
+            label: '学历',
+            placeholder: '请选择您的学历',
+            name: 'txtxueli',
+            type: 'select',
+            defaultValue: '',
+            data: [
+              {
+                text: '大专',
+                value: '大专'
+              },
+              {
+                text: '本科',
+                value: '本科'
+              },
+              {
+                text: '研究生',
+                value: '研究生'
+              },
+              {
+                text: '博士',
+                value: '博士'
+              },
+              {
+                text: '其他',
+                value: '其他'
+              }
+            ]
+          },
+          {
+            label: '专业',
+            placeholder: '请选择您的专业',
+            type: 'select',
+            name: 'txtzhuanye',
+            defaultValue: '',
+            data: [
+              {
+                text: '经济师相关专业',
+                value: '经济师相关专业'
+              },
+              {
+                text: '非经济师相关专业',
+                value: '非经济师相关专业'
+              }
+            ]
+          }
+        ],
+        btnText: '立即获取查询结果',
+        tips: {
+          title: '友情提示',
+          content: [
+            {
+              text: '注册时请务必输入正确的姓名和手机号码，以免影响考后成绩查询'
+            },
+            {
+              text: '预约或者咨询请致电 : 4006783456'
+            }
+          ]
+        },
+        redirectUrl: 'http://www.hqwx.com/leraning/class_cjjjs' // 表单提交后 重定向的地址
       }
     },
     eventHub: new Vue(),
