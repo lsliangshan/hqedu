@@ -81,6 +81,17 @@ export const routerCms = [
   }
 ]
 
+export const routerPage = [
+  {
+    path: _path + '/:pageName',
+    name: 'PageIndex',
+    meta: {},
+    components: {
+      HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/pages/index/Index.vue`)
+    }
+  }
+]
+
 export const contentRouter = {
   path: '/',
   redirect: _path + '/register',
@@ -118,6 +129,7 @@ export default new Router({
     routerAgreements,
     routerUser,
     ...routerCms,
+    ...routerPage,
     contentRouter,
     page404
   ]
