@@ -894,7 +894,67 @@ const store = new Vuex.Store({
           href: 'http://www.hqwx.com/register'
         }],
         live: {
-          bg: '/static/images/pages/bg3.gif'
+          bg: '/static/images/pages/bg3.gif',
+          class: [
+            {
+              startTime: 1536114600000,
+              endTime: 1536118200000,
+              category: '经济基础',
+              theme: '#ef5e32',
+              teacher: {
+                headIcon: '/static/images/pages/t1.png',
+                profile: '刘艳霞老师，13年经济师考试辅导经验，经济师辅导知名讲师。',
+                name: '刘艳霞'
+              },
+              course: {
+                name: '会计报表',
+                subject: '会计报表'
+              },
+              btn: '进入课堂',
+              href: '/register',
+              tag: false
+            },
+            {
+              startTime: 1536130800000,
+              endTime: 1536134400000,
+              category: '人力直播',
+              theme: '#ef5e32',
+              teacher: {
+                headIcon: '/static/images/pages/t2.png',
+                profile: '赵照，主讲经济师中级人力资源管理专业实务等其他人力资源管理辅导课程。长期从事人...',
+                name: '赵照'
+              },
+              course: {
+                name: '组织变革与发展',
+                subject: '组织变革与发展'
+              },
+              btn: '立即预约',
+              href: '/register',
+              tag: false
+            },
+            {
+              startTime: 1536231600000,
+              endTime: 1536238800000,
+              category: '经济基础',
+              theme: '#3ac648',
+              teacher: {
+                headIcon: '/static/images/pages/t1.png',
+                profile: '刘艳霞老师，13年经济师考试辅导经验，经济师辅导知名讲师。',
+                name: '刘艳霞'
+              },
+              course: {
+                name: '经济基础考点强化公开课',
+                subject: '2018中级经济基础-考点强化公开课'
+              },
+              btn: '立即预约',
+              href: '/register',
+              tag: {
+                text: '峰会',
+                bgColor: 'rgba(72, 196, 78, 1)'
+                // bgColor: 'rgba(235, 96, 57, 1)'
+              }
+            }
+          ]
         }
       },
       yijixiaofangreg: {
