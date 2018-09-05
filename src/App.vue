@@ -159,4 +159,8 @@
     height: 38px!important;
     line-height: 38px!important;
   }
+
+  .course_signup_container .ivu-collapse>.ivu-collapse-item>.ivu-collapse-header {
+    padding-left: 16px;
+  }
 </style>

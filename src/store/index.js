@@ -895,66 +895,124 @@ const store = new Vuex.Store({
         }],
         live: {
           bg: '/static/images/pages/bg3.gif',
-          class: [
-            {
-              startTime: 1536114600000,
-              endTime: 1536118200000,
-              category: '经济基础',
-              theme: '#ef5e32',
-              teacher: {
-                headIcon: '/static/images/pages/t1.png',
-                profile: '刘艳霞老师，13年经济师考试辅导经验，经济师辅导知名讲师。',
-                name: '刘艳霞'
-              },
-              course: {
-                name: '会计报表',
-                subject: '会计报表'
-              },
-              btn: '进入课堂',
-              href: '/register',
-              tag: false
+          class: [{
+            startTime: 1536114600000,
+            endTime: 1536118200000,
+            category: '经济基础',
+            theme: '#ef5e32',
+            teacher: {
+              headIcon: '/static/images/pages/t1.png',
+              profile: '刘艳霞老师，13年经济师考试辅导经验，经济师辅导知名讲师。',
+              name: '刘艳霞'
             },
-            {
-              startTime: 1536130800000,
-              endTime: 1536134400000,
-              category: '人力直播',
-              theme: '#ef5e32',
-              teacher: {
-                headIcon: '/static/images/pages/t2.png',
-                profile: '赵照，主讲经济师中级人力资源管理专业实务等其他人力资源管理辅导课程。长期从事人...',
-                name: '赵照'
-              },
-              course: {
-                name: '组织变革与发展',
-                subject: '组织变革与发展'
-              },
-              btn: '立即预约',
-              href: '/register',
-              tag: false
+            course: {
+              name: '会计报表',
+              subject: '会计报表'
             },
-            {
-              startTime: 1536231600000,
-              endTime: 1536238800000,
-              category: '经济基础',
-              theme: '#3ac648',
-              teacher: {
-                headIcon: '/static/images/pages/t1.png',
-                profile: '刘艳霞老师，13年经济师考试辅导经验，经济师辅导知名讲师。',
-                name: '刘艳霞'
-              },
-              course: {
-                name: '经济基础考点强化公开课',
-                subject: '2018中级经济基础-考点强化公开课'
-              },
-              btn: '立即预约',
-              href: '/register',
-              tag: {
-                text: '峰会',
-                bgColor: 'rgba(72, 196, 78, 1)'
-                // bgColor: 'rgba(235, 96, 57, 1)'
-              }
+            btn: '进入课堂',
+            href: '/register',
+            tag: false
+          }, {
+            startTime: 1536130800000,
+            endTime: 1536134400000,
+            category: '人力直播',
+            theme: '#ef5e32',
+            teacher: {
+              headIcon: '/static/images/pages/t2.png',
+              profile: '赵照，主讲经济师中级人力资源管理专业实务等其他人力资源管理辅导课程。长期从事人...',
+              name: '赵照'
+            },
+            course: {
+              name: '组织变革与发展',
+              subject: '组织变革与发展'
+            },
+            btn: '立即预约',
+            href: '/register',
+            tag: false
+          }, {
+            startTime: 1536231600000,
+            endTime: 1536238800000,
+            category: '经济基础',
+            theme: '#3ac648',
+            teacher: {
+              headIcon: '/static/images/pages/t1.png',
+              profile: '刘艳霞老师，13年经济师考试辅导经验，经济师辅导知名讲师。',
+              name: '刘艳霞'
+            },
+            course: {
+              name: '经济基础考点强化公开课',
+              subject: '2018中级经济基础-考点强化公开课'
+            },
+            btn: '立即预约',
+            href: '/register',
+            tag: {
+              text: '峰会',
+              bgColor: 'rgba(72, 196, 78, 1)'
+              // bgColor: 'rgba(235, 96, 57, 1)'
             }
-          ]
+          }]
+        },
+        consultation: {
+          img: '/static/images/pages/area.gif',
+          title: '住建部、财政部、卫生部、人事部培训合作单位',
+          subtitle: '您对经济师的所有疑问，网课一一为您解答！'
+        },
+        courseSignup: {
+          title: '免费领课',
+          step1: {
+            title: '① 选择免费开通的课程:',
+            list: [{
+              label: '初级经济师',
+              sublist: [{
+                label: '初级人力',
+                value: '2962'
+              }, {
+                label: '初级金融',
+                value: '2961'
+              }, {
+                label: '初级工商',
+                value: '2963'
+              }]
+            }, {
+              label: '中级经济师',
+              sublist: [{
+                label: '中级工商',
+                value: '2968'
+              }, {
+                label: '中级金融',
+                value: '2967'
+              }, {
+                label: '中级财税',
+                value: '2966'
+              }, {
+                label: '中级房地产',
+                value: '2965'
+              }, {
+                label: '中级建筑',
+                value: '2964'
+              }, {
+                label: '中级人力',
+                value: '2969'
+              }, {
+                label: '中级商业',
+                value: '2972'
+              }, {
+                label: '中级农业',
+                value: '2971'
+              }, {
+                label: '中级公路',
+                value: '2970'
+              }]
+            }]
+          },
+          step2: {
+            title: '② 设定您的学习账号:'
+          },
+          tips: {
+            text: '赠送2018年经济师课程包含：经济基础知识（初、中级）、专业知识与实务（初、中级）两门课程的备考指导班及精讲班（部分）及各科目的答疑服务。课程涵盖备考攻略；教材结构、考试分值及考试特点全面剖析；学习方法及复习计划指导等几方面的内容，现实免费开放。名额有限，报完即止！'
+          },
+          btn: '立即领取',
+          href: '/register'
         }
       },
       yijixiaofangreg: {

@@ -125,6 +125,7 @@
     cursor: pointer;
     background-color: #FFFFFF;
     transition: width .3s ease-in-out;
+    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.35);
   }
   .live_teacher_container:hover {
     width: 292px;
@@ -230,10 +231,7 @@
   	name: 'PageLive',
   	props: {
   		data: {
-  			type: Object,
-  			default () {
-  				return {}
-  			}
+  			type: Object
   		}
   	},
   	data () {
