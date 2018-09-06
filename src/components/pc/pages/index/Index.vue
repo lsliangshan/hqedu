@@ -2,7 +2,7 @@
   <div class="index_index">
     <headers :logo="pageData.header.logo" :tip1="pageData.header.tip1" :tip2="pageData.header.tip2"></headers>
     <banner v-if="pageData.banner && pageData.banner.length > 0" :data="pageData.banner" style="margin-bottom: 40px;"></banner>
-    <live v-if="pageData.live" :data="pageData.live"></live>
+    <live v-if="pageData.live && pageData.live.class && pageData.live.class.length > 0" :data="pageData.live"></live>
     <consultation v-if="pageData.consultation" :data="pageData.consultation"></consultation>
     <course-signup v-if="pageData.courseSignup" :data="pageData.courseSignup"></course-signup>
   </div>

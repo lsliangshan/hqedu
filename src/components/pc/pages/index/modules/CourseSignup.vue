@@ -25,11 +25,37 @@
 					</div>				
 				</div>
 				<div class="step_separator"></div>
-				<div class="step2_conntainer"></div>
+				<div class="step2_conntainer">
+					<div class="step_title">{{data.step2.title}}</div>
+					<div class="step_body">
+						<Form :model="formData" :rules="formRules" ref="courseFormRef">
+							<FormItem prop="username">
+					            <Input type="text" placeholder="请输入登录用户名" size="large" v-model="formData.username">
+					                <Icon type="ios-person" slot="prepend" size="20"></Icon>
+					            </Input>
+					        </FormItem>
+					        <FormItem prop="password">
+					            <Input :type="showPassword ? 'text' : 'password'" placeholder="请输入登录密码" size="large" :icon="!showPassword ? 'eye-disabled' : 'eye'" @on-click="togglePassword" v-model="formData.password">
+					                <Icon type="ios-locked" slot="prepend" size="20"></Icon>
+					            </Input>
+					        </FormItem>
+					        <FormItem prop="phonenum">
+					            <Input type="text" placeholder="您的手机号码" size="large" v-model="formData.phonenum">
+					                <Icon type="android-phone-portrait" slot="prepend" size="20"></Icon>
+					            </Input>
+					        </FormItem>
+					        <FormItem prop="email">
+					            <Input type="text" placeholder="电子邮箱 如example@gmail.com" size="large" v-model="formData.email">
+					                <Icon type="ios-email" slot="prepend" size="20"></Icon>					               
+					            </Input>
+					        </FormItem>
+						</Form>
+					</div>
+				</div>
 			</div>
 			<div class="course_signup_tip">{{data.tips.text}}</div>
 			<div class="course_signup_bottom">
-				<div class="course_signup_btn">{{data.btn}}</div>
+				<div class="course_signup_btn" @click="submit">{{data.btn}}</div>
 			</div>
 		</div>
 	</div>
@@ -94,7 +120,6 @@
 	    margin-top: 50px;
 	    margin-right: 30px;
 	    min-height: 300px;
-	    background-color: lightgray;
 	}
 	.step_title {
 		font-size: 22px;
@@ -150,9 +175,80 @@
 			}
 		},
 		data () {
+			const _validatePhonenum = (rule, value, callback) => {
+		        if (!value.match(/^1[345789]\d{9}$/)) {
+		          callback(new Error('手机号格式不正确'))
+		        }
+		        callback()
+		      }
+		      const _validatePassword = (rule, value, callback) => {
+		        /**
+		         * 密码只能包含 字母、数字、下划线
+		         * 长度为 4-8 位
+		         */
+		        if (!value.match(/^[0-9a-z_]{4,8}$/i)) {
+		          callback(new Error('只能包含4-8位数字，字母或者下划线！'))
+		        }
+		        callback()
+		      }
+		      const _validateEmail = (rule, value, callback) => {
+		      	if (!value.match(/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/)) {
+		      		callback(new Error('邮件格式不正确，请输入如 example@gmail.com 格式邮箱地址'))
+		      	}
+		      	callback()
+		      }
 			return {
 				step1Collapse: '1',
-				p_id: ''
+				p_id: '',
+				showPassword: false,
+				formData: {
+					username: '',
+					password: '',
+					phonenum: '',
+					email: ''
+				},
+				formRules: {
+					username: [
+						{
+							required: true,
+							message: '登录用户名不能为空',
+							trigger: 'blur'
+						}
+					],
+					password: [
+			            {
+			                required: true,
+			                message: '登录密码不能为空',
+			                trigger: 'blur'
+			            },
+			            {
+			                validator: _validatePassword,
+			                trigger: 'blur'
+			            }
+			        ],
+			        phonenum: [
+			            {
+			              required: true,
+			              message: '手机号不能为空',
+			              trigger: 'blur'
+			            },
+			            {
+			              validator: _validatePhonenum,
+			              trigger: 'blur'
+			            }
+			        ],
+			        email: [
+						{
+							required: true,
+							message: '邮箱地址不能为空',
+							trigger: 'blur'
+						},
+						{
+							validator: _validateEmail,
+							trigger: 'blur'
+						}
+			        ]
+				}
 			}
 		},
 		computed: {
@@ -177,6 +273,20 @@
 					}
 				}
 				return outObj
+			},
+			togglePassword () {
+				this.showPassword = !this.showPassword
+			},
+			beforeSubmit () {
+				return new Promise((resolve) => {
+					this.$refs.courseFormRef.validate(valid => {
+						resolve(!!valid)
+					})
+				})
+			},
+			async submit () {
+				let _beforeSubmit = await this.beforeSubmit()
+				console.log('>>>', _beforeSubmit)
 			}
 		}
 	}

@@ -1051,7 +1051,60 @@ const store = new Vuex.Store({
           href: 'http://www.hqwx.com/register'
         }],
         live: {
-          bg: '/static/images/pages/zaojia_bg.gif'
+          bg: '/static/images/pages/zaojia_bg.gif',
+          class: [{
+            startTime: 1536201000000,
+            endTime: 1536204600000,
+            category: '造价案例',
+            theme: '#ef5e32',
+            teacher: {
+              headIcon: 'http://edu24ol.bs2cdn.100.com/王宏伟3-1530069176100.jpg',
+              profile: '紧扣大纲要求，对历年真题分析透彻，考点把握准确。',
+              name: '王宏伟'
+            },
+            course: {
+              name: '案例1v1直播回放',
+              subject: '专题六：运用价值工程方法进行方案的评价选优（...'
+            },
+            btn: '进入课堂',
+            href: '/register',
+            tag: false
+          }, {
+            startTime: 1536217200000,
+            endTime: 1536220800000,
+            category: '造价案例',
+            theme: '#ef5e32',
+            teacher: {
+              headIcon: 'http://edu24ol.bs2cdn.100.com/王宏伟3-1530069176100.jpg',
+              profile: '紧扣大纲要求，对历年真题分析透彻，考点把握准确。',
+              name: '王宏伟'
+            },
+            course: {
+              name: '案例1v1直播回放',
+              subject: '专题六：运用价值工程方法进行方案的评价选优（...'
+            },
+            btn: '立即预约',
+            href: '/register',
+            tag: false
+          }, {
+            startTime: 1536231600000,
+            endTime: 1536238800000,
+            category: '造价案例',
+            theme: '#3ac648',
+            teacher: {
+              headIcon: 'http://edu24ol.bs2cdn.100.com/王宏伟3-1530069176100.jpg',
+              profile: '紧扣大纲要求，对历年真题分析透彻，考点把握准确。',
+              name: '王宏伟'
+            },
+            course: {
+              name: '案例1v1直播回放',
+              subject: '专题七：运用施工网络计划进行方案优化'
+            },
+            btn: '立即预约',
+            href: '/register',
+            tag: false
+          }],
+          consultation: false
         }
       }
     },
