@@ -163,4 +163,13 @@
   .course_signup_container .ivu-collapse>.ivu-collapse-item>.ivu-collapse-header {
     padding-left: 16px;
   }
+
+  .course_signup_wrapper .ivu-input-group-append {
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+  }
+  .custom_prepend .ivu-input-group-prepend {
+    padding: 6px 4px;
+  }
 </style>

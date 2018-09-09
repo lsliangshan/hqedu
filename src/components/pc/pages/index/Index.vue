@@ -20,7 +20,7 @@
     },
     computed: {
       pageData () {
-        return this.$store.state.allPageRoute[this.$route.params.pageName]
+        return this.$store.state.allPageRoute[this.$route.params.queryType]
       }
     },
     created () {

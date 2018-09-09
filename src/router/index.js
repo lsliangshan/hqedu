@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { BrowserUtil } from '../utils/index'
+import {
+  BrowserUtil
+} from '../utils/index'
 let _isPc = BrowserUtil.isPc()
 let _path = ''
 
@@ -24,7 +26,8 @@ export const routerLogin = {
     title: '登录'
   },
   components: {
-    HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/Login.vue`)
+    HomeRouter: () =>
+      import (`../components/${_isPc ? 'pc' : 'm'}/Login.vue`)
   }
 }
 
@@ -35,7 +38,8 @@ export const routerRegister = {
     title: '注册'
   },
   components: {
-    HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/Register.vue`)
+    HomeRouter: () =>
+      import (`../components/${_isPc ? 'pc' : 'm'}/Register.vue`)
   }
 }
 
@@ -46,7 +50,8 @@ export const routerAgreements = {
     title: '注册协议'
   },
   components: {
-    HomeRouter: () => import(`../components/Agreements.vue`)
+    HomeRouter: () =>
+      import (`../components/Agreements.vue`)
   }
 }
 
@@ -57,56 +62,53 @@ export const routerUser = {
     title: '我的课程主页'
   },
   components: {
-    HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/pages/User.vue`)
+    HomeRouter: () =>
+      import (`../components/${_isPc ? 'pc' : 'm'}/pages/User.vue`)
   }
 }
 
-export const routerCms = [
-  {
-    path: _path + '/cms',
-    name: 'CmsIndex',
-    meta: {
-    },
-    components: {
-      HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/pages/cms/Index.vue`)
-    }
-  },
-  {
-    path: _path + '/cms/t/:queryType',
-    name: 'CmsQuery',
-    meta: {},
-    components: {
-      HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/pages/cms/Query.vue`)
-    }
+export const routerCms = [{
+  path: _path + '/cms',
+  name: 'CmsIndex',
+  meta: {},
+  components: {
+    HomeRouter: () =>
+      import (`../components/${_isPc ? 'pc' : 'm'}/pages/cms/Index.vue`)
   }
-]
+}, {
+  path: _path + '/cms/t/:queryType',
+  name: 'CmsQuery',
+  meta: {},
+  components: {
+    HomeRouter: () =>
+      import (`../components/${_isPc ? 'pc' : 'm'}/pages/cms/Query.vue`)
+  }
+}]
 
-export const routerPage = [
-  {
-    path: _path + '/:pageName',
-    name: 'PageIndex',
-    meta: {},
-    components: {
-      HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/pages/index/Index.vue`)
-    }
+export const routerPage = [{
+  path: _path + '/:queryType',
+  name: 'PageIndex',
+  meta: {},
+  components: {
+    HomeRouter: () =>
+      import (`../components/${_isPc ? 'pc' : 'm'}/pages/index/Index.vue`)
   }
-]
+}]
 
 export const contentRouter = {
   path: '/',
   redirect: _path + '/register',
   components: {
-    HomeRouter: () => import(`../components/${_isPc ? 'pc' : 'm'}/index.vue`)
+    HomeRouter: () =>
+      import (`../components/${_isPc ? 'pc' : 'm'}/index.vue`)
   },
-  children: [
-    {
-      path: _path,
-      redirect: _path + '/register',
-      meta: {
-        title: 'HQEDU'
-      }
+  children: [{
+    path: _path,
+    redirect: _path + '/register',
+    meta: {
+      title: 'HQEDU'
     }
-  ]
+  }]
 }
 
 export const page404 = {
@@ -117,7 +119,8 @@ export const page404 = {
   //   title: '页面丢了'
   // },
   components: {
-    HomeRouter: () => import('../components/404.vue')
+    HomeRouter: () =>
+      import ('../components/404.vue')
   }
 }
 
