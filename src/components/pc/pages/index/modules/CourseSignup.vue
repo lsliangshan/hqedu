@@ -5,7 +5,6 @@
 			<div class="course_signup_body">
 				<div class="step1_container">
 					<div class="step_title">{{data.step1.title}}</div>
-					<div>{{p_id_obj}}</div>
 					<div class="step_body">
 						<Collapse accordion v-model="step1Collapse">
 					        <Panel v-for="(item, index) in data.step1.list" :key="index" :name="String(index + 1)">
@@ -509,32 +508,37 @@
 		      async submit () {
 		        if (this.isSubmitting) return
 		        this.isSubmitting = true
-		        this.$refs.courseFormRef.validate(async (valid) => {
-		          if (valid) {
-		            await this.$register({
-		              phone: this.formData.phonenum,
-		              smsCode: this.formData.smsCode,
-		              pwd: this.formData.password,
-		              sortId: this.pageData.sortId
-		            }).then(responseData => {
-		              this.isSubmitting = false
-		              // this.$Message.success('注册成功')
-		              /**
-		               * 注册成功后，模拟登录
-		               */
-		              this.silenceLogin()
-		            }).catch(err => {
-		              this.isSubmitting = false
-		              this.$Message.error(err.message)
-		            })
-		            // setTimeout(() => {
-		            //   this.$router.replace('/login')
-		            // }, 800)
-		          } else {
-		            this.isSubmitting = false
-		            this.$Message.error('表单填写有误')
-		          }
-		        })
+		    	if (!this.p_id_obj.sub || !this.p_id_obj.sub.value) {
+		    		this.$Message.error('请选择相应专业！')
+		    		this.isSubmitting = false		    	
+		    	} else {
+					this.$refs.courseFormRef.validate(async (valid) => {
+			          if (valid) {
+			            await this.$register({
+			              phone: this.formData.phonenum,
+			              smsCode: this.formData.smsCode,
+			              pwd: this.formData.password,
+			              sortId: this.p_id_obj.sub.value
+			            }).then(responseData => {
+			              this.isSubmitting = false
+			              // this.$Message.success('注册成功')
+			              /**
+			               * 注册成功后，模拟登录
+			               */
+			              this.silenceLogin()
+			            }).catch(err => {
+			              this.isSubmitting = false
+			              this.$Message.error(err.message)
+			            })
+			            // setTimeout(() => {
+			            //   this.$router.replace('/login')
+			            // }, 800)
+			          } else {
+			            this.isSubmitting = false
+			            this.$Message.error('表单填写有误')
+			          }
+			        })
+		    	}		      
 		      }
 		}
 	}

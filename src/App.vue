@@ -170,6 +170,8 @@
     background-color: transparent;
   }
   .custom_prepend .ivu-input-group-prepend {
-    padding: 6px 4px;
+    /*padding: 6px 4px;*/
+    padding-left: 4px;
+    padding-right: 4px;
   }
 </style>

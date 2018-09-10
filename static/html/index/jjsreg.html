@@ -5,7 +5,7 @@
   <title>环球网校经济师考试辅导培训课程_经济师免费试听_经济师辅导班</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="renderer" content="webkit">
-  <!-- <link rel="stylesheet" href="/static/html/styles/cms.css"> -->
+  <link rel="stylesheet" href="/static/html/styles/index.css">
   <link rel="stylesheet" href="/static/swiper/css/s.css">  
   <style>
     * {
@@ -431,7 +431,101 @@
           </div>
         </div>
         <div class="step_separator"></div>
-        <div class="step2_container"></div>
+        <div class="step2_container">
+          <div class="form_wrapper register_login_form">
+          <input type="hidden" value="http://www.hqwx.com/leraning/class_zaojia" id="redirectUrl"/>
+          <input type="hidden" value="567" id="sortId"/>
+          <div class="custom_form_item">
+            <div class="custom_form_item_label">省份</div>
+            <div class="custom_form_item_value">
+              <select class="custom_select" placeholder="请选择您所在的省份">
+                <option value="安徽">安徽</option>
+                <option value="北京">北京</option>
+                <option value="重庆">重庆</option>
+                <option value="福建">福建</option>
+                <option value="甘肃">甘肃</option>
+                <option value="广东">广东</option>
+                <option value="广西">广西</option>
+                <option value="贵州">贵州</option>
+                <option value="海南">海南</option>
+                <option value="河北">河北</option>
+                <option value="黑龙江">黑龙江</option>
+                <option value="河南">河南</option>
+                <option value="湖北">湖北</option>
+                <option value="湖南">湖南</option>
+                <option value="江苏">江苏</option>
+                <option value="江西">江西</option>
+                <option value="吉林">吉林</option>
+                <option value="辽宁">辽宁</option>
+                <option value="内蒙古">内蒙古</option>
+                <option value="宁夏">宁夏</option>
+                <option value="青海">青海</option>
+                <option value="山东">山东</option>
+                <option value="上海">上海</option>
+                <option value="山西">山西</option>
+                <option value="陕西">陕西</option>
+                <option value="四川">四川</option>
+                <option value="天津">天津</option>
+                <option value="新疆">新疆</option>
+                <option value="西藏">西藏</option>
+                <option value="云南">云南</option>
+                <option value="浙江">浙江</option>
+              </select>
+            </div>
+          </div>
+          <div class="custom_form_item">
+            <div class="custom_form_item_label"><span class="required">*</span>手机号</div>
+            <div class="custom_form_item_value">
+              <input placeholder="请输入您的手机号" class="custom_input" id="phonenum"/>
+            </div>
+            <div class="custom_form_item_tip" id="phonenumTip"></div>
+          </div>
+          <div class="custom_form_item">
+            <div class="custom_form_item_label"><span class="required">*</span>密码</div>
+            <div class="custom_form_item_value">
+              <input type="password" placeholder="请输入您的密码" class="custom_input" id="password"/>
+            </div>
+            <div class="custom_form_item_tip" id="passwordTip"></div>
+          </div>
+          <div class="custom_form_item">
+            <div class="custom_form_item_label"><span class="required">*</span>图形验证码</div>
+            <div class="custom_form_item_value">
+              <input type="text" placeholder="图形验证码" class="custom_input" style="width: calc(100% - 145px);" id="code"/>
+              <div class="code_img_wrapper" style="display: inline-block;">
+                <img class="code_img" src="" id="codeImage">
+              </div>
+              <div class="custom_form_item_tip no_ml" id="codeTip"></div>
+            </div>
+          </div>
+          <div class="custom_form_item">
+            <div class="custom_form_item_label"><span class="required">*</span>短信验证码</div>
+            <div class="custom_form_item_value">
+              <input type="text" placeholder="短信验证码" class="custom_input" style="width: calc(100% - 145px);" id="smsCode"/>
+              <div class="code_img_wrapper" @click="getCode" style="display: inline-block;">
+                <button class="smscode_wrapper custom_btn" id="smsCodeBtn">获取短信验证码</button>
+              </div>
+              <div class="custom_form_item_tip no_ml" id="smsCodeTip"></div>
+            </div>
+          </div>
+          <div class="custom_form_item small">
+            <input type="checkbox" class="agreements_checkbox" id="checkbox" checked><span class="accept-text">我已阅读并同意《<span class="open_agreements" onclick="openAgreements()">网站注册协议</span>》</span>
+          </div>
+          <div class="custom_form_item">
+            <button class="custom_btn" style="width: 100%; height: 40px;" id="submitBtn">获取报考时间</button>
+          </div>
+          <div class="custom_form_item" style="height: auto;">
+            <p class="bottom_tip">友情提示</p>
+            <p class="bottom_tip">
+              <!-- <span class="tip_number">1、</span> -->
+              <span class="tip_content">1、注册时请务必输入正确的姓名和手机号码，以免影响考后成绩查询</span>
+            </p>
+            <p class="bottom_tip">
+              <!-- <span class="tip_number">3、</span> -->
+              <span class="tip_content">2、报考时间及报名须知通过短信发送或电话审核形式，请注意查看手机</span>
+            </p>
+          </div>
+        </div>
+        </div>
       </div>
       <div class="course_signup_tip">赠送2018年经济师课程包含：经济基础知识（初、中级）、专业知识与实务（初、中级）两门课程的备考指导班及精讲班（部分）及各科目的答疑服务。课程涵盖备考攻略；教材结构、考试分值及考试特点全面剖析；学习方法及复习计划指导等几方面的内容，现实免费开放。名额有限，报完即止！</div>
       <div class="course_signup_bottom">
