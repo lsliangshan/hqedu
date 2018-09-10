@@ -29,21 +29,21 @@
 					<div class="step_title">{{data.step2.title}}</div>
 					<div class="step_body">
 						<Form :model="formData" :rules="formRules" ref="courseFormRef">
-							<FormItem prop="username">
+							<!-- <FormItem prop="username">
 					            <Input type="text" placeholder="请输入登录用户名" size="large" v-model="formData.username">
 					                <Icon type="ios-person" slot="prepend" size="20"></Icon>
+					            </Input>
+					        </FormItem> -->
+					        <FormItem prop="phonenum">
+					            <Input type="text" placeholder="您的手机号码" size="large" v-model="formData.phonenum">
+					                <Icon type="android-phone-portrait" slot="prepend" size="20"></Icon>
 					            </Input>
 					        </FormItem>
 					        <FormItem prop="password">
 					            <Input :type="showPassword ? 'text' : 'password'" placeholder="请输入登录密码" size="large" :icon="!showPassword ? 'eye-disabled' : 'eye'" @on-click="togglePassword" v-model="formData.password">
 					                <Icon type="ios-locked" slot="prepend" size="20"></Icon>
 					            </Input>
-					        </FormItem>
-					        <FormItem prop="phonenum">
-					            <Input type="text" placeholder="您的手机号码" size="large" v-model="formData.phonenum">
-					                <Icon type="android-phone-portrait" slot="prepend" size="20"></Icon>
-					            </Input>
-					        </FormItem>
+					        </FormItem>					        
 					        <FormItem prop="code" class="custom_prepend">
 					        	<Input type="text" placeholder="请输入图形验证码" size="large" v-model="formData.code">
 					        		<Icon type="code" slot="prepend" size="20"/>
@@ -64,11 +64,11 @@
 					        		</div>
 					        	</Input>
 					        </FormItem>
-					        <FormItem prop="email" class="custom_prepend">
+					        <!-- <FormItem prop="email" class="custom_prepend">
 					            <Input type="text" placeholder="电子邮箱 如example@gmail.com" size="large" v-model="formData.email">
 					                <Icon type="ios-email" slot="prepend" size="22"></Icon>					               
 					            </Input>
-					        </FormItem>
+					        </FormItem> -->
 						</Form>
 					</div>
 				</div>

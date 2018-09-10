@@ -464,11 +464,15 @@
       value: '2962'
     }
   }
-  function hideAllRadio (except) {
+  function hideAllRadio (except, callback) {
     if (except || Number(except) === 0) {
-      $('.step_items :gt(' + Number(except) + ')').fadeOut()
+      $('.step_items :gt(' + Number(except) + ')').fadeOut(200, function () {
+        callback && callback()
+      })
     } else {
-      $('.step_items').fadeOut()
+      $('.step_items').fadeOut(200, function () {
+        callback && callback()
+      })
     }
   }
   hideAllRadio(0)
@@ -484,15 +488,16 @@
         name: _parentValue
       }
       if (_parentValue === '') {
-        hideAllRadio()
-        courseSelected.sub = {
-          name: '',
-          value: ''
-        }
-        var _childItems = this.parentNode.nextSibling.nextSibling
-        if (_childItems) {
-          $(_childItems).fadeIn()
-        }
+        hideAllRadio(null, function () {
+          courseSelected.sub = {
+            name: '',
+            value: ''
+          }
+          var _childItems = this.parentNode.nextSibling.nextSibling
+          if (_childItems) {
+            $(_childItems).fadeIn()
+          }
+        })
       } else {
         courseSelected.sub = {
           name: $(this).next('span').text(),
