@@ -1,8 +1,8 @@
 <template>
 	<div class="live_container">
 		<div class="live_wrapper" :style="liveWrapperStyles">
-      <web-site src="/static/html/p/zhibo.html"></web-site>
-      <!-- <div class="live_card" v-for="(item, index) in data.class.slice(0, 3)" :key="index" :style="{borderColor: isToday(item.startTime) ? 'rgb(239, 94, 50)' : item.theme}">
+      <!-- <web-site src="/static/html/p/zhibo.html"></web-site> -->
+      <div class="live_card" v-for="(item, index) in data.class.slice(0, 3)" :key="index" :style="{borderColor: isToday(item.startTime) ? 'rgb(239, 94, 50)' : item.theme}">
         <div class="live_card_title" :style="{backgroundColor: (!isToday(item.startTime) ? item.theme : '#efefef'), color: (!isToday(item.startTime) ? '#FFFFFF' : '#5a5a5a')}" :class="{'not_today': !isToday(item.startTime)}">
           <div class="live_time_container">
             <div class="live_date" key="today" :style="{backgroundImage: 'url(/static/images/pages/zhibo.png)'}" v-if="isToday(item.startTime)"></div>
@@ -31,7 +31,7 @@
         <a class="live_card_bottom" :href="item.href">{{item.btn}}</a>
         <div class="live_card_tag" v-if="item.tag" :style="{borderBottomColor: isToday(item.startTime) ? 'rgb(239, 94, 50)' : item.tag.bgColor, borderRightColor: isToday(item.startTime) ? 'rgb(239, 94, 50)' : item.tag.bgColor}"></div>
         <div class="live_card_tag_text">{{item.tag.text}}</div>
-      </div> -->
+      </div>
     </div>
 	</div>
 </template>

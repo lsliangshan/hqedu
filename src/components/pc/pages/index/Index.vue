@@ -1,10 +1,11 @@
 <template>
   <div class="index_index">
     <headers :logo="pageData.header.logo" :tip1="pageData.header.tip1" :tip2="pageData.header.tip2"></headers>
-    <banner v-if="pageData.banner && pageData.banner.length > 0" :data="pageData.banner" style="margin-bottom: 40px;"></banner>
+    <banner v-if="pageData.banner && pageData.banner.length > 0" :data="pageData.banner"></banner>
     <live v-if="pageData.live && pageData.live.class && pageData.live.class.length > 0" :data="pageData.live"></live>
     <consultation v-if="pageData.consultation" :data="pageData.consultation"></consultation>
     <course-signup v-if="pageData.courseSignup" :data="pageData.courseSignup"></course-signup>
+    <course-set></course-set>
   </div>
 </template>
 <style scoped>
@@ -31,7 +32,8 @@
       Banner: () => import('./modules/Banner.vue'),
       Live: () => import('./modules/Live.vue'),
       Consultation: () => import('./modules/Consultation.vue'),
-      CourseSignup: () => import('./modules/CourseSignup.vue')
+      CourseSignup: () => import('./modules/CourseSignup.vue'),
+      CourseSet: () => import('./modules/CourseSet.vue')
     }
   }
 </script>

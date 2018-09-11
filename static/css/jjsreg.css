@@ -1,0 +1,95 @@
+.main_gray {
+width: 100%;
+background-color: #fafafa;
+padding-bottom: 20px;
+}
+.parttitle {
+    /*background: url("../images/title.png") no-repeat bottom center;
+    _background: url("../images/title_ie7.png") no-repeat bottom center;*/
+    height: 69px;
+    text-align: center;
+    color: #666666;
+    font: 30px "\5FAE\8F6F\96C5\9ED1";
+    padding-top: 30px;
+    font-weight: bold;
+}
+.p6_table {
+    width: 980px;
+}
+.p6_table th, .p6_table td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px 0px;
+    background: #fff;
+    line-height: 22px;
+}
+.p6_table th {
+    font: 16px "\5FAE\8F6F\96C5\9ED1";
+    font-weight: bold;
+    color: #fff;
+    position: relative;
+    height: 25px;
+    background-color: #FF4A00;
+}
+.p6_table_left {
+    color: #FF4A00;
+    font-weight: bold;
+}
+.p6_table .p6_table_price {
+    font: 14px "\5FAE\8F6F\96C5\9ED1";
+    color: #333333;
+    vertical-align: top;
+}
+.p6_table_price em {
+    font-style: normal;
+    font: 14px "\5FAE\8F6F\96C5\9ED1";
+    color: #ff6600;
+}
+.p6_table b {
+    font-size: 14px;
+}
+.p6_table td{
+    padding:10px;font-size:12px;vertical-align: baseline;
+    vertical-align: -webkit-baseline-middle;
+}
+.p6_table .orange1{
+    color:#FF4A00;
+}
+.p6_table span {
+    float: left;
+    width: 95px;
+    line-height:30px;
+    margin-left: 5px;
+    margin-bottom: 16px;
+    background: #fdf3f3;
+    text-align:left;
+    padding-left:25px;
+    border-radius: 3px;
+}
+.t1{
+    font-size: 14px;
+    border: 1px solid #ffffff;
+    padding: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    line-height: 14px;
+    border-radius: 3px;
+    position: absolute;
+}
+.red{
+    color:red;
+    border: 1px solid #EF6666;
+    padding: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    line-height: 14px;
+    border-radius: 3px;
+    position: absolute;}
+.p6_table .bgred{
+    background:#ff6657;
+    color:white;
+}
+

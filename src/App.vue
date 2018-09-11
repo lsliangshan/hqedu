@@ -103,7 +103,7 @@
     /*color: #444;*/
     /*overflow-x: hidden;*/
     /*overflow-y: scroll;*/
-    background: #f2f2f2;
+    background: #fafafa;
     /*position: relative;*/
   }
 
