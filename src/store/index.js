@@ -961,49 +961,68 @@ const store = new Vuex.Store({
           title: '免费领课',
           step1: {
             title: '① 选择免费开通的课程:',
-            list: [{
-              label: '初级经济师',
-              sublist: [{
-                label: '初级人力',
-                value: '2962'
-              }, {
-                label: '初级金融',
-                value: '2961'
-              }, {
-                label: '初级工商',
-                value: '2963'
-              }]
-            }, {
-              label: '中级经济师',
-              sublist: [{
-                label: '中级工商',
-                value: '2968'
-              }, {
-                label: '中级金融',
-                value: '2967'
-              }, {
-                label: '中级财税',
-                value: '2966'
-              }, {
-                label: '中级房地产',
-                value: '2965'
-              }, {
-                label: '中级建筑',
-                value: '2964'
-              }, {
-                label: '中级人力',
-                value: '2969'
-              }, {
-                label: '中级商业',
-                value: '2972'
-              }, {
-                label: '中级农业',
-                value: '2971'
-              }, {
-                label: '中级公路',
-                value: '2970'
-              }]
-            }]
+            list: [
+              {
+                label: '经济师',
+                sublist: [
+                  {
+                    label: '初级经济师',
+                    value: '12556'
+                  },
+                  {
+                    label: '中级经济师',
+                    value: '12555'
+                  },
+                  {
+                    label: '高级经济师',
+                    value: '10210'
+                  }
+                ]
+              }
+            ]
+            // list: [{
+            //   label: '初级经济师',
+            //   sublist: [{
+            //     label: '初级人力',
+            //     value: '2962'
+            //   }, {
+            //     label: '初级金融',
+            //     value: '2961'
+            //   }, {
+            //     label: '初级工商',
+            //     value: '2963'
+            //   }]
+            // }, {
+            //   label: '中级经济师',
+            //   sublist: [{
+            //     label: '中级工商',
+            //     value: '2968'
+            //   }, {
+            //     label: '中级金融',
+            //     value: '2967'
+            //   }, {
+            //     label: '中级财税',
+            //     value: '2966'
+            //   }, {
+            //     label: '中级房地产',
+            //     value: '2965'
+            //   }, {
+            //     label: '中级建筑',
+            //     value: '2964'
+            //   }, {
+            //     label: '中级人力',
+            //     value: '2969'
+            //   }, {
+            //     label: '中级商业',
+            //     value: '2972'
+            //   }, {
+            //     label: '中级农业',
+            //     value: '2971'
+            //   }, {
+            //     label: '中级公路',
+            //     value: '2970'
+            //   }]
+            // }]
           },
           step2: {
             title: '② 设定您的学习账号:'
@@ -1013,7 +1032,8 @@ const store = new Vuex.Store({
           },
           btn: '立即领取',
           href: '/register'
-        }
+        },
+        redirectUrl: '/user'
       },
       yijixiaofangreg: {
         pageTitle: '环球网校消防工程师考试辅导培训课程_消防工程师免费试听_消防工程师辅导班',

@@ -14,57 +14,6 @@ html, body {
 *::placeholder {
   color: #c8c8c8;
 }
-.cms_container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: auto;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(#0899fa, #e2f1fa);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType = 0, startColorstr = #0899fa, endColorstr = #e2f1fa);
-}
-.cms_wrapper {
-  max-width: 1000px;
-  min-height: 640px;
-  margin: 0 auto;
-}
-.cms_header_container {
-  width: 100%;
-  padding-top: 15px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  text-align: center;
-  color: #FFFFFF;
-}
-.cms_header_text {
-  font-size: 28px;
-  margin-bottom: 5px;
-}
-.cms_header_en_text {
-  font-size: 14px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-.cms_query_content {
-  max-width: 500px;
-  margin: 15px auto;
-  background: linear-gradient(#8ed0fc, #dbeffc);
-  border-radius: 4px;
-}
-.cms_query_header {
-  width: 100%;
-  padding: 30px 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  text-align: center;
-}
-.cms_query_header_text {
-  font-size: 18px;
-  color: #d70c25;
-}
 
 .form_inner {
   width: 100%;
@@ -76,7 +25,7 @@ html, body {
 }
 .form_wrapper {
   width: 100%;
-  min-height: 400px;
+  /*min-height: 400px;*/
   margin: 0 auto;
   padding-bottom: 30px;
   -webkit-box-sizing: border-box;
@@ -251,6 +200,7 @@ html, body {
   transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;
 }
 .custom_btn {
+  position: absolute;
   display: inline-block;
   margin-bottom: 0;
   font-weight: 400;

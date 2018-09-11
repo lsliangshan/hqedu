@@ -246,14 +246,14 @@
       display: inline-block;
         width: 67px;
         height: 170px;
-        margin-top: 120px;
+        margin-top: 80px;
         background-image: url('/static/images/pages/jiantou.png');
         background-repeat: no-repeat;
         vertical-align: top;
     }
-    .step2_conntainer {
+    .step2_container {
       display: inline-block;
-      width: 330px;
+      width: 500px;
         margin-top: 50px;
         margin-right: 30px;
         min-height: 300px;
@@ -383,23 +383,23 @@
           <div class="step_title">① 选择免费开通的课程:</div>
           <div class="step_body">
             <label class="step_radio_group">
-              <input type="radio" name="group" value="初级经济师" data-parent="" data-child="step_items_1"><span>初级经济师</span></input>
+              <input type="radio" name="group" value="经济师" data-parent="" data-child="step_items_1" checked="checked"><span>经济师</span></input>
             </label>
             <div class="step_items step_items_1">
               <label class="step_radio_item">
-                <input type="radio" name="step_items_1" value="2962" data-parent="初级经济师"><span>初级人力</span></input>
+                <input type="radio" name="step_items_1" value="12556" data-parent="经济师"><span>初级经济师</span></input>
               </label>
               <label class="step_radio_item">
-                <input type="radio" name="step_items_1" value="2961" data-parent="初级经济师"><span>初级金融</span></input>
+                <input type="radio" name="step_items_1" value="12555" data-parent="经济师"><span>中级经济师</span></input>
               </label>
               <label class="step_radio_item">
-                <input type="radio" name="step_items_1" value="2963" data-parent="初级经济师"><span>初级工商</span></input>
+                <input type="radio" name="step_items_1" value="10210" data-parent="经济师"><span>高级经济师</span></input>
               </label>
             </div>
-            <label class="step_radio_group">
+            <!-- <label class="step_radio_group">
               <input type="radio" name="group" value="中级经济师" data-parent="" data-child="step_items_2"><span>中级经济师</span></input>
-            </label>
-            <div class="step_items step_items_2">
+            </label> -->
+            <!-- <div class="step_items step_items_2">
               <label class="step_radio_item">
                 <input type="radio" name="step_items_1" value="2968" data-parent="中级经济师"><span>中级工商</span></input>
               </label>
@@ -427,52 +427,14 @@
               <label class="step_radio_item">
                 <input type="radio" name="step_items_1" value="2970" data-parent="中级经济师"><span>中级公路</span></input>
               </label>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="step_separator"></div>
         <div class="step2_container">
           <div class="form_wrapper register_login_form">
-          <input type="hidden" value="http://www.hqwx.com/leraning/class_zaojia" id="redirectUrl"/>
-          <input type="hidden" value="567" id="sortId"/>
-          <div class="custom_form_item">
-            <div class="custom_form_item_label">省份</div>
-            <div class="custom_form_item_value">
-              <select class="custom_select" placeholder="请选择您所在的省份">
-                <option value="安徽">安徽</option>
-                <option value="北京">北京</option>
-                <option value="重庆">重庆</option>
-                <option value="福建">福建</option>
-                <option value="甘肃">甘肃</option>
-                <option value="广东">广东</option>
-                <option value="广西">广西</option>
-                <option value="贵州">贵州</option>
-                <option value="海南">海南</option>
-                <option value="河北">河北</option>
-                <option value="黑龙江">黑龙江</option>
-                <option value="河南">河南</option>
-                <option value="湖北">湖北</option>
-                <option value="湖南">湖南</option>
-                <option value="江苏">江苏</option>
-                <option value="江西">江西</option>
-                <option value="吉林">吉林</option>
-                <option value="辽宁">辽宁</option>
-                <option value="内蒙古">内蒙古</option>
-                <option value="宁夏">宁夏</option>
-                <option value="青海">青海</option>
-                <option value="山东">山东</option>
-                <option value="上海">上海</option>
-                <option value="山西">山西</option>
-                <option value="陕西">陕西</option>
-                <option value="四川">四川</option>
-                <option value="天津">天津</option>
-                <option value="新疆">新疆</option>
-                <option value="西藏">西藏</option>
-                <option value="云南">云南</option>
-                <option value="浙江">浙江</option>
-              </select>
-            </div>
-          </div>
+          <input type="hidden" value="http://user.hqwx.com" id="redirectUrl"/>
+          <!-- <input type="hidden" value="567" id="sortId"/> -->
           <div class="custom_form_item">
             <div class="custom_form_item_label"><span class="required">*</span>手机号</div>
             <div class="custom_form_item_value">
@@ -507,37 +469,26 @@
               <div class="custom_form_item_tip no_ml" id="smsCodeTip"></div>
             </div>
           </div>
-          <div class="custom_form_item small">
+          <!-- <div class="custom_form_item small">
             <input type="checkbox" class="agreements_checkbox" id="checkbox" checked><span class="accept-text">我已阅读并同意《<span class="open_agreements" onclick="openAgreements()">网站注册协议</span>》</span>
-          </div>
-          <div class="custom_form_item">
+          </div> -->
+          <!-- <div class="custom_form_item">
             <button class="custom_btn" style="width: 100%; height: 40px;" id="submitBtn">获取报考时间</button>
-          </div>
-          <div class="custom_form_item" style="height: auto;">
-            <p class="bottom_tip">友情提示</p>
-            <p class="bottom_tip">
-              <!-- <span class="tip_number">1、</span> -->
-              <span class="tip_content">1、注册时请务必输入正确的姓名和手机号码，以免影响考后成绩查询</span>
-            </p>
-            <p class="bottom_tip">
-              <!-- <span class="tip_number">3、</span> -->
-              <span class="tip_content">2、报考时间及报名须知通过短信发送或电话审核形式，请注意查看手机</span>
-            </p>
-          </div>
+          </div> -->          
         </div>
         </div>
       </div>
       <div class="course_signup_tip">赠送2018年经济师课程包含：经济基础知识（初、中级）、专业知识与实务（初、中级）两门课程的备考指导班及精讲班（部分）及各科目的答疑服务。课程涵盖备考攻略；教材结构、考试分值及考试特点全面剖析；学习方法及复习计划指导等几方面的内容，现实免费开放。名额有限，报完即止！</div>
       <div class="course_signup_bottom">
-        <div class="course_signup_btn">立即领取</div>
+        <div class="course_signup_btn" id="submitBtn">立即领取</div>
       </div>
     </div>
   </div>
 </div>
 <script type="text/javascript" src="/static/js/jquery.1.9.1.js"></script>
 <script type="text/javascript" src="/static/js/jquery.xdomainrequest.min.js"></script>
-<!-- <script type="text/javascript" src="/static/html/js/util.js"></script>
-<script type="text/javascript" src="/static/html/js/main.js"></script> -->
+<script type="text/javascript" src="/static/html/js/util.js"></script>
+<script type="text/javascript" src="/static/html/js/main_index.js"></script>
 <script type="text/javascript" src="/static/swiper/js/s.js"></script>
 <script type="text/javascript">
   var swiperOptions = {
@@ -547,59 +498,6 @@
     pagination : '.pagination'
   }
   new Swiper('.swiper-container', swiperOptions)
-</script>
-<script type="text/javascript">
-  var courseSelected = {
-    main: {
-      name: '初级经济师'
-    },
-    sub: {
-      name: '初级人力',
-      value: '2962'
-    }
-  }
-  function hideAllRadio (except, callback) {
-    if (except || Number(except) === 0) {
-      $('.step_items :gt(' + Number(except) + ')').fadeOut(200, function () {
-        callback && callback()
-      })
-    } else {
-      $('.step_items').fadeOut(200, function () {
-        callback && callback()
-      })
-    }
-  }
-  hideAllRadio(0)
-  /**
-   * 默认选中第一组第一个
-   */
-  $('input[type=radio][value=初级经济师]').attr('checked', 'checked')
-  $('input[type=radio][value=2962]').attr('checked', 'checked')
-  $(document).ready(function () {
-    $('input[type=radio]').change(function () {
-      var _parentValue = $(this).attr('data-parent')
-      courseSelected.main = {
-        name: _parentValue
-      }
-      if (_parentValue === '') {
-        hideAllRadio(null, function () {
-          courseSelected.sub = {
-            name: '',
-            value: ''
-          }
-          var _childItems = this.parentNode.nextSibling.nextSibling
-          if (_childItems) {
-            $(_childItems).fadeIn()
-          }
-        })
-      } else {
-        courseSelected.sub = {
-          name: $(this).next('span').text(),
-          value: this.value
-        }
-      }
-    })
-  })
 </script>
 </body>
 <script type="text/javascript">
