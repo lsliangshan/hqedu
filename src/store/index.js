@@ -1051,7 +1051,8 @@ const store = new Vuex.Store({
         }],
         live: {
           bg: '/static/images/pages/yijixiaofangreg_bg.gif'
-        }
+        },
+        redirectUrl: '/user'
       },
       zaojiareg: {
         pageTitle: '环球网校造价工程师考试辅导培训课程_造价工程师免费试听_造价工程师辅导班',
@@ -1124,7 +1125,8 @@ const store = new Vuex.Store({
             href: '/register',
             tag: false
           }],
-          consultation: false
+          consultation: false,
+          redirectUrl: '/user'
         }
       }
     },

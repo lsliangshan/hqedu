@@ -333,6 +333,9 @@
 			},
 			allPageRoute () {
 				return this.$store.state.allPageRoute
+			},
+			redirectUrl () {
+				return this.allPageRoute[this.$route.params.queryType].redirectUrl
 			}
 		},
 		created () {
@@ -344,8 +347,8 @@
 		          })
 		        } else {
 		          await this.getCode()
-		        }
-		      })
+		        }		        
+		      })			
 		},
 		methods: {
 			findObjectByName (name) {
@@ -475,7 +478,7 @@
 		                name: 'Login',
 		                query: {
 		                  code: 1,
-		                  redirect: this.pageData.redirectUrl
+		                  redirect: this.redirectUrl
 		                }
 		              })
 		            } else if (['200', '1'].indexOf(String(responseData.status)) < 0) {
@@ -485,21 +488,21 @@
 		              this.$router.replace({
 		                name: 'Login',
 		                query: {
-		                  redirect: this.pageData.redirectUrl
+		                  redirect: this.redirectUrl
 		                }
 		              })
 		            } else {
 		              /**
 		               * 登录成功
 		               */
-		              location.replace(this.pageData.redirectUrl)
+		              location.replace(this.redirectUrl)
 		            }
 		          }).catch((err) => {
 		            reject(new Error(err.message))
 		            this.$router.replace({
 		              name: 'Login',
 		              query: {
-		                redirect: this.pageData.redirectUrl
+		                redirect: this.redirectUrl
 		              }
 		            })
 		          })

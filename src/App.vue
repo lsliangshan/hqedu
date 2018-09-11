@@ -165,13 +165,21 @@
   }
 
   .course_signup_wrapper .ivu-input-group-append {
-    padding: 0;
+    /*padding: 0;*/
     overflow: hidden;
     background-color: transparent;
   }
   .custom_prepend .ivu-input-group-prepend {
     /*padding: 6px 4px;*/
-    padding-left: 4px;
-    padding-right: 4px;
+    /*padding-left: 4px;
+    padding-right: 4px;*/
+  }
+  .custom_prepend .ivu-input-group-large .ivu-input, .custom_prepend .ivu-input-group-large>.ivu-input-group-append, .custom_prepend .ivu-input-group-large>.ivu-input-group-prepend {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .custom_prepend .ivu-input-group-large>.ivu-input-group-append {
+    padding-left: 0;
+    padding-right: 0;
   }
 </style>

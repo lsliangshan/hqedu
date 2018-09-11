@@ -27,7 +27,7 @@ export const routerLogin = {
   },
   components: {
     HomeRouter: () =>
-      import (`../components/${_isPc ? 'pc' : 'm'}/Login.vue`)
+      import(`../components/${_isPc ? 'pc' : 'm'}/Login.vue`)
   }
 }
 
@@ -39,7 +39,7 @@ export const routerRegister = {
   },
   components: {
     HomeRouter: () =>
-      import (`../components/${_isPc ? 'pc' : 'm'}/Register.vue`)
+      import(`../components/${_isPc ? 'pc' : 'm'}/Register.vue`)
   }
 }
 
@@ -51,7 +51,7 @@ export const routerAgreements = {
   },
   components: {
     HomeRouter: () =>
-      import (`../components/Agreements.vue`)
+      import(`../components/Agreements.vue`)
   }
 }
 
@@ -63,7 +63,7 @@ export const routerUser = {
   },
   components: {
     HomeRouter: () =>
-      import (`../components/${_isPc ? 'pc' : 'm'}/pages/User.vue`)
+      import(`../components/${_isPc ? 'pc' : 'm'}/pages/User.vue`)
   }
 }
 
@@ -73,7 +73,7 @@ export const routerCms = [{
   meta: {},
   components: {
     HomeRouter: () =>
-      import (`../components/${_isPc ? 'pc' : 'm'}/pages/cms/Index.vue`)
+      import(`../components/${_isPc ? 'pc' : 'm'}/pages/cms/Index.vue`)
   }
 }, {
   path: _path + '/cms/t/:queryType',
@@ -81,7 +81,7 @@ export const routerCms = [{
   meta: {},
   components: {
     HomeRouter: () =>
-      import (`../components/${_isPc ? 'pc' : 'm'}/pages/cms/Query.vue`)
+      import(`../components/${_isPc ? 'pc' : 'm'}/pages/cms/Query.vue`)
   }
 }]
 
@@ -91,7 +91,8 @@ export const routerPage = [{
   meta: {},
   components: {
     HomeRouter: () =>
-      import (`../components/${_isPc ? 'pc' : 'm'}/pages/index/Index.vue`)
+      import(`../components/${_isPc ? 'pc/pages/index/Index.vue' : 'm/Register.vue'}`)
+      // import(`../components/${_isPc ? 'pc' : 'm'}/pages/index/Index.vue`)
   }
 }]
 
@@ -100,7 +101,7 @@ export const contentRouter = {
   redirect: _path + '/register',
   components: {
     HomeRouter: () =>
-      import (`../components/${_isPc ? 'pc' : 'm'}/index.vue`)
+      import(`../components/${_isPc ? 'pc' : 'm'}/index.vue`)
   },
   children: [{
     path: _path,
@@ -120,7 +121,7 @@ export const page404 = {
   // },
   components: {
     HomeRouter: () =>
-      import ('../components/404.vue')
+      import('../components/404.vue')
   }
 }
 

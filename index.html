@@ -11,7 +11,7 @@
     <title>HQEDU</title>
     <script type="text/javascript">
       if (!!window.ActiveXObject || 'ActiveXObject' in window) {
-        var __urlFilters = ['cms/t/yijixiaofanghuoqubaokaoshijian', 'cms/t/yijixiaofanggongchengshibaokaotiaojian', 'cms/t/zjgcs', 'cms/t/jjs', 'cms/t/zjgcstj', 'cms/t/jjstj'];
+        var __urlFilters = ['cms/t/yijixiaofanghuoqubaokaoshijian', 'cms/t/yijixiaofanggongchengshibaokaotiaojian', 'cms/t/zjgcs', 'cms/t/jjs', 'cms/t/zjgcstj', 'cms/t/jjstj', 'jjsreg'];
         var __index = -1;
         for (var i = 0; i < __urlFilters.length; i++) {
           if (location.href.indexOf(__urlFilters[i]) > 0) {
@@ -20,9 +20,15 @@
           }
         }
         if (__index > -1) {
-          location.replace(location.href.replace(/^.*(cms\/t\/)([0-9a-z_]*)$/, function (i1, i2, i3) {
-            return location.protocol + '//' + location.host + '/static/html/' + i2 + i3 + '.html'
-          }))
+          if (location.href.indexOf('/cms/t') > -1) {
+            location.replace(location.href.replace(/^.*(cms\/t\/)([0-9a-z_]*)$/, function (i1, i2, i3) {
+              return location.protocol + '//' + location.host + '/static/html/' + i2 + i3 + '.html'
+            }))
+          } else {
+            location.replace(location.href.replace(/^.*(\/)([0-9a-z_]*)$/, function (i1, i2, i3) {
+              return location.protocol + '//' + location.host + '/static/html/index' + i2 + i3 + '.html'
+            }))
+          }
         } else {
           location.replace(location.protocol + '//' + location.host + '/static/html/cms/t/yijixiaofanghuoqubaokaoshijian.html')
         }
