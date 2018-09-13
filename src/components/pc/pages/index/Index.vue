@@ -6,6 +6,10 @@
     <consultation v-if="pageData.consultation" :data="pageData.consultation"></consultation>
     <course-signup v-if="pageData.courseSignup" :data="pageData.courseSignup"></course-signup>
     <course-set></course-set>
+    <tiku></tiku>
+    <dbgm></dbgm>
+    <lklc></lklc>
+    <youshi></youshi>
   </div>
 </template>
 <style scoped>
@@ -33,7 +37,11 @@
       Live: () => import('./modules/Live.vue'),
       Consultation: () => import('./modules/Consultation.vue'),
       CourseSignup: () => import('./modules/CourseSignup.vue'),
-      CourseSet: () => import('./modules/CourseSet.vue')
+      CourseSet: () => import('./modules/CourseSet.vue'),
+      Tiku: () => import('./modules/Tiku.vue'),
+      Dbgm: () => import('./modules/Dbgm.vue'),
+      Lklc: () => import('./modules/Lklc.vue'),
+      Youshi: () => import('./modules/Youshi.vue')
     }
   }
 </script>

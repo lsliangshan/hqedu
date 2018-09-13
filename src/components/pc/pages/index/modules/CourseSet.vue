@@ -98,24 +98,24 @@
                         <td class="p6_table_left">套餐特惠价</td>
                         <td class="p6_table_price"><p><em>单科：1580元</em></p>
                             <p><em>全科：2380元</em></p>
-                          <a href="/goods/?group_id=1252" target="_blank" class="btn button4" style="
+                          <a href="/register" class="btn button4" style="
     background: cadetblue;
     margin-right: 10px;
-">课程介绍</a><a href="javascript:openbuy(1)" class="btn button4">立即购买</a> </td>
+">课程介绍</a><a href="/register" class="btn button4">立即购买</a> </td>
                         <td class="p6_table_price"><p><em>单科：980元</em></p>
                             <p><em>全科：1580元</em></p>
-                            <a href="/goods/?group_id=1251" target="_blank" class="btn button4" style="
+                            <a href="/register" class="btn button4" style="
     background: cadetblue;
     margin-right: 10px;
-">课程介绍</a><a href="javascript:openbuy(5)" class="btn button4">立即购买</a></td>
+">课程介绍</a><a href="/register" class="btn button4">立即购买</a></td>
                         <td class="p6_table_price"><p><em>单科：680元</em></p>
                           <p><em>全科：980元</em></p>
-                          <a href="/goods/?group_id=1160" target="_blank" class="btn button4" style="
+                          <a href="/register" class="btn button4" style="
     background: cadetblue;
     margin-right: 10px;
-">课程介绍</a><a href="javascript:openbuy(3)" class="btn button4">立即购买</a></td>
+">课程介绍</a><a href="/register" class="btn button4">立即购买</a></td>
                       </tr>
-                </tbody></table>                
+                </tbody></table>
 	</div>
 </template>
 
