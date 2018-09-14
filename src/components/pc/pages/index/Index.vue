@@ -5,6 +5,7 @@
     <live v-if="pageData.live && pageData.live.class && pageData.live.class.length > 0" :data="pageData.live"></live>
     <consultation v-if="pageData.consultation" :data="pageData.consultation"></consultation>
     <course-signup v-if="pageData.courseSignup" :data="pageData.courseSignup"></course-signup>
+    <why></why>
     <course-set></course-set>
     <tiku></tiku>
     <dbgm></dbgm>
@@ -37,6 +38,7 @@
       Live: () => import('./modules/Live.vue'),
       Consultation: () => import('./modules/Consultation.vue'),
       CourseSignup: () => import('./modules/CourseSignup.vue'),
+      Why: () => import('./modules/Why.vue'),
       CourseSet: () => import('./modules/CourseSet.vue'),
       Tiku: () => import('./modules/Tiku.vue'),
       Dbgm: () => import('./modules/Dbgm.vue'),

@@ -6,8 +6,8 @@
         <div class="live_card_title" :style="{backgroundColor: (!isToday(item.startTime) ? item.theme : '#efefef'), color: (!isToday(item.startTime) ? '#FFFFFF' : '#5a5a5a')}" :class="{'not_today': !isToday(item.startTime)}">
           <div class="live_time_container">
             <div class="live_date" key="today" :style="{backgroundImage: 'url(/static/images/pages/zhibo.png)'}" v-if="isToday(item.startTime)"></div>
-            <div class="live_date pl10" key="notToday" v-else>{{item.startTime | formatDate}}</div>
-            <div class="live_date ml5">{{item.startTime | formatTime}}-{{item.endTime | formatTime}}</div>
+            <!-- <div class="live_date pl10" key="notToday" v-else>{{item.startTime | formatDate}}</div>
+            <div class="live_date ml5">{{item.startTime | formatTime}}-{{item.endTime | formatTime}}</div> -->
             <div class="live_category">
               {{item.category}}
             </div>
@@ -94,8 +94,10 @@
     padding-top: 4px;
   }
   .live_category {
-    float: right;
-    padding-right: 10px;
+    /*float: right;*/
+    /*padding-right: 10px;*/
+    margin-left: 10px;
+    font-weight: bold;
     padding-top: 4px;
     height: 40px;
     display: inline-flex;
