@@ -885,13 +885,13 @@ const store = new Vuex.Store({
         },
         banner: [{
           img: '/static/images/pages/banner01.png',
-          href: 'http://www.hqwx.com/register'
+          href: '/register'
         }, {
           img: '/static/images/pages/banner02.jpg',
-          href: 'http://www.hqwx.com/register'
+          href: '/register'
         }, {
           img: '/static/images/pages/banner03.png',
-          href: 'http://www.hqwx.com/register'
+          href: '/register'
         }],
         live: {
           bg: '/static/images/pages/bg3.gif',
@@ -1033,7 +1033,7 @@ const store = new Vuex.Store({
           btn: '立即领取',
           href: '/register'
         },
-        redirectUrl: '/user'
+        redirectUrl: 'http://www.hqwx.com/leraning/class_cjjjs/'
       },
       yijixiaofangreg: {
         pageTitle: '环球网校消防工程师考试辅导培训课程_消防工程师免费试听_消防工程师辅导班',
@@ -1044,15 +1044,15 @@ const store = new Vuex.Store({
         },
         banner: [{
           img: '/static/images/pages/1920-360-baoming.jpg',
-          href: 'http://www.hqwx.com/register'
+          href: '/register'
         }, {
           img: '/static/images/pages/1920-360-dalibao.jpg',
-          href: 'http://www.hqwx.com/register'
+          href: '/register'
         }],
         live: {
           bg: '/static/images/pages/yijixiaofangreg_bg.gif'
         },
-        redirectUrl: '/user'
+        redirectUrl: 'http://www.hqwx.com/leraning/class_cjjjs/'
       },
       zaojiareg: {
         pageTitle: '环球网校造价工程师考试辅导培训课程_造价工程师免费试听_造价工程师辅导班',
@@ -1063,13 +1063,13 @@ const store = new Vuex.Store({
         },
         banner: [{
           img: '/static/images/pages/1920-360-60day.jpg',
-          href: 'http://www.hqwx.com/register'
+          href: '/register'
         }, {
           img: '/static/images/pages/1920-360-60day2.jpg',
-          href: 'http://www.hqwx.com/register'
+          href: '/register'
         }, {
           img: '/static/images/pages/1920-360-kuaitiku.jpg',
-          href: 'http://www.hqwx.com/register'
+          href: '/register'
         }],
         live: {
           bg: '/static/images/pages/zaojia_bg.gif',
@@ -1126,7 +1126,7 @@ const store = new Vuex.Store({
             tag: false
           }],
           consultation: false,
-          redirectUrl: '/user'
+          redirectUrl: 'http://www.hqwx.com/leraning/class_cjjjs/'
         }
       }
     },

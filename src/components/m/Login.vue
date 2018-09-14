@@ -266,9 +266,10 @@
               if (redirectUrl && String(redirectUrl).trim() !== '') {
                 location.replace(redirectUrl)
               } else {
-                this.$router.replace({
-                  name: 'User'
-                })
+                // this.$router.replace({
+                //   name: 'User'
+                // })
+                location.href = 'http://www.hqwx.com/leraning/class_cjjjs/'
               }
             }
           }).catch(err => {

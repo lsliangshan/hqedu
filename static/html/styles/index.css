@@ -200,7 +200,7 @@ html, body {
   transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;
 }
 .custom_btn {
-  position: absolute;
+  /*position: absolute;*/
   display: inline-block;
   margin-bottom: 0;
   font-weight: 400;
@@ -720,7 +720,6 @@ ul#footera li a {
     .jinc_t i { padding:0 25px 0 10px; text-decoration:line-through; }
     .jinc_t span{ font-size:12px; display:block; color:#fe4646; width:246px; height:18px; line-height:18px; border:1px solid #fe4646; border-radius:3px; text-align:center; }
 
-
 /*题库*/
 @-webkit-keyframes glowing-highlight {
     from {
@@ -781,8 +780,10 @@ ul#footera li a {
       color: #FFF;
   }
 
-
-  /**单班*/
+/**单班*/
+.main_blue * {
+  box-sizing: content-box;
+}
 .p5 .p5_active {
 cursor: default;
 background: #f7f7ce;
@@ -825,12 +826,14 @@ font-weight: bold;
 border: 1px solid #dddddd;
 }
 .p5_jiaoxue_neirong {
+  position: relative;
 margin-left:15px;
 clear: both;
 background: #fff;
 }
 .p5_table {
     float: left;
+    width: 622px;
 }
 .p5_table th, .p5_table td {
     color: #666666;
@@ -872,6 +875,9 @@ border-spacing: 0;
     padding: 10px 10px;
 }
 .p7_jiaoxue_right {
+      position: absolute;
+    right: 0;
+    top: 0;
     float: left;
     width: 300px;
     _width: 290px;
@@ -969,4 +975,7 @@ border: 1px solid #bbbbbb;
 }
 input[type=checkbox] {
   -webkit-appearance: checkbox;
+}
+input[type=radio] {
+  -webkit-appearance: radio;
 }
