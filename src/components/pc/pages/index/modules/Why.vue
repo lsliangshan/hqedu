@@ -2,13 +2,13 @@
 	<div class="why_container">
 		<div class="image_item">
 			<a href="/register">
-				<img src="/static/images/pages/WechatIMG78.jpeg"/>
-			</a>
+				<img src="/static/images/pages/WechatIMG79.jpeg"/>
+			</a>			
 		</div>
 		<div class="image_item">
 			<a href="/register">
-				<img src="/static/images/pages/WechatIMG79.jpeg"/>
-			</a>			
+				<img src="/static/images/pages/WechatIMG78.jpeg"/>
+			</a>
 		</div>
 		<div class="image_item">
 			<a href="/register">

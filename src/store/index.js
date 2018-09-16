@@ -961,25 +961,19 @@ const store = new Vuex.Store({
           title: '免费领课',
           step1: {
             title: '① 选择免费开通的课程:',
-            list: [
-              {
-                label: '经济师',
-                sublist: [
-                  {
-                    label: '初级经济师',
-                    value: '12556'
-                  },
-                  {
-                    label: '中级经济师',
-                    value: '12555'
-                  },
-                  {
-                    label: '高级经济师',
-                    value: '10210'
-                  }
-                ]
-              }
-            ]
+            list: [{
+              label: '经济师',
+              sublist: [{
+                label: '初级经济师',
+                value: '12556'
+              }, {
+                label: '中级经济师',
+                value: '12555'
+              }, {
+                label: '高级经济师',
+                value: '10210'
+              }]
+            }]
             // list: [{
             //   label: '初级经济师',
             //   sublist: [{

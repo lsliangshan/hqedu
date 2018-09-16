@@ -11,6 +11,7 @@
     <dbgm></dbgm>
     <lklc></lklc>
     <youshi></youshi>
+    <footers></footers>
   </div>
 </template>
 <style scoped>
@@ -43,7 +44,8 @@
       Tiku: () => import('./modules/Tiku.vue'),
       Dbgm: () => import('./modules/Dbgm.vue'),
       Lklc: () => import('./modules/Lklc.vue'),
-      Youshi: () => import('./modules/Youshi.vue')
+      Youshi: () => import('./modules/Youshi.vue'),
+      Footers: () => import('./modules/Footer.vue')
     }
   }
 </script>

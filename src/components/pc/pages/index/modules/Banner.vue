@@ -2,8 +2,8 @@
   <div class="top_banner_container">
     <div class="top_banner_inner" :style="topBannerStyles">
       <swiper class="swiper_container" :options="swiperOptions" @init="initSwiper">
-        <div class="swiper-slide swiper_item" v-for="(item, index) in data" :key="index" :style="{backgroundImage: 'url(' + item.img + ')'}" :data-path="item.href" @click="bannerHandler">
-        </div>
+        <a class="swiper-slide swiper_item" v-for="(item, index) in data" :key="index" :style="{backgroundImage: 'url(' + item.img + ')'}" :href="item.href">
+        </a>
         <div slot="pagination" class="swiper_pagination_container">
           <div class="swiper_pagination_item" v-for="(itm, idx) in data" :key="idx" :class="{'active': swiper && (swiper.activeIndex % data.length === idx)}" @click="slideTo(idx)"></div>
         </div>
