@@ -2,7 +2,7 @@
 	<div class="why_container">
 		<div class="image_item">
 			<a href="/register">
-				<img src="/static/images/pages/WechatIMG79.jpeg"/>
+				<img src="/static/images/pages/WechatIMG80.jpeg"/>
 			</a>			
 		</div>
 		<div class="image_item">
@@ -12,7 +12,7 @@
 		</div>
 		<div class="image_item">
 			<a href="/register">
-				<img src="/static/images/pages/WechatIMG80.jpeg"/>
+				<img src="/static/images/pages/WechatIMG79.jpeg"/>
 			</a>			
 		</div>
 	</div>
