@@ -965,13 +965,13 @@ const store = new Vuex.Store({
               label: '经济师',
               sublist: [{
                 label: '初级经济师',
-                value: '12556'
+                value: '5609'
               }, {
                 label: '中级经济师',
-                value: '12555'
+                value: '5607'
               }, {
                 label: '高级经济师',
-                value: '10210'
+                value: '7349'
               }]
             }]
             // list: [{
